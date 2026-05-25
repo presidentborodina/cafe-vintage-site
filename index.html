@@ -2225,6 +2225,110 @@ footer {
   /* ── WhatsApp FAB ── */
   .whatsapp { bottom: 16px; right: 16px; width: 52px; height: 52px; font-size: 22px; }
 }
+
+/* ========== LIGHTBOX ========== */
+.lb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(28, 20, 16, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+  animation: lbIn 0.2s ease;
+}
+.lb-overlay.open { display: flex; }
+
+@keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }
+
+.lb-img-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lb-img-wrap img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 3px;
+  display: block;
+  box-shadow: 0 32px 100px rgba(0,0,0,0.7);
+  user-select: none;
+}
+
+.lb-caption {
+  color: rgba(255,255,255,0.6);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.lb-close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  width: 44px; height: 44px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.85);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  z-index: 501;
+}
+.lb-close:hover { background: rgba(255,255,255,0.18); }
+
+.lb-prev, .lb-next {
+  position: fixed;
+  top: 50%; transform: translateY(-50%);
+  width: 52px; height: 52px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.85);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  z-index: 501;
+  user-select: none;
+}
+.lb-prev { left: 20px; }
+.lb-next { right: 20px; }
+.lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,0.18); }
+
+.lb-counter {
+  position: fixed;
+  bottom: 24px;
+  left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,0.35);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+/* film-item → cursore zoom */
+.film-item { cursor: zoom-in; }
+
+@media (max-width: 640px) {
+  .lb-prev { left: 8px; width: 40px; height: 40px; font-size: 22px; }
+  .lb-next { right: 8px; width: 40px; height: 40px; font-size: 22px; }
+  .lb-close { top: 14px; right: 14px; }
+}
 </style>
 </head>
 <body>
@@ -2884,6 +2988,18 @@ footer {
   </div>
 </footer>
 
+<!-- ========== LIGHTBOX ========== -->
+<div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Foto a tutto schermo">
+  <button class="lb-close" id="lbClose" aria-label="Chiudi">✕</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Foto precedente">&#8249;</button>
+  <div class="lb-img-wrap">
+    <img id="lbImg" src="" alt="">
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+  <button class="lb-next" id="lbNext" aria-label="Foto successiva">&#8250;</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
 <a href="https://wa.me/393429062935" class="whatsapp" title="WhatsApp">
   <svg viewBox="0 0 32 32" width="28" height="28" fill="currentColor"><path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.7 5.5 2.1 7.9L0 32l8.3-2.2c2.3 1.3 5 1.9 7.7 1.9 8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-5.1 1.3 1.4-4.9-.3-.5C3.2 20.9 2.7 18.5 2.7 16 2.7 8.7 8.7 2.7 16 2.7S29.3 8.7 29.3 16 23.3 29.3 16 29.3zm7.4-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.3-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.7-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.3 0 1.9 1.4 3.8 1.6 4.1.2.3 2.8 4.2 6.7 5.9.9.4 1.7.6 2.2.8 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg>
 </a>
@@ -2940,6 +3056,80 @@ if (filmstrip) {
     filmstrip.scrollLeft = scrollLeft - (x - startX) * 1.4;
   });
 }
+
+// ── Lightbox ─────────────────────────────────────
+const lbItems = [...document.querySelectorAll('.film-item')].map(item => ({
+  src:     item.querySelector('img').getAttribute('src'),
+  alt:     item.querySelector('img').getAttribute('alt') || '',
+  caption: item.querySelector('.gal-label') ? item.querySelector('.gal-label').textContent : ''
+}));
+
+const lbOverlay = document.getElementById('lbOverlay');
+const lbImg     = document.getElementById('lbImg');
+const lbCap     = document.getElementById('lbCaption');
+const lbCounter = document.getElementById('lbCounter');
+let lbIdx = 0;
+
+function lbOpen(i) {
+  lbIdx = i;
+  lbRender();
+  lbOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('lbClose').focus();
+}
+
+function lbClose() {
+  lbOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lbRender() {
+  const d = lbItems[lbIdx];
+  lbImg.src = d.src;
+  lbImg.alt = d.alt;
+  lbCap.textContent = d.caption;
+  lbCounter.textContent = (lbIdx + 1) + ' / ' + lbItems.length;
+}
+
+function lbPrev() { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; lbRender(); }
+function lbNext() { lbIdx = (lbIdx + 1) % lbItems.length; lbRender(); }
+
+// Apri lightbox al click sulle foto (distingue click da drag)
+document.querySelectorAll('.film-item').forEach((item, i) => {
+  let mouseDownX = 0;
+  item.addEventListener('mousedown', e => { mouseDownX = e.pageX; });
+  item.addEventListener('click', e => {
+    if (Math.abs(e.pageX - mouseDownX) < 8) lbOpen(i);
+  });
+  // Touch: apri solo se non era uno swipe
+  let touchX0 = 0;
+  item.addEventListener('touchstart', e => { touchX0 = e.touches[0].clientX; }, { passive: true });
+  item.addEventListener('touchend', e => {
+    if (Math.abs(e.changedTouches[0].clientX - touchX0) < 12) lbOpen(i);
+  });
+});
+
+// Chiudi cliccando fuori dall'immagine
+lbOverlay.addEventListener('click', e => { if (e.target === lbOverlay) lbClose(); });
+document.getElementById('lbClose').addEventListener('click', lbClose);
+document.getElementById('lbPrev').addEventListener('click', lbPrev);
+document.getElementById('lbNext').addEventListener('click', lbNext);
+
+// Tastiera
+document.addEventListener('keydown', e => {
+  if (!lbOverlay.classList.contains('open')) return;
+  if (e.key === 'Escape')     lbClose();
+  if (e.key === 'ArrowLeft')  lbPrev();
+  if (e.key === 'ArrowRight') lbNext();
+});
+
+// Swipe nel lightbox (mobile)
+let lbTouchX0 = 0;
+lbOverlay.addEventListener('touchstart', e => { lbTouchX0 = e.touches[0].clientX; }, { passive: true });
+lbOverlay.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - lbTouchX0;
+  if (Math.abs(dx) > 50) { dx < 0 ? lbNext() : lbPrev(); }
+});
 </script>
 
 </body>
