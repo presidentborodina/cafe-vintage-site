@@ -2127,6 +2127,68 @@ footer {
   .inclusioni-list { grid-template-columns: 1fr; }
   .menu-block { padding-left: 0; border-left: none; }
 }
+
+/* ── PHONE (max 640px) ───────────────────────────── */
+@media (max-width: 640px) {
+
+  /* ── Sezioni: padding ridotto ── */
+  section,
+  .colazione, .pranzo, .aperitivo, .sala,
+  .dove, .focaccia-story, .timeline,
+  .recensioni { padding: 56px 20px; }
+
+  /* ── Navigazione ── */
+  nav { padding: 14px 16px; }
+
+  /* ── Hero ── */
+  .hero-content { padding: 0 20px 44px; }
+  .hero h1 { font-size: clamp(38px, 13vw, 60px); line-height: 0.90; }
+  .hero h1 .bistrot { max-width: 100%; font-size: 0.38em; margin-top: 14px; padding-top: 14px; }
+  .hero-subtitle { font-size: 15px; max-width: 100%; }
+  .hero-subtitle br { display: none; }
+  .hero-pills { gap: 8px; }
+  .hero-pill { font-size: 11px; padding: 6px 12px; }
+  .hero-cta { gap: 12px; }
+
+  /* ── Timeline ── */
+  .timeline-slot:last-child { border-bottom: none; }
+
+  /* ── Colazione ── */
+  .colazione-meta { flex-direction: column; gap: 12px; }
+
+  /* ── Aperitivo ── */
+  .aperitivo-grid { gap: 32px; }
+  .aperitivo-visual { max-width: 260px; margin: 0 auto; }
+
+  /* ── Sala — form ── */
+  .form-block { padding: 40px 20px; border-radius: 4px; }
+  .form-block::before { font-size: 52px; top: 20px; right: 24px; }
+  .form-block h3 { font-size: clamp(28px, 8vw, 40px); }
+
+  /* ── Recensioni (CRITICO: 3 colonne → 1) ── */
+  .recensioni-grid { grid-template-columns: 1fr; gap: 16px; }
+  .recensione-card { padding: 24px; }
+
+  /* ── Dove siamo ── */
+  .dove-map { height: 240px; }
+  .dove-map img { width: 100%; margin-left: 0; object-position: center 10%; }
+  .dove-info {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 28px 20px;
+  }
+  .dove-info h3 { font-size: 28px; }
+
+  /* ── Galleria filmstrip ── */
+  .film-item { height: 210px; width: 200px; }
+  .filmstrip { padding: 0 16px; gap: 12px; }
+
+  /* ── Footer ── */
+  .footer-grid { gap: 24px; }
+
+  /* ── WhatsApp FAB ── */
+  .whatsapp { bottom: 16px; right: 16px; width: 52px; height: 52px; font-size: 22px; }
+}
 </style>
 </head>
 <body>
