@@ -1953,7 +1953,11 @@ section {
   line-height: 1.4;
   color: var(--ink);
   font-variation-settings: "opsz" 144;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.2s;
 }
+.dove-address:hover { color: var(--terracotta); }
 
 .dove-contact {
   display: flex;
@@ -2383,7 +2387,7 @@ footer {
       aperitivo come si deve, e una sala tutta vostra per le serate.
     </p>
     <div class="hero-pills">
-      <span class="hero-pill">📍 Via delle Ande 5</span>
+      <a class="hero-pill" href="https://maps.app.goo.gl/TUf24KHt6irMfwTq6?g_st=it" target="_blank" rel="noopener">📍 Via delle Ande 5</a>
       <span class="hero-pill">☀️ Tavoli all'aperto</span>
       <span class="hero-pill">🕖 Lun – Dom · dalle 7</span>
     </div>
@@ -2907,7 +2911,7 @@ footer {
 
       <div class="dove-block">
         <div class="dove-block-label">Indirizzo</div>
-        <div class="dove-address">Via delle Ande, 5<br>20151 Milano</div>
+        <a class="dove-address" href="https://maps.app.goo.gl/TUf24KHt6irMfwTq6?g_st=it" target="_blank" rel="noopener">Via delle Ande, 5<br>20151 Milano</a>
       </div>
 
       <div class="dove-block">
@@ -2979,7 +2983,7 @@ footer {
     </div>
   </div>
   <div class="footer-bottom">
-    <span>Caffé Vintage Bistrot · Via delle Ande 5, Milano · P.IVA 00000000000</span>
+    <span>Caffé Vintage Bistrot · <a href="https://maps.app.goo.gl/TUf24KHt6irMfwTq6?g_st=it" target="_blank" rel="noopener" style="color:inherit;">Via delle Ande 5, Milano</a> · P.IVA 00000000000</span>
     <div class="legal">
       <a href="#">Privacy</a>
       <a href="#">Cookie</a>
