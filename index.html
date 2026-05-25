@@ -1665,6 +1665,7 @@ section {
 }
 
 .form-submit-row {
+  grid-column: span 2;
   margin-top: 40px;
   display: flex;
   align-items: center;
@@ -2157,6 +2158,7 @@ footer {
   .pacchetti-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .form-field.full { grid-column: span 1; }
+  .form-submit-row { grid-column: span 1; }
   .filmstrip { padding: 0 24px; }
   .film-item { height: 320px; }
   section, .colazione, .pranzo, .aperitivo, .sala, .dove, .focaccia-story, .timeline { padding: 80px 32px; }
@@ -2868,7 +2870,7 @@ footer {
         <label for="note">Note (allergie, occasione, richieste speciali)</label>
         <textarea id="note" placeholder="Sarebbe il compleanno di mia madre, vorremmo una tortina sorpresa..."></textarea>
       </div>
-      <div class="form-submit-row" style="grid-column: span 2;">
+      <div class="form-submit-row">
         <button type="submit" class="form-submit">Mandiamo la richiesta <span>→</span></button>
         <div class="form-promise">
           <span class="dot"></span>
