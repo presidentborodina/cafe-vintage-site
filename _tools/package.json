@@ -1,0 +1,12 @@
+{
+  "name": "cafe-vintage-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Strumenti locali per il sito Caffé Vintage (ottimizzazione immagini, ecc.)",
+  "scripts": {
+    "optimize": "node optimize-images.js"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0"
+  }
+}

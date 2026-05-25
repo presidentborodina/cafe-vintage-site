@@ -1,0 +1,17 @@
+# Dipendenze strumenti (non servono online)
+_tools/node_modules/
+_tools/package-lock.json
+
+# Impostazioni Claude Code (solo locali)
+.claude/
+
+# File temporanei e archivi
+*.tmp
+*.zip
+*.DS_Store
+Thumbs.db
+
+# Originali non ottimizzati / file inutili
+images/IMG_7478 (1).jpg
+images/focaccia_temp.jpg
+images/image6.jpeg

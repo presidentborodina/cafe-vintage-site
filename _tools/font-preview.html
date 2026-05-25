@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Anteprima font · Caffé Vintage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@400;700;900&family=Marcellus&family=Marcellus+SC&family=Forum&family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --terracotta: #B85042;
+  --ink: #2C2420;
+  --paper: #F5EFE6;
+  --paper-warm: #EDE4D3;
+  --line: #D4C9B5;
+  --muted: #8B7E72;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 48px;
+  line-height: 1.5;
+}
+.page-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.page-intro {
+  color: var(--muted);
+  margin-bottom: 48px;
+  max-width: 720px;
+}
+.sample {
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 32px 40px;
+  margin-bottom: 32px;
+}
+.sample-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+.sample-letter {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  font-weight: 700;
+  margin-right: 12px;
+}
+.sample-name {
+  font-weight: 700;
+  font-size: 18px;
+}
+.sample-meta {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.sample-display {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--ink);
+}
+.big {
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 900;
+}
+.medium {
+  font-size: 28px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--terracotta);
+  letter-spacing: 0.12em;
+  max-width: 400px;
+}
+.small {
+  font-size: 18px;
+  margin-top: 18px;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+/* --- font samples --- */
+.f-cinzel-dec   { font-family: 'Cinzel Decorative', serif; font-weight: 900; }
+.f-cinzel       { font-family: 'Cinzel', serif; font-weight: 900; }
+.f-marcellus    { font-family: 'Marcellus', serif; }
+.f-marcellus-sc { font-family: 'Marcellus SC', serif; }
+.f-forum        { font-family: 'Forum', serif; }
+.f-playfair     { font-family: 'Playfair Display', serif; font-weight: 900; }
+
+/* effetto 3D bronzo */
+.bronze {
+  color: #6B4423;
+  text-shadow:
+    1px 1px 0 rgba(0,0,0,0.15),
+    2px 2px 0 rgba(0,0,0,0.10),
+    3px 3px 4px rgba(0,0,0,0.08);
+  background: linear-gradient(180deg, #8B6F3F 0%, #6B4423 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.12));
+}
+.note {
+  margin-top: 32px;
+  padding: 20px;
+  background: var(--paper);
+  border-left: 3px solid var(--terracotta);
+  font-size: 14px;
+  color: var(--ink);
+}
+</style>
+</head>
+<body>
+
+<h1 class="page-title">Anteprima font · Caffé Vintage</h1>
+<p class="page-intro">
+  Le 5 opzioni di font per "CAFFÉ VINTAGE BISTROT", più una variante con effetto bronzo 3D simulato in CSS.
+  Tutti i font sono Google Fonts (gratis). Scegli quale ti piace di più.
+</p>
+
+<!-- OPZIONE A -->
+<div class="sample">
+  <div class="sample-header">
+    <div>
+      <span class="sample-letter">A</span>
+      <span class="sample-name">Cinzel Decorative 900</span>
+      <span class="sample-meta">— attuale, scelto nel HANDOFF</span>
+    </div>
+    <span class="sample-meta">classico romano · ornato</span>
+  </div>
+  <div class="sample-display big f-cinzel-dec">Caffè<br>Vintage</div>
+  <div class="sample-display medium f-cinzel-dec">Bistrot</div>
+  <div class="sample-display small f-cinzel-dec">Caffé Vintage · Bistrot</div>
+</div>
+
+<!-- OPZIONE B -->
+<div class="sample">
+  <div class="sample-header">
+    <div>
+      <span class="sample-letter">B</span>
+      <span class="sample-name">Cinzel 900</span>
+      <span class="sample-meta">— stesso DNA di A, senza svolazzi</span>
+    </div>
+    <span class="sample-meta">classico romano · pulito</span>
+  </div>
+  <div class="sample-display big f-cinzel">Caffè<br>Vintage</div>
+  <div class="sample-display medium f-cinzel">Bistrot</div>
+  <div class="sample-display small f-cinzel">Caffé Vintage · Bistrot</div>
+</div>
+
+<!-- OPZIONE C -->
+<div class="sample">
+  <div class="sample-header">
+    <div>
+      <span class="sample-letter">C</span>
+      <span class="sample-name">Marcellus</span>
+      <span class="sample-meta">— ispirato a Trajan (font su pietra)</span>
+    </div>
+    <span class="sample-meta">romano classico · single weight</span>
+  </div>
+  <div class="sample-display big f-marcellus">Caffè<br>Vintage</div>
+  <div class="sample-display medium f-marcellus">Bistrot</div>
+  <div class="sample-display small f-marcellus">Caffé Vintage · Bistrot</div>
+</div>
+
+<!-- OPZIONE D -->
+<div class="sample">
+  <div class="sample-header">
+    <div>
+      <span class="sample-letter">D</span>
+      <span class="sample-name">Forum</span>
+      <span class="sample-meta">— romano "scolpito in pietra"</span>
+    </div>
+    <span class="sample-meta">romano classico · rustico</span>
+  </div>
+  <div class="sample-display big f-forum">Caffè<br>Vintage</div>
+  <div class="sample-display medium f-forum">Bistrot</div>
+  <div class="sample-display small f-forum">Caffé Vintage · Bistrot</div>
+</div>
+
+<!-- OPZIONE E -->
+<div class="sample">
+  <div class="sample-header">
+    <div>
+      <span class="sample-letter">E</span>
+      <span class="sample-name">Playfair Display Black</span>
+      <span class="sample-meta">— elegante moderno, NON simile all'insegna</span>
+    </div>
+    <span class="sample-meta">editorial · alto contrasto</span>
+  </div>
+  <div class="sample-display big f-playfair">Caffè<br>Vintage</div>
+  <div class="sample-display medium f-playfair">Bistrot</div>
+  <div class="sample-display small f-playfair">Caffé Vintage · Bistrot</div>
+</div>
+
+<!-- BONUS: effetto bronzo 3D -->
+<div class="sample" style="background: var(--paper);">
+  <div class="sample-header">
+    <div>
+      <span class="sample-letter" style="background: var(--terracotta);">★</span>
+      <span class="sample-name">Bonus · effetto bronzo 3D</span>
+      <span class="sample-meta">— stesso font A + CSS che simula il rilievo dell'insegna</span>
+    </div>
+    <span class="sample-meta">simulazione 3D</span>
+  </div>
+  <div class="sample-display big f-cinzel-dec bronze">Caffè<br>Vintage</div>
+  <div class="sample-display medium f-cinzel-dec bronze" style="color: inherit; -webkit-text-fill-color: initial;">Bistrot</div>
+  <div class="note">
+    Questo effetto CSS aggiunge un gradiente dorato/bronzo + ombra. Non è una copia perfetta dell'insegna fisica (vera è in 3D), ma dà l'impressione di "incisione".
+    Si può applicare a qualunque font (A, B, C, D, E) — il font non c'entra con l'effetto.
+  </div>
+</div>
+
+<!-- BONUS 2: combo B + effetto bronzo -->
+<div class="sample" style="background: var(--paper);">
+  <div class="sample-header">
+    <div>
+      <span class="sample-letter" style="background: var(--terracotta);">★</span>
+      <span class="sample-name">Bonus · Cinzel (B) + effetto bronzo</span>
+      <span class="sample-meta">— la combo più "insegna"</span>
+    </div>
+    <span class="sample-meta">simulazione 3D</span>
+  </div>
+  <div class="sample-display big f-cinzel bronze">Caffè<br>Vintage</div>
+  <div class="sample-display medium f-cinzel bronze" style="color: inherit; -webkit-text-fill-color: initial;">Bistrot</div>
+</div>
+
+<p style="margin-top: 48px; color: var(--muted); font-size: 14px;">
+  Una volta deciso, dimmi lettera (A/B/C/D/E) + se vuoi anche l'effetto bronzo.
+  Io applico la scelta al sito vero.
+</p>
+
+</body>
+</html>

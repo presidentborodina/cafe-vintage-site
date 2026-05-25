@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Alternatives · Caffé Vintage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --terracotta: #B85042;
+  --terracotta-dark: #8A3A30;
+  --ink: #2C2420;
+  --ink-soft: #3D332E;
+  --paper: #F5EFE6;
+  --paper-warm: #EDE4D3;
+  --cream: #FAF6EC;
+  --sand: #E7E0CD;
+  --muted: #8B7E72;
+  --line: #D4C9B5;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: #1a1411;
+  color: white;
+}
+
+/* ====== LABEL BADGE ====== */
+.option-label {
+  background: #1a1411;
+  color: var(--muted);
+  padding: 32px 48px 20px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.option-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.option-title { color: white; font-size: 15px; font-weight: 600; letter-spacing: 0; }
+.option-sub { color: var(--muted); font-size: 13px; margin-left: 8px; }
+.option-note {
+  background: #1a1411;
+  padding: 20px 48px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  border-bottom: 1px solid #333;
+}
+.note-item { }
+.note-key { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.note-val { font-size: 13px; color: #ccc; line-height: 1.4; }
+
+/* ====== SHARED NAV SIMULATION ====== */
+.sim-nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  padding: 22px 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sim-brand-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+.sim-brand-sub {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 1px;
+}
+.sim-nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.sim-cta-nav {
+  background: var(--terracotta);
+  color: white;
+  padding: 9px 20px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ====== SHARED ELEMENTS ====== */
+.eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+.eyebrow-dot { color: var(--terracotta); margin: 0 10px; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--terracotta);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+.btn-ghost-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: white;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  padding: 15px 28px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.btn-ghost-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+  padding: 15px 28px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+}
+
+/* ==========================================
+   OPZIONE A — FULLSCREEN IMMERSIVO
+   ========================================== */
+
+.hero-a {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.hero-a-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/detail_bancone.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  transform: scale(1.02);
+}
+/* Gradiente warm dal basso */
+.hero-a-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(28,18,14,0.92) 0%,
+      rgba(28,18,14,0.60) 35%,
+      rgba(28,18,14,0.20) 65%,
+      rgba(28,18,14,0.10) 100%
+    );
+}
+/* Vignette ai lati */
+.hero-a-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 50%, rgba(28,18,14,0.5) 100%);
+}
+.hero-a-content {
+  position: relative;
+  z-index: 5;
+  padding: 0 64px 72px;
+  width: 100%;
+  max-width: 820px;
+}
+.hero-a .sim-nav {
+  background: transparent;
+  color: white;
+}
+.hero-a .sim-brand-name { color: white; }
+.hero-a .sim-brand-sub { color: rgba(255,255,255,0.55); }
+.hero-a .sim-nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.hero-a-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.hero-a-eyebrow .eyebrow { color: #E8A882; }
+.hero-a-line { width: 40px; height: 1px; background: rgba(232,168,130,0.5); }
+.hero-a h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(52px, 6vw, 84px);
+  color: white;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.hero-a-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.70);
+  line-height: 1.55;
+  max-width: 480px;
+  margin-bottom: 36px;
+  font-weight: 400;
+}
+.hero-a-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.hero-a-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   OPZIONE B — SPLIT SCURO / CHIARO
+   ========================================== */
+
+.hero-b {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: grid;
+  grid-template-columns: 52% 48%;
+  overflow: hidden;
+}
+.hero-b-left {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 140px 64px 80px;
+  position: relative;
+  z-index: 2;
+}
+/* Motivo a grana sottile sul pannello scuro */
+.hero-b-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0.025 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  pointer-events: none;
+}
+/* Riga verticale di accent */
+.hero-b-left::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(184,80,66,0.4) 40%, rgba(184,80,66,0.4) 60%, transparent);
+}
+.hero-b-right {
+  position: relative;
+  overflow: hidden;
+}
+.hero-b-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+/* Overlay caldo sul lato foto */
+.hero-b-right::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(44,36,32,0.3) 0%, transparent 40%);
+}
+.hero-b .sim-nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: transparent;
+  color: white;
+}
+.hero-b .sim-nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; }
+.hero-b .sim-brand-name { color: white; }
+.hero-b .sim-brand-sub { color: rgba(255,255,255,0.45); }
+.hero-b-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.hero-b-tag .eyebrow { color: var(--terracotta); }
+.hero-b-tag-line { width: 32px; height: 1px; background: var(--terracotta); opacity: 0.6; }
+.hero-b h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(44px, 4.5vw, 68px);
+  color: white;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.hero-b-brand-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 28px;
+}
+.hero-b-divider {
+  width: 48px;
+  height: 2px;
+  background: var(--terracotta);
+  margin-bottom: 28px;
+}
+.hero-b-body {
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+  max-width: 420px;
+  margin-bottom: 40px;
+}
+.hero-b-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 48px;
+  max-width: 280px;
+}
+.hero-b-cta .btn-primary { justify-content: center; }
+.hero-b-cta .btn-ghost-white { justify-content: center; }
+.hero-b-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hero-b-badge {
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+/* Striscia orizzontale foto a destra con anno */
+.hero-b-year {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 100px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  color: rgba(255,255,255,0.06);
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  line-height: 1;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   OPZIONE C — POSTER TIPOGRAFICO
+   ========================================== */
+
+.hero-c {
+  position: relative;
+  min-height: 100vh;
+  background: var(--paper);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.hero-c-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 140px 48px 60px;
+  position: relative;
+}
+/* grana carta */
+.hero-c-top::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.14 0 0 0 0 0.13 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.7;
+  pointer-events: none;
+}
+.hero-c .sim-nav {
+  background: transparent;
+  color: var(--ink);
+}
+.hero-c .sim-nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; }
+.hero-c .sim-brand-name { color: var(--ink); }
+.hero-c .sim-brand-sub { color: var(--muted); }
+.hero-c-rule-top {
+  width: 280px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.hero-c-rule-top span { flex: 1; height: 1px; background: var(--line); }
+.hero-c-rule-top em {
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-c-location {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+.hero-c h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(64px, 10vw, 140px);
+  color: var(--ink);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+  position: relative;
+  z-index: 2;
+}
+.hero-c-bistrot {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 18px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-c-bistrot span { width: 32px; height: 1px; background: var(--line); }
+.hero-c-tagline {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 22px);
+  color: var(--ink-soft);
+  line-height: 1.4;
+  max-width: 480px;
+  margin-bottom: 36px;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+}
+.hero-c-cta {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.hero-c-meta {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.hero-c-meta strong { color: var(--ink); }
+
+/* Striscia foto orizzontale */
+.hero-c-photo-strip {
+  width: 100%;
+  height: 320px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.hero-c-photo-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+.hero-c-photo-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--paper) 0%, transparent 20%, transparent 80%, var(--paper) 100%);
+  z-index: 1;
+}
+
+/* ====== SCROLL INDICATOR ====== */
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  z-index: 10;
+}
+.scroll-hint-arrow {
+  width: 1px;
+  height: 32px;
+  background: var(--line);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 0.8; transform: scaleY(1.1); }
+}
+.scroll-hint-white { color: rgba(255,255,255,0.35); }
+.scroll-hint-white .scroll-hint-arrow { background: rgba(255,255,255,0.25); }
+
+/* ====== INDEX IN CIMA ====== */
+.page-index {
+  background: #1a1411;
+  padding: 48px;
+  border-bottom: 1px solid #333;
+}
+.page-index h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.page-index p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 32px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+.index-list {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.index-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #2a201c;
+  border: 1px solid #444;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 13px;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s;
+}
+.index-btn:hover { background: var(--terracotta); border-color: var(--terracotta); }
+.index-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--terracotta);
+}
+
+/* ATTUALE badge */
+.badge-current {
+  display: inline-block;
+  background: #2a201c;
+  border: 1px solid #444;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+<!-- ====== INDEX ====== -->
+<div class="page-index">
+  <h1>Proposte Hero · Caffé Vintage</h1>
+  <p>3 alternative al design attuale. Ogni sezione mostra l'hero a schermo intero come lo vedrebbe l'utente.
+  Scorri per vederle tutte oppure usa i link qui sotto per saltare direttamente.</p>
+  <div class="index-list">
+    <a href="#opzione-a" class="index-btn"><span class="index-dot"></span> A — Fullscreen Immersivo</a>
+    <a href="#opzione-b" class="index-btn"><span class="index-dot"></span> B — Split Scuro / Chiaro</a>
+    <a href="#opzione-c" class="index-btn"><span class="index-dot"></span> C — Poster Tipografico</a>
+  </div>
+</div>
+
+<!-- ==========================================
+     OPZIONE A — FULLSCREEN IMMERSIVO
+     ========================================== -->
+<div id="opzione-a">
+<div class="option-label">
+  <span class="option-badge">A</span>
+  <span>
+    <span class="option-title">Fullscreen Immersivo</span>
+    <span class="option-sub">— foto di sfondo con overlay caldo, testo in basso a sinistra</span>
+  </span>
+</div>
+
+<section class="hero-a">
+  <!-- Nav simulata -->
+  <nav class="sim-nav">
+    <div>
+      <div class="sim-brand-name" style="color:white;">Caffé Vintage</div>
+      <span class="sim-brand-sub" style="color:rgba(255,255,255,0.5);">Bistrot · Milano</span>
+    </div>
+    <div class="sim-nav-links">
+      <a href="#" style="color:rgba(255,255,255,0.6);text-decoration:none;">Colazione</a>
+      <a href="#" style="color:rgba(255,255,255,0.6);text-decoration:none;">Pranzo</a>
+      <a href="#" style="color:rgba(255,255,255,0.6);text-decoration:none;">Aperitivo</a>
+      <a href="#" style="color:rgba(255,255,255,0.6);text-decoration:none;">Sala privata</a>
+      <span class="sim-cta-nav">Prenota la sala</span>
+    </div>
+  </nav>
+
+  <!-- Background -->
+  <div class="hero-a-bg"></div>
+  <div class="hero-a-overlay"></div>
+  <div class="hero-a-vignette"></div>
+
+  <!-- Contenuto -->
+  <div class="hero-a-content">
+    <div class="hero-a-eyebrow">
+      <div class="hero-a-line"></div>
+      <span class="eyebrow" style="color:#E8A882;">Gallaratese · Milano · dal 2024</span>
+    </div>
+
+    <h1>Caffè<br>Vintage</h1>
+
+    <p class="hero-a-sub">
+      Un bar di quartiere con la focaccia di Papà,<br>
+      una sala privata per i tuoi eventi,<br>
+      e un bancone dove il tempo rallenta.
+    </p>
+
+    <div class="hero-a-cta">
+      <span class="btn-primary">Prenota la sala →</span>
+      <span class="btn-ghost-white">Scopri il menù ↓</span>
+    </div>
+
+    <div class="hero-a-meta">
+      <span class="meta-pill">📍 Via delle Ande 5</span>
+      <span class="meta-pill">☀️ Tavoli all'aperto</span>
+      <span class="meta-pill">🕖 Dal lunedì alla domenica</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint scroll-hint-white">
+    <div class="scroll-hint-arrow"></div>
+    <span>Scorri</span>
+  </div>
+</section>
+
+<div class="option-note">
+  <div class="note-item">
+    <div class="note-key">Mood</div>
+    <div class="note-val">Cinema, ristorante di lusso, impatto immediato — emozione prima delle parole</div>
+  </div>
+  <div class="note-item">
+    <div class="note-key">Punto di forza</div>
+    <div class="note-val">La foto del bancone vale più di mille parole. Fa venire voglia di entrare subito.</div>
+  </div>
+  <div class="note-item">
+    <div class="note-key">Da tenere a mente</div>
+    <div class="note-val">La foto dev'essere ottima. Se è sgranata o mal illuminata, rovina tutto.</div>
+  </div>
+</div>
+</div>
+
+
+<!-- ==========================================
+     OPZIONE B — SPLIT SCURO / CHIARO
+     ========================================== -->
+<div id="opzione-b">
+<div class="option-label">
+  <span class="option-badge">B</span>
+  <span>
+    <span class="option-title">Split Scuro / Foto</span>
+    <span class="option-sub">— pannello scuro a sinistra + foto a tutta altezza a destra</span>
+  </span>
+</div>
+
+<section class="hero-b">
+  <!-- Nav simulata -->
+  <nav class="sim-nav">
+    <div>
+      <div class="sim-brand-name" style="color:white;">Caffé Vintage</div>
+      <span class="sim-brand-sub" style="color:rgba(255,255,255,0.45);">Bistrot · Milano</span>
+    </div>
+    <div class="sim-nav-links">
+      <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;">Colazione</a>
+      <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;">Pranzo</a>
+      <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;">Sala privata</a>
+      <span class="sim-cta-nav">Prenota la sala</span>
+    </div>
+  </nav>
+
+  <!-- Pannello sinistro testo -->
+  <div class="hero-b-left">
+    <div class="hero-b-tag">
+      <div class="hero-b-tag-line"></div>
+      <span class="eyebrow">Dal 2024 · Gallaratese</span>
+    </div>
+
+    <h1>Caffè<br>Vintage</h1>
+    <div class="hero-b-brand-sub">Bistrot · Milano</div>
+
+    <div class="hero-b-divider"></div>
+
+    <p class="hero-b-body">
+      La focaccia di Papà è pronta alle 7:30.<br>
+      La sala privata aspetta il tuo evento.<br>
+      Il bancone è sempre aperto.
+    </p>
+
+    <div class="hero-b-cta">
+      <span class="btn-primary">Prenota la sala →</span>
+      <span class="btn-ghost-white">Scopri il menù ↓</span>
+    </div>
+
+    <div class="hero-b-badges">
+      <span class="hero-b-badge">Colazione</span>
+      <span class="hero-b-badge">Pranzo</span>
+      <span class="hero-b-badge">Aperitivo</span>
+      <span class="hero-b-badge">Sala privata</span>
+    </div>
+  </div>
+
+  <!-- Pannello destro foto -->
+  <div class="hero-b-right">
+    <img src="../images/hero.jpg" alt="Caffé Vintage interno">
+  </div>
+
+  <!-- Anno watermark -->
+  <div class="hero-b-year">2024</div>
+</section>
+
+<div class="option-note">
+  <div class="note-item">
+    <div class="note-key">Mood</div>
+    <div class="note-val">Boutique hotel, locale contemporaneo — elegante, moderno, un po' milanese</div>
+  </div>
+  <div class="note-item">
+    <div class="note-key">Punto di forza</div>
+    <div class="note-val">Massima leggibilità del testo. La foto prende metà schermo senza distrarre. Funziona su ogni monitor.</div>
+  </div>
+  <div class="note-item">
+    <div class="note-key">Da tenere a mente</div>
+    <div class="note-val">Il pannello scuro è diverso dal tono caldo del resto del sito — serve coerenza con le sezioni seguenti.</div>
+  </div>
+</div>
+</div>
+
+
+<!-- ==========================================
+     OPZIONE C — POSTER TIPOGRAFICO
+     ========================================== -->
+<div id="opzione-c">
+<div class="option-label">
+  <span class="option-badge">C</span>
+  <span>
+    <span class="option-title">Poster Tipografico</span>
+    <span class="option-sub">— brand name gigante su sfondo carta, foto orizzontale sotto</span>
+  </span>
+</div>
+
+<section class="hero-c">
+  <!-- Nav simulata -->
+  <nav class="sim-nav">
+    <div>
+      <div class="sim-brand-name" style="color:var(--ink);">Caffé Vintage</div>
+      <span class="sim-brand-sub" style="color:var(--muted);">Bistrot · Milano</span>
+    </div>
+    <div class="sim-nav-links" style="color:var(--muted);">
+      <a href="#" style="color:var(--muted);text-decoration:none;">Colazione</a>
+      <a href="#" style="color:var(--muted);text-decoration:none;">Pranzo</a>
+      <a href="#" style="color:var(--muted);text-decoration:none;">Sala privata</a>
+      <span class="sim-cta-nav">Prenota la sala</span>
+    </div>
+  </nav>
+
+  <div class="hero-c-top">
+    <!-- Regola decorativa con anno fondazione -->
+    <div class="hero-c-rule-top">
+      <span></span>
+      <em>Est. 2024</em>
+      <span></span>
+    </div>
+
+    <div class="hero-c-location">Via delle Ande 5 · Gallaratese · Milano</div>
+
+    <h1>Caffè<br>Vintage</h1>
+
+    <div class="hero-c-bistrot">
+      <span></span>
+      Bistrot · Milano
+      <span></span>
+    </div>
+
+    <p class="hero-c-tagline">
+      La focaccia di Papà è pronta ogni mattina alle 7:30.<br>
+      Il bancone, la sala privata, il quartiere — il resto lo scopri tu.
+    </p>
+
+    <div class="hero-c-cta">
+      <span class="btn-primary" style="background:var(--terracotta);color:white;">Prenota la sala →</span>
+      <span class="btn-ghost-dark">Scopri il menù ↓</span>
+    </div>
+
+    <p class="hero-c-meta">
+      <strong>Lun – Dom</strong> · dalle 7:00 · ☀️ Tavoli all'aperto
+    </p>
+  </div>
+
+  <!-- Striscia foto orizzontale -->
+  <div class="hero-c-photo-strip">
+    <img src="../images/detail_bancone.jpg" alt="Il bancone del Caffé Vintage">
+  </div>
+</section>
+
+<div class="option-note">
+  <div class="note-item">
+    <div class="note-key">Mood</div>
+    <div class="note-val">Locandina vintage, rivista di design, coerente con il nome "Vintage" — unico nel settore</div>
+  </div>
+  <div class="note-item">
+    <div class="note-key">Punto di forza</div>
+    <div class="note-val">Fortissima identità tipografica. Il brand name enorme è memorabile. La foto richiama la curiosità a scorrere.</div>
+  </div>
+  <div class="note-item">
+    <div class="note-key">Da tenere a mente</div>
+    <div class="note-val">È più minimal di A e B. Funziona bene se il brand è già conosciuto. Per un locale nuovo, rischia di sembrare "freddo".</div>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER INDEX -->
+<div style="background:#1a1411;padding:48px;text-align:center;border-top:1px solid #333;">
+  <p style="color:var(--muted);font-size:14px;margin-bottom:24px;">
+    Hai scelto? Di' A, B o C (o "nessuna" per restare con l'attuale).
+  </p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="#opzione-a" class="index-btn"><span class="index-dot"></span> A — Fullscreen</a>
+    <a href="#opzione-b" class="index-btn"><span class="index-dot"></span> B — Split</a>
+    <a href="#opzione-c" class="index-btn"><span class="index-dot"></span> C — Poster</a>
+  </div>
+</div>
+
+</body>
+</html>

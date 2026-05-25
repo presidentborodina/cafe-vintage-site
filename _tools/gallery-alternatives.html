@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery Options · Caffé Vintage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --terracotta: #B85042;
+  --terracotta-dark: #8A3A30;
+  --ink: #2C2420;
+  --ink-soft: #3D332E;
+  --paper: #F5EFE6;
+  --paper-warm: #EDE4D3;
+  --cream: #FAF6EC;
+  --muted: #8B7E72;
+  --line: #D4C9B5;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: #1a1411;
+  color: white;
+}
+
+/* ====== LABEL / INDEX ====== */
+.page-index {
+  background: #1a1411;
+  padding: 48px;
+  border-bottom: 1px solid #333;
+}
+.page-index h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+.page-index p {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 32px;
+  max-width: 680px;
+  line-height: 1.6;
+}
+.index-list { display: flex; gap: 12px; flex-wrap: wrap; }
+.index-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #2a201c;
+  border: 1px solid #444;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.index-btn:hover { background: var(--terracotta); border-color: var(--terracotta); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--terracotta); }
+
+.option-label {
+  background: #1a1411;
+  padding: 32px 48px 20px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.badge {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: white; letter-spacing: 0;
+}
+.option-title { color: white; font-size: 15px; font-weight: 600; letter-spacing: 0; }
+.option-sub { color: #666; font-size: 13px; margin-left: 6px; }
+.option-note {
+  background: #1a1411;
+  padding: 20px 48px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  border-bottom: 1px solid #333;
+}
+.note-key { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #666; margin-bottom: 4px; }
+.note-val { font-size: 13px; color: #ccc; line-height: 1.4; }
+
+/* ====== SECTION WRAPPER ====== */
+.section-wrap {
+  background: var(--paper);
+  padding: 80px 48px;
+}
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 48px;
+  line-height: 1.05;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+/* ====== GAL LABEL ====== */
+.gal-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(44,36,32,0.85), transparent);
+  color: white;
+  padding: 20px 16px 12px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ==========================================
+   OPZIONE A — MASONRY CSS
+   ========================================== */
+
+.masonry {
+  columns: 3;
+  column-gap: 14px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 14px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.masonry-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.03);
+}
+
+/* ==========================================
+   OPZIONE B — FILMSTRIP SCROLL
+   ========================================== */
+
+.filmstrip-outer {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  padding-bottom: 8px;
+}
+.filmstrip-outer::-webkit-scrollbar { display: none; }
+
+.filmstrip {
+  display: flex;
+  gap: 14px;
+  padding: 0 48px;
+  width: max-content;
+}
+
+.film-item {
+  flex: 0 0 auto;
+  height: 460px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+
+.film-item img {
+  height: 100%;
+  width: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.film-item:hover img { transform: scale(1.04); }
+
+.film-wide { height: 460px; }
+
+.filmstrip-hint {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.filmstrip-hint::before, .filmstrip-hint::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--line);
+}
+
+/* ==========================================
+   OPZIONE C — PAGINA DEDICATA (mock)
+   ========================================== */
+
+.gallery-page {
+  background: var(--cream);
+  min-height: 100vh;
+}
+
+.gallery-page-header {
+  background: var(--ink);
+  padding: 80px 64px 60px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.gallery-page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(40px, 5vw, 64px);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+}
+
+.gallery-page-header p {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  max-width: 380px;
+  line-height: 1.5;
+  font-variation-settings: "opsz" 144;
+}
+
+.gallery-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-bottom: 40px;
+  display: block;
+}
+
+.gallery-filters {
+  padding: 28px 64px;
+  background: var(--paper-warm);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 7px 18px;
+  border-radius: 100px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+.filter-btn.active {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: white;
+}
+
+.gallery-grid {
+  padding: 40px 64px;
+  columns: 4;
+  column-gap: 12px;
+}
+
+.gallery-grid-item {
+  break-inside: avoid;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gallery-grid-item .gal-label {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.gallery-grid-item:hover .gal-label { opacity: 1; }
+
+/* ==========================================
+   LIGHTBOX (per opzione C)
+   ========================================== */
+.lb-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28,18,14,0.96);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.lb-overlay.open { display: flex; }
+.lb-overlay img {
+  max-height: 85vh;
+  max-width: 90vw;
+  border-radius: 4px;
+  object-fit: contain;
+}
+.lb-close {
+  position: absolute;
+  top: 24px; right: 32px;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  opacity: 0.7;
+  background: none;
+  border: none;
+  line-height: 1;
+}
+.lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  opacity: 0.5;
+  background: none;
+  border: none;
+  padding: 16px;
+}
+.lb-nav:hover { opacity: 1; }
+.lb-prev { left: 16px; }
+.lb-next { right: 16px; }
+.lb-caption {
+  margin-top: 16px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+</style>
+</head>
+<body>
+
+<!-- INDEX -->
+<div class="page-index">
+  <h1>Opzioni galleria · Caffé Vintage</h1>
+  <p>3 proposte diverse. Scorri per vederle o usa i link.<br>
+  Nella cartella <code>images/</code> ci sono 18 foto totali — alcune già usate nel sito, altre libere.<br>
+  <strong>Clicca sulle foto nell'opzione C per vedere il lightbox.</strong></p>
+  <div class="index-list">
+    <a href="#opzione-a" class="index-btn"><span class="dot"></span> A — Masonry (inline nella sala)</a>
+    <a href="#opzione-b" class="index-btn"><span class="dot"></span> B — Filmstrip scrollabile</a>
+    <a href="#opzione-c" class="index-btn"><span class="dot"></span> C — Pagina dedicata + lightbox</a>
+  </div>
+</div>
+
+
+<!-- ==========================================
+     OPZIONE A — MASONRY
+     ========================================== -->
+<div id="opzione-a">
+<div class="option-label">
+  <span class="badge">A</span>
+  <span>
+    <span class="option-title">Masonry CSS</span>
+    <span class="option-sub">— sostituisce la galleria attuale nella sezione Sala. Ogni foto al suo ratio naturale, nessun taglio brutto.</span>
+  </span>
+</div>
+
+<div class="section-wrap">
+  <p class="section-eyebrow">La sala</p>
+  <h2 class="section-title">Uno spazio<br>tutto vostro.</h2>
+
+  <div class="masonry">
+
+    <div class="masonry-item">
+      <img src="../images/sala_main.jpg" alt="Sala privata">
+      <div class="gal-label">Sala privata · capienza 22</div>
+    </div>
+
+    <div class="masonry-item">
+      <img src="../images/sala_wine.jpg" alt="Cantina vini">
+      <div class="gal-label">Sala interna</div>
+    </div>
+
+    <div class="masonry-item">
+      <img src="../images/detail_bancone.jpg" alt="Bancone">
+      <div class="gal-label">Il bancone della casa</div>
+    </div>
+
+    <div class="masonry-item">
+      <img src="../images/sala_sera.jpg" alt="Sala sera">
+      <div class="gal-label">La sala la sera</div>
+    </div>
+
+    <div class="masonry-item">
+      <img src="../images/sala_glasses.jpg" alt="Bicchieri">
+      <div class="gal-label">Bicchieri pronti per l'aperitivo</div>
+    </div>
+
+    <div class="masonry-item">
+      <img src="../images/sala_diabolik.jpg" alt="Diabolik">
+      <div class="gal-label">Diabolik · dettaglio vintage</div>
+    </div>
+
+    <div class="masonry-item">
+      <img src="../images/sala_counter.jpg" alt="Bancone pasticceria">
+      <div class="gal-label">Il bancone della casa</div>
+    </div>
+
+    <div class="masonry-item">
+      <img src="../images/detail_comics.jpg" alt="Fumetti">
+      <div class="gal-label">Dettagli vintage</div>
+    </div>
+
+    <div class="masonry-item">
+      <img src="../images/aperitivo_martini.jpg" alt="Martini">
+      <div class="gal-label">Aperitivo · i nostri cocktail</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="option-note">
+  <div>
+    <div class="note-key">Vantaggio principale</div>
+    <div class="note-val">Nessun taglio brutto: ogni foto mostra il suo formato naturale, sia verticale che orizzontale.</div>
+  </div>
+  <div>
+    <div class="note-key">Dove va</div>
+    <div class="note-val">Sostituisce la galleria attuale nella sezione "Sala privata" del sito. Nessuna nuova pagina.</div>
+  </div>
+  <div>
+    <div class="note-key">Limite</div>
+    <div class="note-val">Con molte foto verticali una colonna diventa molto lunga. Meglio con 6–9 foto bilanciate.</div>
+  </div>
+</div>
+</div>
+
+
+<!-- ==========================================
+     OPZIONE B — FILMSTRIP
+     ========================================== -->
+<div id="opzione-b">
+<div class="option-label">
+  <span class="badge">B</span>
+  <span>
+    <span class="option-title">Filmstrip scrollabile</span>
+    <span class="option-sub">— striscia orizzontale, trascina o clicca le frecce per scorrere. Tutte le foto a tutta altezza.</span>
+  </span>
+</div>
+
+<div class="section-wrap" style="padding-left:0; padding-right:0;">
+  <div style="padding: 0 48px;">
+    <p class="section-eyebrow">La sala</p>
+    <h2 class="section-title" style="margin-bottom:32px;">Uno spazio<br>tutto vostro.</h2>
+    <p style="color:var(--muted); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:32px;">← Trascina per scorrere →</p>
+  </div>
+
+  <div class="filmstrip-outer" id="filmstrip">
+    <div class="filmstrip">
+
+      <div class="film-item">
+        <img src="../images/sala_main.jpg" alt="Sala privata">
+        <div class="gal-label">Sala privata · capienza 22</div>
+      </div>
+
+      <div class="film-item">
+        <img src="../images/sala_sera.jpg" alt="Sala sera">
+        <div class="gal-label">La sala la sera</div>
+      </div>
+
+      <div class="film-item">
+        <img src="../images/sala_wine.jpg" alt="Cantina vini">
+        <div class="gal-label">Sala interna</div>
+      </div>
+
+      <div class="film-item">
+        <img src="../images/sala_glasses.jpg" alt="Bicchieri">
+        <div class="gal-label">Bicchieri pronti per l'aperitivo</div>
+      </div>
+
+      <div class="film-item">
+        <img src="../images/detail_bancone.jpg" alt="Bancone">
+        <div class="gal-label">Il bancone della casa</div>
+      </div>
+
+      <div class="film-item">
+        <img src="../images/sala_diabolik.jpg" alt="Diabolik">
+        <div class="gal-label">Diabolik · dettaglio vintage</div>
+      </div>
+
+      <div class="film-item">
+        <img src="../images/sala_counter.jpg" alt="Bancone pasticceria">
+        <div class="gal-label">Il bancone</div>
+      </div>
+
+      <div class="film-item">
+        <img src="../images/aperitivo_main.jpg" alt="Aperitivo">
+        <div class="gal-label">Aperitivo · il tavolo della sera</div>
+      </div>
+
+      <div class="film-item">
+        <img src="../images/detail_comics.jpg" alt="Fumetti">
+        <div class="gal-label">Dettagli vintage</div>
+      </div>
+
+      <div class="film-item">
+        <img src="../images/aperitivo_martini.jpg" alt="Martini">
+        <div class="gal-label">Aperitivo · i nostri cocktail</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="filmstrip-hint" style="margin-top:24px;">Scorri per vedere tutte le foto</div>
+</div>
+
+<div class="option-note">
+  <div>
+    <div class="note-key">Vantaggio principale</div>
+    <div class="note-val">Tutte le foto a piena altezza, nessun crop. Effetto "galleria d'arte". Si trascina anche su mobile.</div>
+  </div>
+  <div>
+    <div class="note-key">Dove va</div>
+    <div class="note-val">Sostituisce la galleria attuale nel sito. Quante foto vuoi, non occupa spazio verticale extra.</div>
+  </div>
+  <div>
+    <div class="note-key">Limite</div>
+    <div class="note-val">Non tutte le foto sono subito visibili — l'utente deve scorrere attivamente. Meglio segnalarlo.</div>
+  </div>
+</div>
+</div>
+
+
+<!-- ==========================================
+     OPZIONE C — PAGINA DEDICATA + LIGHTBOX
+     ========================================== -->
+<div id="opzione-c">
+<div class="option-label">
+  <span class="badge">C</span>
+  <span>
+    <span class="option-title">Pagina dedicata "Galleria" + lightbox</span>
+    <span class="option-sub">— nuova pagina galleria.html separata. Masonry 4 colonne + clic per aprire la foto grande.</span>
+  </span>
+</div>
+
+<div class="gallery-page">
+  <!-- Header pagina galleria -->
+  <div class="gallery-page-header">
+    <div>
+      <a href="#" class="gallery-back">← Torna al sito</a>
+      <h1>Caffé Vintage<br>Bistrot</h1>
+    </div>
+    <p>Il locale, la sala privata, i dettagli vintage — tutto quello che non si riesce a raccontare a parole.</p>
+  </div>
+
+  <!-- Filtri -->
+  <div class="gallery-filters">
+    <button class="filter-btn active">Tutto</button>
+    <button class="filter-btn">La sala</button>
+    <button class="filter-btn">Aperitivo</button>
+    <button class="filter-btn">Colazione</button>
+    <button class="filter-btn">Dettagli</button>
+  </div>
+
+  <!-- Grid masonry 4 colonne -->
+  <div class="gallery-grid" id="galleryGrid">
+
+    <div class="gallery-grid-item" data-src="../images/sala_main.jpg" data-caption="Sala privata · capienza 22">
+      <img src="../images/sala_main.jpg" alt="Sala privata">
+      <div class="gal-label">Sala privata · capienza 22</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/aperitivo_main.jpg" data-caption="Aperitivo · il tavolo della sera">
+      <img src="../images/aperitivo_main.jpg" alt="Aperitivo">
+      <div class="gal-label">Aperitivo</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/sala_wine.jpg" data-caption="Sala interna">
+      <img src="../images/sala_wine.jpg" alt="Cantina">
+      <div class="gal-label">Sala interna</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/detail_bancone.jpg" data-caption="Il bancone della casa">
+      <img src="../images/detail_bancone.jpg" alt="Bancone">
+      <div class="gal-label">Il bancone</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/sala_sera.jpg" data-caption="La sala la sera">
+      <img src="../images/sala_sera.jpg" alt="Sera">
+      <div class="gal-label">La sala la sera</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/sala_glasses.jpg" data-caption="Bicchieri pronti per l'aperitivo">
+      <img src="../images/sala_glasses.jpg" alt="Bicchieri">
+      <div class="gal-label">Bicchieri</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/focaccia.jpg" data-caption="La focaccia di Papà · ogni mattina">
+      <img src="../images/focaccia.jpg" alt="Focaccia">
+      <div class="gal-label">La focaccia di Papà</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/sala_diabolik.jpg" data-caption="Diabolik · dettaglio vintage">
+      <img src="../images/sala_diabolik.jpg" alt="Diabolik">
+      <div class="gal-label">Diabolik · vintage</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/aperitivo_alt.jpg" data-caption="Aperitivo">
+      <img src="../images/aperitivo_alt.jpg" alt="Aperitivo alt">
+      <div class="gal-label">Aperitivo</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/colazione.jpg" data-caption="Colazione · ogni mattina dalle 7">
+      <img src="../images/colazione.jpg" alt="Colazione">
+      <div class="gal-label">Colazione</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/sala_counter.jpg" data-caption="Il bancone">
+      <img src="../images/sala_counter.jpg" alt="Bancone">
+      <div class="gal-label">Il bancone</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/detail_comics.jpg" data-caption="Dettagli vintage">
+      <img src="../images/detail_comics.jpg" alt="Fumetti">
+      <div class="gal-label">Dettagli vintage</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/facade.jpg" data-caption="L'ingresso di Caffé Vintage">
+      <img src="../images/facade.jpg" alt="Facciata">
+      <div class="gal-label">L'ingresso</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/aperitivo_martini.jpg" data-caption="Aperitivo · i nostri cocktail">
+      <img src="../images/aperitivo_martini.jpg" alt="Martini">
+      <div class="gal-label">Aperitivo · cocktail</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/hero.jpg" data-caption="L'interno del Caffé Vintage">
+      <img src="../images/hero.jpg" alt="Interno">
+      <div class="gal-label">L'interno</div>
+    </div>
+
+    <div class="gallery-grid-item" data-src="../images/colazione_alt.jpg" data-caption="Colazione · i nostri dolci">
+      <img src="../images/colazione_alt.jpg" alt="Colazione alt">
+      <div class="gal-label">Colazione</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lb-overlay" id="lightbox">
+  <button class="lb-close" id="lbClose">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev">‹</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-caption" id="lbCaption"></div>
+  <button class="lb-nav lb-next" id="lbNext">›</button>
+</div>
+
+<div class="option-note">
+  <div>
+    <div class="note-key">Vantaggio principale</div>
+    <div class="note-val">Tutte le foto in un posto, clic per aprirle grandi, filtri per categoria. Fa bella figura su Google.</div>
+  </div>
+  <div>
+    <div class="note-key">Dove va</div>
+    <div class="note-val">Nuova pagina separata <code>galleria.html</code>. Dal sito principale c'è un link "Guarda le foto" nel footer o nella sala.</div>
+  </div>
+  <div>
+    <div class="note-key">Limite</div>
+    <div class="note-val">Richiede di uscire dal sito principale. Meglio combinare: mini-galleria nella sala + link "vedi tutte le foto →".</div>
+  </div>
+</div>
+</div>
+
+
+<!-- FOOTER -->
+<div style="background:#1a1411;padding:48px;text-align:center;border-top:1px solid #333;">
+  <p style="color:#666;font-size:14px;margin-bottom:24px;">Scegli A, B o C — o una combinazione (es. B inline + C come pagina separata).</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="#opzione-a" class="index-btn"><span class="dot"></span> A — Masonry</a>
+    <a href="#opzione-b" class="index-btn"><span class="dot"></span> B — Filmstrip</a>
+    <a href="#opzione-c" class="index-btn"><span class="dot"></span> C — Pagina dedicata</a>
+  </div>
+</div>
+
+
+<script>
+// ====== Filmstrip drag to scroll ======
+const strip = document.getElementById('filmstrip');
+if (strip) {
+  let isDown = false, startX, scrollLeft;
+  strip.addEventListener('mousedown', e => {
+    isDown = true;
+    strip.style.cursor = 'grabbing';
+    startX = e.pageX - strip.offsetLeft;
+    scrollLeft = strip.scrollLeft;
+  });
+  strip.addEventListener('mouseleave', () => { isDown = false; strip.style.cursor = 'grab'; });
+  strip.addEventListener('mouseup', () => { isDown = false; strip.style.cursor = 'grab'; });
+  strip.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - strip.offsetLeft;
+    strip.scrollLeft = scrollLeft - (x - startX);
+  });
+}
+
+// ====== Lightbox ======
+const items = document.querySelectorAll('.gallery-grid-item');
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbCaption = document.getElementById('lbCaption');
+let currentIdx = 0;
+const imgs = [];
+
+items.forEach((item, i) => {
+  const src = item.dataset.src;
+  const caption = item.dataset.caption || '';
+  if (src) imgs.push({ src, caption });
+  item.style.cursor = 'zoom-in';
+  item.addEventListener('click', () => {
+    currentIdx = imgs.findIndex(x => x.src === src);
+    openLb(currentIdx);
+  });
+});
+
+function openLb(idx) {
+  currentIdx = idx;
+  lbImg.src = imgs[idx].src;
+  lbCaption.textContent = imgs[idx].caption;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+document.getElementById('lbClose').addEventListener('click', () => {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+});
+
+document.getElementById('lbPrev').addEventListener('click', () => {
+  openLb((currentIdx - 1 + imgs.length) % imgs.length);
+});
+
+document.getElementById('lbNext').addEventListener('click', () => {
+  openLb((currentIdx + 1) % imgs.length);
+});
+
+lb.addEventListener('click', e => {
+  if (e.target === lb) {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  if (e.key === 'ArrowLeft') openLb((currentIdx - 1 + imgs.length) % imgs.length);
+  if (e.key === 'ArrowRight') openLb((currentIdx + 1) % imgs.length);
+});
+</script>
+
+</body>
+</html>

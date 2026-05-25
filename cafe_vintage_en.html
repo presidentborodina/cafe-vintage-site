@@ -1,0 +1,2778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caffé Vintage Bistrot · Bar · Milan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --terracotta: #B85042;
+  --terracotta-dark: #8A3A30;
+  --ink: #2C2420;
+  --ink-soft: #3D332E;
+  --paper: #F5EFE6;
+  --paper-warm: #EDE4D3;
+  --cream: #FAF6EC;
+  --sand: #E7E0CD;
+  --sage: #7A8B6F;
+  --muted: #8B7E72;
+  --line: #D4C9B5;
+  --line-soft: #DDD8CA;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(184, 80, 66, 0.04) 0, transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(122, 139, 111, 0.03) 0, transparent 50%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.14 0 0 0 0 0.13 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+h1, h2, h3, .display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.05;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+}
+
+.eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+
+.eyebrow-muted {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ========== NAV ========== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 22px 48px;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: all 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav.scrolled {
+  background: rgba(245, 239, 230, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--line-soft);
+  padding: 14px 48px;
+}
+
+.brand {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  line-height: 1;
+}
+
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: white;
+  text-transform: uppercase;
+  transition: color 0.35s;
+}
+
+.brand-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.35s;
+}
+
+nav.scrolled .brand-name { color: var(--ink); }
+nav.scrolled .brand-sub  { color: var(--terracotta); }
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.80);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: white; }
+
+.nav-links a.cta {
+  background: var(--terracotta);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  transition: background 0.2s;
+}
+
+.nav-links a.cta:hover { background: var(--terracotta-dark); }
+
+nav.scrolled .nav-links a { color: var(--ink-soft); }
+nav.scrolled .nav-links a:hover { color: var(--terracotta); }
+nav.scrolled .nav-links a.cta { background: var(--ink); color: var(--cream); }
+nav.scrolled .nav-links a.cta:hover { background: var(--terracotta); color: white; }
+
+.lang-switch {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.28);
+  padding: 5px 10px;
+  border-radius: 100px;
+  transition: all 0.35s;
+}
+.lang-switch:hover {
+  color: white;
+  border-color: rgba(255,255,255,0.7);
+}
+
+nav.scrolled .lang-switch { color: var(--muted); border-color: var(--line); }
+nav.scrolled .lang-switch:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ========== HAMBURGER ========== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 102;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+nav.scrolled .hamburger span { background: var(--ink); }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ========== MOBILE MENU ========== */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--paper);
+  z-index: 101;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  padding: 48px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(28px, 7vw, 40px);
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--terracotta); }
+.mobile-menu a.mobile-cta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  background: var(--terracotta);
+  color: var(--cream);
+  padding: 16px 36px;
+  border-radius: 100px;
+  margin-top: 8px;
+}
+.mobile-menu a.mobile-cta:hover { background: var(--terracotta-dark); color: var(--cream); }
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/detail_bancone.jpg');
+  background-size: cover;
+  background-position: center 30%;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(28,18,14,0.93) 0%,
+    rgba(28,18,14,0.64) 38%,
+    rgba(28,18,14,0.22) 68%,
+    rgba(28,18,14,0.06) 100%
+  );
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(28,18,14,0.40) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  padding: 0 64px 72px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.hero-eyebrow .eyebrow { color: #E8A882; }
+
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(232,168,130,0.55);
+  flex-shrink: 0;
+}
+
+.hero-eyebrow::after { display: none; }
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(60px, 9.5vw, 132px);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.hero h1 .vintage {
+  display: block;
+  margin-top: 4px;
+}
+
+.hero h1 .bistrot {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 0.36em;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.46);
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.16);
+  max-width: 400px;
+}
+
+.hero-subtitle {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-weight: 400;
+  line-height: 1.50;
+  color: rgba(255,255,255,0.68);
+  margin-bottom: 32px;
+  max-width: 520px;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+}
+
+.hero-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.16);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255,255,255,0.78);
+}
+
+.hero-meta { display: none; }
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-text-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.52);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.btn-text-link:hover {
+  color: white;
+}
+
+.btn-text-link .btn-arrow {
+  transition: transform 0.25s ease;
+}
+
+.btn-text-link:hover .btn-arrow {
+  transform: translateY(3px);
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  z-index: 6;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.hero-scroll-hint:hover { opacity: 0.9; }
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: white;
+  display: block;
+  animation: heroScrollPulse 2.2s ease-in-out infinite;
+}
+.hero-scroll-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  font-family: 'DM Sans', sans-serif;
+}
+@keyframes heroScrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.9); }
+  50% { opacity: 1; transform: scaleY(1.1); }
+}
+
+.btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 16px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-outline {
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.btn-primary {
+  background: var(--terracotta);
+  color: var(--cream);
+}
+
+.btn-primary:hover {
+  background: var(--terracotta-dark);
+  transform: translateY(-1px);
+}
+
+.btn-arrow {
+  transition: transform 0.25s ease;
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.hero-visual {
+  display: none;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px -20px rgba(44, 36, 32, 0.3);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-tag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--cream);
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.hero-tag .dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  margin-right: 8px;
+  vertical-align: middle;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* ========== TIMELINE (Tutto il giorno) ========== */
+.timeline {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 80px 48px;
+  border-top: 3px solid var(--terracotta);
+}
+
+.timeline-header {
+  max-width: 1400px;
+  margin: 0 auto 60px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  align-items: end;
+}
+
+.timeline-header .eyebrow {
+  color: var(--terracotta);
+}
+
+.timeline-header h2 {
+  font-size: clamp(40px, 5vw, 64px);
+  font-style: normal;
+  font-weight: 400;
+  color: var(--ink);
+  margin-top: 12px;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.timeline-header p {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: 520px;
+}
+
+.timeline-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.timeline-slot {
+  border-right: 1px solid var(--line);
+  padding: 32px 24px;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background 0.25s;
+  min-height: 220px;
+}
+
+.timeline-slot:last-child { border-right: none; }
+
+.timeline-slot:hover {
+  background: rgba(184, 80, 66, 0.04);
+}
+
+.timeline-time {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 16px;
+  color: var(--terracotta);
+  font-variation-settings: "opsz" 144;
+}
+
+.timeline-name {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 32px;
+  color: var(--ink);
+  line-height: 1;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.timeline-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.timeline-arrow {
+  font-size: 13px;
+  color: var(--terracotta);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: transform 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline-slot:hover .timeline-arrow {
+  transform: translateX(4px);
+}
+
+/* ========== SECTION COMMONS ========== */
+section {
+  padding: 120px 48px;
+  position: relative;
+  z-index: 2;
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  margin-bottom: 80px;
+  align-items: end;
+}
+
+.section-header h2 {
+  font-size: clamp(48px, 6vw, 88px);
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.section-intro {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  max-width: 520px;
+}
+
+/* ========== FOCACCIA (story) ========== */
+.focaccia-story {
+  background: var(--paper-warm);
+  padding: 100px 48px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.focaccia-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.focaccia-image {
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px -20px rgba(44, 36, 32, 0.25);
+}
+
+.focaccia-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.focaccia-text h3 {
+  font-size: clamp(40px, 5vw, 64px);
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 32px;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.focaccia-text h3 em {
+  color: var(--terracotta);
+}
+
+.focaccia-text p {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+  max-width: 540px;
+}
+
+.focaccia-text p strong {
+  color: var(--ink);
+  font-weight: 500;
+  font-style: normal;
+}
+
+.focaccia-fact {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 40px;
+}
+
+.focaccia-fact-item {
+  flex: 1;
+}
+
+.focaccia-fact-item .num {
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--terracotta);
+  line-height: 1;
+}
+
+.focaccia-fact-item .label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ========== COLAZIONE ========== */
+.colazione {
+  background: var(--paper);
+  padding: 120px 48px;
+}
+
+.colazione-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.colazione-text h2 {
+  font-size: clamp(48px, 6vw, 88px);
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 16px;
+  margin-bottom: 32px;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.colazione-text p {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 480px;
+  margin-bottom: 32px;
+}
+
+.colazione-list {
+  list-style: none;
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+}
+
+.colazione-list li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--ink);
+  font-variation-settings: "opsz" 144;
+}
+
+.colazione-list li .item {
+  font-style: normal;
+}
+
+.colazione-list li .desc {
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-size: 13px;
+  color: var(--muted);
+  margin-left: 16px;
+  flex: 1;
+  text-align: right;
+}
+
+.colazione-meta {
+  margin-top: 32px;
+  display: flex;
+  gap: 60px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.colazione-meta strong {
+  color: var(--ink);
+  font-weight: 500;
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 16px;
+}
+
+.colazione-image {
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px -20px rgba(44, 36, 32, 0.25);
+}
+
+.colazione-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ========== PRANZO ========== */
+.pranzo {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 120px 48px;
+}
+
+.pranzo .eyebrow { color: #E8A097; }
+.pranzo h2 { color: var(--cream); }
+.pranzo .section-intro { color: rgba(245, 239, 230, 0.8); }
+
+.pranzo-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+}
+
+.menu-block {
+  border-left: 1px solid rgba(245, 239, 230, 0.15);
+  padding-left: 40px;
+}
+
+.menu-category {
+  margin-bottom: 40px;
+}
+
+.menu-category-title {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #E8A097;
+  margin-bottom: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.menu-category-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(245, 239, 230, 0.15);
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(245, 239, 230, 0.08);
+  align-items: baseline;
+}
+
+.menu-item:last-child { border-bottom: none; }
+
+.menu-name {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-style: normal;
+  color: var(--cream);
+  font-variation-settings: "opsz" 144;
+  line-height: 1.2;
+}
+
+.menu-name span {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-size: 13px;
+  color: rgba(245, 239, 230, 0.5);
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+.menu-price {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 22px;
+  color: #E8A097;
+  font-variation-settings: "opsz" 144;
+  white-space: nowrap;
+}
+
+.menu-name .day-tag {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--terracotta);
+  color: var(--cream);
+  padding: 3px 8px;
+  border-radius: 100px;
+  margin-left: 12px;
+  vertical-align: middle;
+  font-weight: 500;
+}
+
+.pranzo-side {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.pranzo-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-row {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px dashed rgba(245, 239, 230, 0.15);
+}
+
+.info-row:first-child { padding-top: 0; }
+.info-row:last-child { border-bottom: none; }
+
+.info-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 239, 230, 0.5);
+  min-width: 100px;
+}
+
+.info-value {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 17px;
+  color: var(--cream);
+  font-variation-settings: "opsz" 144;
+}
+
+.buoni-pasto-tag {
+  background: var(--terracotta);
+  padding: 24px 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.buoni-pasto-tag .icon {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 28px;
+  color: var(--cream);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.buoni-pasto-tag .txt {
+  font-size: 13px;
+  color: var(--cream);
+  line-height: 1.4;
+}
+
+.buoni-pasto-tag .txt strong {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 17px;
+  color: var(--cream);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+/* ========== APERITIVO ========== */
+.aperitivo {
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
+  padding: 120px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.aperitivo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 80px;
+  align-items: center;
+}
+
+.aperitivo-visual {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px -20px rgba(184, 80, 66, 0.5);
+}
+
+.aperitivo-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aperitivo-visual-tag {
+  position: absolute;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: rgba(245, 239, 230, 0.95);
+  text-shadow: 0 1px 4px rgba(44, 36, 32, 0.6);
+  z-index: 2;
+}
+
+.aperitivo-text h2 {
+  font-size: clamp(42px, 5vw, 72px);
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 16px;
+  margin-bottom: 28px;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.aperitivo-text > p {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  line-height: 1.55;
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+
+.aperitivo-features {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 36px;
+  border-top: 1px solid var(--line);
+}
+
+.feature-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.feature-row .price-cell {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 24px;
+  color: var(--terracotta);
+  font-variation-settings: "opsz" 144;
+}
+
+.feature-row .desc-cell {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-style: normal;
+  color: var(--ink);
+  font-variation-settings: "opsz" 144;
+}
+
+.feature-row .desc-cell span {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+.aperitivo-cocktails {
+  background: var(--cream);
+  padding: 28px 32px;
+  border-radius: 4px;
+  margin-bottom: 28px;
+  border: 1px solid var(--line);
+}
+
+.aperitivo-cocktails .label-key {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.aperitivo-cocktails .list {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* ========== SALA ========== */
+.sala {
+  background: var(--cream);
+  padding: 140px 48px 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sala-marker {
+  position: absolute;
+  top: 60px;
+  right: 48px;
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 14px;
+  color: var(--terracotta);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sala-marker::before {
+  content: '★';
+  font-size: 18px;
+}
+
+.sala-header {
+  max-width: 1400px;
+  margin: 0 auto 80px;
+}
+
+.sala-header h2 {
+  font-size: clamp(56px, 7vw, 120px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.95;
+  margin-bottom: 28px;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.sala-header h2 .underline {
+  position: relative;
+  display: inline-block;
+}
+
+.sala-header h2 .underline::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--terracotta);
+  opacity: 0.25;
+  z-index: -1;
+}
+
+.sala-header-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+
+.sala-header-grid p {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.sala-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.sala-meta .row {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.sala-meta .row strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.sala-gallery {
+  max-width: 1400px;
+  margin: 0 auto 100px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 16px;
+}
+
+.gal {
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gal-1 { grid-row: span 2; }
+
+.gal-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 16px 14px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245, 239, 230, 0.95);
+  font-style: normal;
+  background: linear-gradient(to top, rgba(44, 36, 32, 0.75), transparent);
+}
+
+.pacchetti {
+  max-width: 1400px;
+  margin: 0 auto 100px;
+}
+
+.pacchetti-title {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.pacchetti-title h3 {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 36px;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144;
+}
+
+.pacchetti-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.pacchetti-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.pacchetto {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 36px 32px 32px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.pacchetto:hover {
+  border-color: var(--terracotta);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px -16px rgba(184, 80, 66, 0.25);
+}
+
+.pacchetto.featured {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+
+.pacchetto.featured:hover { border-color: var(--ink); }
+
+.pacchetto-num {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 14px;
+  color: var(--terracotta);
+  margin-bottom: 14px;
+  font-variation-settings: "opsz" 144;
+}
+
+.pacchetto.featured .pacchetto-num {
+  color: #E8A097;
+}
+
+.pacchetto h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 6px;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  color: inherit;
+}
+
+.pacchetto-tag {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.pacchetto.featured .pacchetto-tag {
+  color: rgba(245, 239, 230, 0.55);
+}
+
+.pacchetto ul {
+  list-style: none;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+.pacchetto li {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: normal;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-variation-settings: "opsz" 144;
+}
+
+.pacchetto li::before {
+  content: '+';
+  font-style: normal;
+  color: var(--terracotta);
+  font-weight: 500;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.pacchetto.featured li {
+  border-bottom-color: rgba(245, 239, 230, 0.15);
+}
+
+.pacchetto.featured li::before {
+  color: #E8A097;
+}
+
+.pacchetto-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.pacchetto-price .num {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 56px;
+  font-weight: 400;
+  color: inherit;
+  line-height: 1;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.pacchetto-price .unit {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.pacchetto.featured .pacchetto-price .unit {
+  color: rgba(245, 239, 230, 0.7);
+}
+
+.pacchetto-min {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.pacchetto.featured .pacchetto-min {
+  color: rgba(245, 239, 230, 0.5);
+}
+
+.pacchetto .btn-pkg {
+  width: 100%;
+  text-align: center;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 14px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+  font-weight: 500;
+}
+
+.pacchetto .btn-pkg:hover { background: var(--terracotta); }
+
+.pacchetto.featured .btn-pkg { background: var(--terracotta); }
+
+.pacchetto.featured .btn-pkg:hover {
+  background: #E8A097;
+  color: var(--ink);
+}
+
+.inclusioni {
+  max-width: 1400px;
+  margin: 0 auto 100px;
+  background: var(--paper-warm);
+  border-radius: 4px;
+  padding: 60px 48px;
+}
+
+.inclusioni-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.inclusioni h3 {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 42px;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  line-height: 1.05;
+}
+
+.inclusioni-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+}
+
+.inclusione {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.inclusione::before {
+  content: '✓';
+  color: var(--sage);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.inclusione span {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  color: var(--ink-soft);
+  font-style: normal;
+  font-variation-settings: "opsz" 144;
+}
+
+/* Form */
+.form-block {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 4px;
+  padding: 80px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-block::before {
+  content: '✶';
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  font-family: 'Fraunces', serif;
+  font-size: 80px;
+  color: var(--terracotta);
+  opacity: 0.3;
+  line-height: 1;
+}
+
+.form-block .eyebrow { color: #E8A097; margin-bottom: 16px; }
+
+.form-block h3 {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.form-block .subtitle {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: rgba(245, 239, 230, 0.75);
+  margin-bottom: 48px;
+  max-width: 480px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field.full { grid-column: span 2; }
+
+.form-field label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 239, 230, 0.5);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(245, 239, 230, 0.25);
+  padding: 10px 0 12px;
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-bottom-color: var(--terracotta);
+}
+
+.form-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23F5EFE6' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right center;
+  cursor: pointer;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 17px;
+}
+
+.form-submit-row {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-submit {
+  background: var(--terracotta);
+  color: var(--cream);
+  border: none;
+  padding: 18px 36px;
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-submit:hover {
+  background: #E8A097;
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.form-promise {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 14px;
+  color: rgba(245, 239, 230, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-promise .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--sage);
+  border-radius: 50%;
+  animation: pulse 2.5s infinite;
+}
+
+.form-caparra-note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: rgba(245, 239, 230, 0.4);
+  margin-top: 12px;
+  grid-column: span 2;
+}
+
+.form-whatsapp {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(245, 239, 230, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-whatsapp p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(245, 239, 230, 0.5);
+  margin: 0;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5c;
+  transform: translateY(-1px);
+}
+
+/* ========== RECENSIONI ========== */
+.recensioni {
+  background: var(--paper-warm);
+  padding: 100px 48px;
+}
+
+.recensioni-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.recensione-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rec-stars {
+  color: var(--terracotta);
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.rec-text {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: normal;
+  color: var(--ink);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.rec-author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.rec-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.rec-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ========== DOVE ========== */
+.dove {
+  background: var(--paper);
+  padding: 140px 48px;
+}
+
+.dove-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: stretch;
+}
+
+.dove-map {
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  height: 560px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--ink);
+}
+
+.dove-map img {
+  width: calc(100% + 80px);
+  margin-left: -40px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 8%;
+  display: block;
+}
+
+.dove-map::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(44, 36, 32, 0.35), transparent 40%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.map-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.map-pin-dot {
+  width: 24px;
+  height: 24px;
+  background: var(--terracotta);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 0 8px rgba(184, 80, 66, 0.2), 0 0 0 16px rgba(184, 80, 66, 0.1);
+  animation: pulse-pin 2s infinite;
+}
+
+.map-pin-dot::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--terracotta);
+}
+
+.map-pin-label {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-top: 16px;
+}
+
+@keyframes pulse-pin {
+  0%, 100% { box-shadow: 0 0 0 8px rgba(184, 80, 66, 0.2), 0 0 0 16px rgba(184, 80, 66, 0.1); }
+  50% { box-shadow: 0 0 0 12px rgba(184, 80, 66, 0.15), 0 0 0 24px rgba(184, 80, 66, 0.05); }
+}
+
+.dove-info {
+  background: var(--cream);
+  padding: 48px 40px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.dove-info h3 {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 0;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.dove-block {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+}
+
+.dove-block-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.dove-address {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--ink);
+  font-variation-settings: "opsz" 144;
+}
+
+.dove-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.dove-contact a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  display: inline-block;
+  width: fit-content;
+  transition: border-color 0.2s;
+}
+
+.dove-contact a:hover { border-bottom-color: var(--terracotta); }
+
+.orari-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 20px;
+  font-size: 13px;
+}
+
+.orari-grid .day { color: var(--muted); }
+
+.orari-grid .time {
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  color: var(--ink);
+  font-variation-settings: "opsz" 144;
+}
+
+.dove-cta {
+  margin-top: 4px;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 14px;
+  text-align: center;
+  border-radius: 100px;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.dove-cta:hover { background: var(--terracotta); }
+
+.dove-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.dove-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  padding: 6px 12px;
+  border-radius: 100px;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 80px 48px 40px;
+}
+
+.footer-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(245, 239, 230, 0.15);
+}
+
+.footer-brand .display {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.footer-brand .display-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #E8A097;
+  margin-bottom: 28px;
+}
+
+.footer-brand p {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-style: normal;
+  color: rgba(245, 239, 230, 0.7);
+  max-width: 320px;
+  font-variation-settings: "opsz" 144;
+}
+
+.footer-col h5 {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #E8A097;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col a {
+  color: rgba(245, 239, 230, 0.85);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--cream); }
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 40px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(245, 239, 230, 0.5);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-bottom .legal { display: flex; gap: 24px; }
+.footer-bottom a { color: rgba(245, 239, 230, 0.5); text-decoration: none; }
+.footer-bottom a:hover { color: var(--cream); }
+
+.whatsapp {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 50;
+  background: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 8px 24px -4px rgba(37, 211, 102, 0.5);
+  transition: all 0.25s;
+}
+
+.whatsapp:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 32px -4px rgba(37, 211, 102, 0.6);
+}
+
+@media (max-width: 1024px) {
+  .hero { min-height: 100svh; }
+  .hero-content { padding: 0 32px 60px; }
+  .timeline-header,
+  .timeline-grid,
+  .pranzo-content,
+  .aperitivo-grid,
+  .dove-grid,
+  .colazione-grid,
+  .focaccia-grid,
+  .sala-header-grid,
+  .inclusioni-grid,
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .timeline-slot { border-right: none; border-bottom: 1px solid var(--line); }
+  .pacchetti-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-field.full { grid-column: span 1; }
+  .sala-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 180px 180px; }
+  .gal-1 { grid-row: span 2; }
+  section, .colazione, .pranzo, .aperitivo, .sala, .dove, .focaccia-story, .timeline { padding: 80px 32px; }
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .section-header { grid-template-columns: 1fr; gap: 16px; }
+  .inclusioni-list { grid-template-columns: 1fr; }
+  .menu-block { padding-left: 0; border-left: none; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="brand">
+    <span class="brand-name">Caffé Vintage Bistrot</span>
+    <span class="brand-sub">Milano</span>
+  </a>
+  <div class="nav-links">
+    <a href="#colazione">Breakfast</a>
+    <a href="#pranzo">Lunch</a>
+    <a href="#aperitivo">Aperitivo</a>
+    <a href="#sala">Private room</a>
+    <a href="#dove">Location</a>
+    <a href="#prenota" class="cta">Book the room</a>
+  </div>
+  <a href="index.html" class="lang-switch" title="Passa all'italiano">IT</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#colazione">Breakfast</a>
+  <a href="#pranzo">Lunch</a>
+  <a href="#aperitivo">Aperitivo</a>
+  <a href="#sala">Private room</a>
+  <a href="#dove">Location</a>
+  <a href="#prenota" class="mobile-cta">Book the room →</a>
+</div>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="eyebrow">Gallaratese · Milan · since 2024</span>
+    </div>
+    <h1>
+      Caffè
+      <span class="vintage">Vintage</span>
+      <span class="bistrot">Bistrot</span>
+    </h1>
+    <p class="hero-subtitle">
+      Breakfast with Dad's focaccia, lunch like home,<br>
+      aperitivo as it should be, and a private room for your events.
+    </p>
+    <div class="hero-pills">
+      <span class="hero-pill">📍 Via delle Ande 5</span>
+      <span class="hero-pill">☀️ Outdoor tables</span>
+      <span class="hero-pill">🕖 Mon – Sun · from 7am</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#prenota" class="btn btn-primary">Book the room <span class="btn-arrow">→</span></a>
+      <a href="#colazione" class="btn-text-link">Discover the menu <span class="btn-arrow">↓</span></a>
+    </div>
+  </div>
+
+  <a href="#timeline" class="hero-scroll-hint" aria-label="Scroll down">
+    <span class="hero-scroll-line"></span>
+    <span class="hero-scroll-label">Scroll</span>
+  </a>
+</section>
+
+<!-- ========== TIMELINE / TUTTO IL GIORNO ========== -->
+<section class="timeline">
+  <div class="timeline-header">
+    <div>
+      <span class="eyebrow">All day long</span>
+      <h2>From 7am<br>to evening.</h2>
+    </div>
+    <p>
+      Four moments, one home. The focaccia comes out of the oven at six in the morning and follows you through the day — at the counter, at the table, and in your evening glass.
+    </p>
+  </div>
+  <div class="timeline-grid">
+    <a href="#colazione" class="timeline-slot">
+      <span class="timeline-time">7:00 — 11:00</span>
+      <span class="timeline-name">Breakfast</span>
+      <span class="timeline-desc">Coffee, brioche, focaccia fresh from Dad's oven.</span>
+      <span class="timeline-arrow">Discover →</span>
+    </a>
+    <a href="#pranzo" class="timeline-slot">
+      <span class="timeline-time">12:00 — 14:00</span>
+      <span class="timeline-name">Lunch</span>
+      <span class="timeline-desc">Two pasta dishes, a main course, sides and salads. Home cooking.</span>
+      <span class="timeline-arrow">See the menu →</span>
+    </a>
+    <a href="#aperitivo" class="timeline-slot">
+      <span class="timeline-time">18:00 — 22:00</span>
+      <span class="timeline-name">Aperitivo</span>
+      <span class="timeline-desc">A cocktail, warm focaccia from Dad, summer evenings at the outdoor tables.</span>
+      <span class="timeline-arrow">Tonight →</span>
+    </a>
+    <a href="#sala" class="timeline-slot">
+      <span class="timeline-time">By reservation</span>
+      <span class="timeline-name">Private room</span>
+      <span class="timeline-desc">Up to 22 at the table. Birthdays, graduations, christenings, private parties.</span>
+      <span class="timeline-arrow">Write to us →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ========== FOCACCIA DI PAPÀ ========== -->
+<section class="focaccia-story">
+  <div class="focaccia-grid">
+    <div class="focaccia-image">
+      <img src="images/focaccia.jpg" alt="Mani che lavorano l'impasto della focaccia con la farina">
+    </div>
+    <div class="focaccia-text">
+      <span class="eyebrow">Our morning</span>
+      <h3>Dad's<br>focaccia.</h3>
+      <p>
+        Every morning at five thirty, Virginia's father lights the oven and starts kneading. <strong>Sourdough, good olive oil, coarse salt</strong> — the same recipe he's always made.
+      </p>
+      <p>
+        Out of the oven at seven sharp. Warm at the counter for breakfast, on the table beside the pasta at lunch, still warm on the aperitivo board. <em>It's the thread that holds the day together.</em>
+      </p>
+      <div class="focaccia-fact">
+        <div class="focaccia-fact-item">
+          <div class="num">5:30</div>
+          <div class="label">Dough starts</div>
+        </div>
+        <div class="focaccia-fact-item">
+          <div class="num">7:00</div>
+          <div class="label">Out of the oven</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COLAZIONE ========== -->
+<section class="colazione" id="colazione">
+  <div class="colazione-grid">
+    <div class="colazione-text">
+      <span class="eyebrow">№ 01 — Breakfast</span>
+      <h2>Morning,<br>done right.</h2>
+      <p>
+        Warm cappuccino, freshly baked brioche, and <em>Dad's focaccia</em> still warm. The queue at the counter is our favourite alarm clock.
+      </p>
+
+      <ul class="colazione-list">
+        <li><span class="item">Espresso</span> <span class="desc">our daily blend</span></li>
+        <li><span class="item">Cappuccino with brioche</span> <span class="desc">plain, cream-filled, chocolate</span></li>
+        <li><span class="item">Signature coffees</span> <span class="desc">our recipes, change often · 3€</span></li>
+        <li><span class="item">Dad's focaccia</span> <span class="desc">plain, tomato, rosemary</span></li>
+        <li><span class="item">Fresh orange juice</span> <span class="desc">squeezed to order</span></li>
+        <li><span class="item">Croissants, pastries, veneziane</span> <span class="desc">changes daily</span></li>
+      </ul>
+
+      <div class="colazione-meta">
+        <div><strong>7:00 — 11:00</strong> mon–fri<br><strong>7:30 — 11:00</strong> sat–sun</div>
+        <div><strong>At the counter or at a table</strong><br>your choice</div>
+      </div>
+    </div>
+    <div class="colazione-image"><img src="images/colazione.jpg" alt="Cappuccino con dolci della casa"></div>
+  </div>
+</section>
+
+<!-- ========== PRANZO ========== -->
+<section class="pranzo" id="pranzo">
+  <div class="section-header">
+    <div>
+      <span class="eyebrow">№ 02 — Lunch</span>
+      <h2>Home<br>cooking.</h2>
+    </div>
+    <p class="section-intro">
+      Two pasta dishes changed daily, a main course, sides and salads. Simple recipes made like at home, served at the table.
+    </p>
+  </div>
+
+  <div class="pranzo-content">
+    <div class="menu-block">
+      <div class="menu-category">
+        <div class="menu-category-title">Pasta</div>
+        <div class="menu-item">
+          <div class="menu-name">
+            Pasta of the day · 1
+            <span>rotating pasta type, homemade sauce</span>
+          </div>
+          <div class="menu-price">8€</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-name">
+            Pasta of the day · 2
+            <span>a second option, vegetarian or traditional</span>
+          </div>
+          <div class="menu-price">8€</div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <div class="menu-category-title">Main course</div>
+        <div class="menu-item">
+          <div class="menu-name">
+            Main of the day
+            <span>meat or fish, changes daily</span>
+          </div>
+          <div class="menu-price">10–12€</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-name">
+            House burger<span class="day-tag">Wednesday</span>
+            <span>beef, homemade bread, potato side</span>
+          </div>
+          <div class="menu-price">12€</div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <div class="menu-category-title">Sides & Salads</div>
+        <div class="menu-item">
+          <div class="menu-name">
+            Side dishes · 2
+            <span>seasonal market vegetables</span>
+          </div>
+          <div class="menu-price">4€</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-name">
+            House salad
+            <span>vegetables, cheese, nuts, house dressing</span>
+          </div>
+          <div class="menu-price">8€</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pranzo-side">
+      <div class="pranzo-info">
+        <div class="info-row">
+          <span class="info-label">Hours</span>
+          <span class="info-value">12:00 — 14:00</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Days</span>
+          <span class="info-value">mon — fri</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Service</span>
+          <span class="info-value">table service</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Menu</span>
+          <span class="info-value">changes daily</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Groups 4+</span>
+          <span class="info-value">book ahead</span>
+        </div>
+      </div>
+
+      <div class="buoni-pasto-tag">
+        <span class="icon">€</span>
+        <div class="txt">
+          <strong>Meal vouchers accepted</strong>
+          Edenred, Pellegrini, Ticket — ask at the counter.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== APERITIVO ========== -->
+<section class="aperitivo" id="aperitivo">
+  <div class="aperitivo-grid">
+    <div class="aperitivo-visual">
+      <img src="images/aperitivo_main.jpg" alt="Aperitivo da Caffé Vintage — cocktail e patatine al bancone">
+    </div>
+    <div class="aperitivo-text">
+      <span class="eyebrow">№ 03 — Aperitivo</span>
+      <h2>The way it used<br>to be done.</h2>
+      <p>
+        A proper cocktail, made the right way. <em>Dad's focaccia</em> still warm — plain, tomato, rosemary — and the house board that changes every evening: seasonal vegetables, charcuterie, cheese. In summer, outdoor tables.
+      </p>
+
+      <div class="aperitivo-features">
+        <div class="feature-row">
+          <span class="price-cell">12€</span>
+          <div class="desc-cell">
+            Per person, all inclusive
+            <span>Cocktail + house board with Dad's focaccia</span>
+          </div>
+        </div>
+        <div class="feature-row">
+          <span class="price-cell">18:00</span>
+          <div class="desc-cell">
+            Until closing
+            <span>Mon–Thu until 9pm · Fri–Sat until 10pm · Sunday closed</span>
+          </div>
+        </div>
+        <div class="feature-row">
+          <span class="price-cell">★</span>
+          <div class="desc-cell">
+            Indoor room, outdoor tables
+            <span>In summer, under the trees, until late</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="aperitivo-cocktails">
+        <div class="label-key">Our cocktails</div>
+        <div class="list">
+          Negroni · Americano · Spritz · Hugo · Mimosa · Mojito · Caipirinha · Caipiroska · Paloma · Screwdriver · Manhattan · Cosmopolitan · Margarita · Glass of wine
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RECENSIONI ========== -->
+<section class="recensioni">
+  <span class="eyebrow" style="display:block; text-align:center; margin-bottom: 48px;">On Google</span>
+  <div class="recensioni-grid">
+
+    <div class="recensione-card">
+      <div class="rec-stars">★★★★★</div>
+      <p class="rec-text">«Ambiente molto particolare. Arredamento studiato in ogni angolo. Lampadari di cristallo e oggetti vintage dovunque. Tavolini anche fuori sempre molto frequentati.»</p>
+      <div class="rec-author">
+        <span class="rec-name">Ombretta Re</span>
+        <span class="rec-meta">Local Expert · 1 year ago</span>
+      </div>
+    </div>
+
+    <div class="recensione-card">
+      <div class="rec-stars">★★★★★</div>
+      <p class="rec-text">«Très bon service et bonne communication en anglais. J'ai pris un cappuccino et un croissant au chocolat — excellent ! Foncez !»</p>
+      <div class="rec-author">
+        <span class="rec-name">Joe4now</span>
+        <span class="rec-meta">Paris · 5 months ago</span>
+      </div>
+    </div>
+
+    <div class="recensione-card">
+      <div class="rec-stars">★★★★★</div>
+      <p class="rec-text">«Piccolo bistrot arredato retrò, compreso di porcellane della nonna. La tavola calda è buona così come il servizio. Ottima alternativa per il pranzo.»</p>
+      <div class="rec-author">
+        <span class="rec-name">Massimo Vincenzi</span>
+        <span class="rec-meta">Local Expert · 3 months ago</span>
+      </div>
+    </div>
+
+    <div class="recensione-card">
+      <div class="rec-stars">★★★★★</div>
+      <p class="rec-text">«Vasta scelta di drink e buona varietà di stuzzichini. Con 12€ ho consumato un ottimo cocktail con focaccine, verdure grigliate, polpettine e stuzzichini del giorno. Personale gentile e locale accogliente. Sicuramente ci tornerò.»</p>
+      <div class="rec-author">
+        <span class="rec-name">Loredana Bernardi</span>
+        <span class="rec-meta">7 months ago</span>
+      </div>
+    </div>
+
+    <div class="recensione-card">
+      <div class="rec-stars">★★★★★</div>
+      <p class="rec-text">«Ottima colazione a prezzi nella norma, ampia scelta. Ambiente accogliente con sedie comodissime e bagni curatissimi. Se entri con un cane danno loro una ciotola — un piccolo gesto che fa la differenza. Ci tornerò sicuramente.»</p>
+      <div class="rec-author">
+        <span class="rec-name">Eleonora Garretto</span>
+        <span class="rec-meta">11 months ago</span>
+      </div>
+    </div>
+
+    <div class="recensione-card">
+      <div class="rec-stars">★★★★★</div>
+      <p class="rec-text">«Excellent breakfast, went there two days in a row and everything I tried was great. Beautiful, carefully decorated space, friendly staff and honest prices.»</p>
+      <div class="rec-author">
+        <span class="rec-name">Michele Bellana</span>
+        <span class="rec-meta">Local Expert · 1 year ago</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== SALA PRIVATA ========== -->
+<section class="sala" id="sala">
+  <div class="sala-marker">For your evenings</div>
+
+  <div class="sala-header">
+    <span class="eyebrow">№ 04 — Private room</span>
+    <h2>
+      A room<br>
+      all <span class="underline">yours</span>
+    </h2>
+    <div class="sala-header-grid">
+      <p>
+        Birthdays, graduations, christenings, private parties. A room separate from the main bar, a menu we decide together, a per-person price set upfront. No inflated minimums, no surprises on the bill.
+      </p>
+      <div class="sala-meta">
+        <div class="row"><span>Capacity</span><strong>up to 22</strong></div>
+        <div class="row"><span>Privacy</span><strong>private room</strong></div>
+        <div class="row"><span>Response</span><strong>within 4 hours</strong></div>
+        <div class="row"><span>Menu</span><strong>we decide together</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sala-gallery">
+    <div class="gal gal-1">
+      <img src="images/sala_main.jpg" alt="Sala privata di Caffé Vintage — fino a 22 persone">
+      <div class="gal-label">Private room · seats 22</div>
+    </div>
+    <div class="gal gal-2">
+      <img src="images/sala_wine.jpg" alt="Stellage di vini con tavoli">
+      <div class="gal-label">Sala interna</div>
+    </div>
+    <div class="gal gal-3">
+      <img src="images/sala_glasses.jpg" alt="Bicchieri appesi al soffitto">
+      <div class="gal-label">Glasses ready for aperitivo</div>
+    </div>
+    <div class="gal gal-4">
+      <img src="images/sala_diabolik.jpg" alt="Poster Diabolik e lampadario">
+      <div class="gal-label">Diabolik · dettaglio vintage</div>
+    </div>
+    <div class="gal gal-5">
+      <img src="images/sala_counter.jpg" alt="Bancone della pasticceria" style="object-position: left 60%;">
+      <div class="gal-label">Il bancone della casa</div>
+    </div>
+  </div>
+
+  <div class="inclusioni">
+    <div class="inclusioni-grid">
+      <div>
+        <span class="eyebrow-muted">What's included</span>
+        <h3>Everything you'd<br>expect.<br>And a little more.</h3>
+      </div>
+      <div class="inclusioni-list">
+        <div class="inclusione"><span>Reserved room, privacy guaranteed</span></div>
+        <div class="inclusione"><span>Table setup and fresh flowers</span></div>
+        <div class="inclusione"><span>Sound system with Bluetooth</span></div>
+        <div class="inclusione"><span>Your playlist if you prefer</span></div>
+        <div class="inclusione"><span>Bring your own cake, no surcharge</span></div>
+        <div class="inclusione"><span>No corkage fee</span></div>
+        <div class="inclusione"><span>Personalised menu for allergies</span></div>
+        <div class="inclusione"><span>Vegan, gluten free on request</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-block" id="prenota">
+    <span class="eyebrow">Booking · private room</span>
+    <h3>Tell us about<br>your evening.</h3>
+    <p class="subtitle">
+      Fill in the form below. By the same evening we'll call back (or message, as you prefer) with availability, menu ideas and a clear price.
+    </p>
+
+    <form class="form-grid" onsubmit="event.preventDefault(); alert('Thank you! We\'ll reply within 4 hours. (Demo)');">
+      <div class="form-field">
+        <label for="name">Your name</label>
+        <input type="text" id="name" placeholder="John Smith" required>
+      </div>
+      <div class="form-field">
+        <label for="contact">Email or phone</label>
+        <input type="text" id="contact" placeholder="john@email.com · +39 ..." required>
+      </div>
+      <div class="form-field">
+        <label for="evento">Type of event</label>
+        <select id="evento">
+          <option>Birthday</option>
+          <option>Graduation</option>
+          <option>Christening</option>
+          <option>Hen / Stag do</option>
+          <option>Corporate / Team</option>
+          <option>Presentation</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="ospiti">Number of guests</label>
+        <input type="number" id="ospiti" min="8" max="22" value="18">
+      </div>
+      <div class="form-field">
+        <label for="data">Preferred date</label>
+        <input type="date" id="data">
+      </div>
+      <div class="form-field full">
+        <label for="note">Notes (allergies, occasion, special requests)</label>
+        <textarea id="note" placeholder="It's my mother's birthday, we'd love a surprise cake..."></textarea>
+      </div>
+      <div class="form-submit-row" style="grid-column: span 2;">
+        <button type="submit" class="form-submit">Send the request <span>→</span></button>
+        <div class="form-promise">
+          <span class="dot"></span>
+          Reply within 4 hours during opening hours
+        </div>
+        <p class="form-caparra-note">To confirm the date, a 30% deposit is required. We tell you upfront — no surprises.</p>
+      </div>
+    </form>
+    <div class="form-whatsapp">
+      <p>Prefer to write directly?</p>
+      <a href="https://wa.me/393429062935?text=Ciao%2C%20vorrei%20informazioni%20per%20la%20sala%20privata" class="btn-whatsapp">
+        <svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor"><path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.7 5.5 2.1 7.9L0 32l8.3-2.2c2.3 1.3 5 1.9 7.7 1.9 8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-5.1 1.3 1.4-4.9-.3-.5C3.2 20.9 2.7 18.5 2.7 16 2.7 8.7 8.7 2.7 16 2.7S29.3 8.7 29.3 16 23.3 29.3 16 29.3zm7.4-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.3-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.7-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.3 0 1.9 1.4 3.8 1.6 4.1.2.3 2.8 4.2 6.7 5.9.9.4 1.7.6 2.2.8 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg>
+        Message us on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DOVE SIAMO ========== -->
+<section class="dove" id="dove">
+  <div class="section-header">
+    <div>
+      <span class="eyebrow">Find us</span>
+      <h2>In the<br>neighbourhood.</h2>
+    </div>
+    <p class="section-intro">
+      Gallaratese district, Milan. In a building between the school and the pharmacy corner, next to the bank.
+    </p>
+  </div>
+
+  <div class="dove-grid">
+    <div class="dove-map">
+      <img src="images/facade.jpg" alt="L'ingresso di Caffé Vintage a Milano">
+      <div class="map-pin">
+        <div class="map-pin-dot"></div>
+        <div class="map-pin-label">Caffé Vintage</div>
+      </div>
+    </div>
+    <div class="dove-info">
+      <h3>Find us</h3>
+
+      <div class="dove-block">
+        <div class="dove-block-label">Address</div>
+        <div class="dove-address">Via delle Ande, 5<br>20151 Milano</div>
+      </div>
+
+      <div class="dove-block">
+        <div class="dove-block-label">Contacts</div>
+        <div class="dove-contact">
+          <a href="tel:+393429062935">+39 342 906 2935</a>
+          <a href="mailto:info@cafevintage.it">info@cafevintage.it</a>
+          <a href="https://wa.me/393429062935">WhatsApp · write to us</a>
+        </div>
+      </div>
+
+      <div class="dove-block">
+        <div class="dove-block-label">Opening hours</div>
+        <div class="orari-grid">
+          <span class="day">Mon – Thu</span><span class="time">7:00 – 21:00</span>
+          <span class="day">Friday</span><span class="time">7:00 – 22:00</span>
+          <span class="day">Saturday</span><span class="time">7:30 – 22:00</span>
+          <span class="day">Sunday</span><span class="time">7:30 – 13:00</span>
+        </div>
+      </div>
+
+      <div class="dove-block">
+        <div class="dove-block-label">Good to know</div>
+        <div class="dove-tags">
+          <span class="dove-tag">🐾 Pets welcome</span>
+          <span class="dove-tag">☀️ Outdoor tables</span>
+          <span class="dove-tag">💳 Meal vouchers accepted</span>
+          <span class="dove-tag">🌿 Vegan & gluten free options</span>
+        </div>
+      </div>
+
+      <a href="https://maps.app.goo.gl/TUf24KHt6irMfwTq6?g_st=it" class="dove-cta">Open in Google Maps →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="display">Caffé Vintage Bistrot</div>
+      <div class="display-sub">— Milano —</div>
+      <p>A neighbourhood bar in Milan. Breakfast, lunch, aperitivo, and a private room for your evenings.</p>
+    </div>
+    <div class="footer-col">
+      <h5>The venue</h5>
+      <ul>
+        <li><a href="#colazione">Breakfast</a></li>
+        <li><a href="#pranzo">Lunch</a></li>
+        <li><a href="#aperitivo">Aperitivo</a></li>
+        <li><a href="#sala">Private room</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacts</h5>
+      <ul>
+        <li><a href="tel:+393429062935">+39 342 906 2935</a></li>
+        <li><a href="mailto:info@cafevintage.it">info@cafevintage.it</a></li>
+        <li><a href="https://wa.me/393429062935">WhatsApp</a></li>
+        <li><a href="#dove">How to get here</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Social</h5>
+      <ul>
+        <li><a href="https://www.instagram.com/caffe_vintage_bistrot" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://maps.app.goo.gl/TUf24KHt6irMfwTq6?g_st=it">Google Maps</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Caffé Vintage Bistrot · Via delle Ande 5, Milano · P.IVA 00000000000</span>
+    <div class="legal">
+      <a href="#">Privacy</a>
+      <a href="#">Cookie</a>
+      <a href="#">Note legali</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/393429062935" class="whatsapp" title="WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" fill="currentColor"><path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.7 5.5 2.1 7.9L0 32l8.3-2.2c2.3 1.3 5 1.9 7.7 1.9 8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-5.1 1.3 1.4-4.9-.3-.5C3.2 20.9 2.7 18.5 2.7 16 2.7 8.7 8.7 2.7 16 2.7S29.3 8.7 29.3 16 23.3 29.3 16 29.3zm7.4-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.3-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.7-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.3 0 1.9 1.4 3.8 1.6 4.1.2.3 2.8 4.2 6.7 5.9.9.4 1.7.6 2.2.8 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg>
+</a>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+</script>
+
+</body>
+</html>
