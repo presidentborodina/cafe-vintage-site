@@ -259,9 +259,9 @@ nav.scrolled .hamburger span { background: var(--ink); }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('images/detail_bancone.jpg');
+  background-image: url('images/hero_interior.jpg');
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 40%;
 }
 
 .hero-overlay {
@@ -369,6 +369,12 @@ nav.scrolled .hamburger span { background: var(--ink); }
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: rgba(255,255,255,0.78);
+}
+
+.hero-pill--accent {
+  background: rgba(184, 80, 66, 0.22);
+  border-color: rgba(232, 168, 130, 0.45);
+  color: #F5D7B8;
 }
 
 .hero-meta { display: none; }
@@ -754,6 +760,16 @@ section {
   text-transform: uppercase;
   color: var(--muted);
   margin-top: 8px;
+}
+
+/* ========== OWNER SIGNATURE ========== */
+.owner-sign {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--terracotta);
+  margin-top: 32px !important;
+  letter-spacing: 0.02em;
 }
 
 /* ========== COLAZIONE ========== */
@@ -1145,6 +1161,85 @@ section {
   color: var(--muted);
   margin-bottom: 12px;
   font-weight: 500;
+}
+
+/* ========== CARTA COCKTAIL ========== */
+.carta-cocktail {
+  background: #1c1612;
+  padding: 100px 48px;
+  text-align: center;
+}
+.carta-cocktail-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  color: #e8d9b8;
+  margin: 12px 0 48px;
+  font-variation-settings: "opsz" 72, "SOFT" 100;
+}
+.carta-cocktail-link {
+  display: inline-block;
+  text-decoration: none;
+  max-width: 520px;
+  width: 100%;
+}
+.carta-cocktail-img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+  box-shadow: 0 32px 80px -20px rgba(0,0,0,0.7);
+}
+.carta-cocktail-hint {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e8d9b8;
+  opacity: 0.45;
+  margin-top: 20px;
+}
+
+/* ========== LIGHTBOX ========== */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.93);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.lightbox-overlay.active {
+  display: flex;
+}
+.lightbox-full-img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 6px;
+  object-fit: contain;
+}
+.lightbox-close-btn {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+.lightbox-close-btn:hover {
+  background: rgba(255,255,255,0.25);
 }
 
 .aperitivo-cocktails .list {
@@ -1697,6 +1792,14 @@ section {
   gap: 20px;
   flex-wrap: wrap;
 }
+.form-whatsapp--solo {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  border-top: none;
+  margin-top: 48px;
+  padding-top: 0;
+}
 
 .form-whatsapp p {
   font-family: 'DM Sans', sans-serif;
@@ -1728,39 +1831,53 @@ section {
 /* ========== RECENSIONI ========== */
 .recensioni {
   background: var(--paper-warm);
-  padding: 100px 48px;
+  padding: 80px 0;
+  text-align: center;
+}
+.recensioni > .eyebrow {
+  display: block;
+  margin-bottom: 48px;
+  padding: 0 48px;
 }
 
 .recensioni-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1100px;
-  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  padding: 0 48px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
 }
+.recensioni-grid:active { cursor: grabbing; }
+.recensioni-grid::-webkit-scrollbar { display: none; }
 
 .recensione-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 32px;
+  border-radius: 6px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
+  text-align: left;
 }
 
 .rec-stars {
   color: var(--terracotta);
-  font-size: 16px;
+  font-size: 13px;
   letter-spacing: 2px;
 }
 
 .rec-text {
   font-family: 'Fraunces', serif;
-  font-size: 16px;
-  font-style: normal;
+  font-size: 15px;
+  font-style: italic;
   color: var(--ink);
-  line-height: 1.6;
+  line-height: 1.65;
   flex: 1;
 }
 
@@ -1768,21 +1885,24 @@ section {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
+  padding-top: 0;
+  border-top: none;
 }
 
 .rec-name {
   font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .rec-meta {
   font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--muted);
+  opacity: 0.6;
 }
 
 /* ========== DOVE ========== */
@@ -1795,26 +1915,25 @@ section {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 0;
   align-items: stretch;
 }
 
 .dove-map {
-  border-radius: 4px 4px 0 0;
+  border-radius: 4px 0 0 4px;
   position: relative;
-  height: 560px;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   border: 1px solid var(--line);
   background: var(--ink);
 }
 
 .dove-map img {
-  width: calc(100% + 80px);
-  margin-left: -40px;
+  width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 8%;
+  object-position: center 35%;
   display: block;
 }
 
@@ -1880,12 +1999,14 @@ section {
 
 .dove-info {
   background: var(--cream);
-  padding: 48px 40px;
-  border-radius: 4px;
+  padding: 48px 56px;
+  border-radius: 0 4px 4px 0;
   border: 1px solid var(--line);
+  border-left: none;
   display: flex;
   flex-direction: column;
   gap: 28px;
+  justify-content: center;
 }
 
 .dove-info h3 {
@@ -1952,6 +2073,29 @@ section {
   font-style: normal;
   color: var(--ink);
   font-variation-settings: "opsz" 144;
+}
+
+.orari-grid .day.late,
+.orari-grid .time.late {
+  color: var(--terracotta);
+  font-weight: 500;
+}
+
+.orari-note {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.orari-note strong {
+  color: var(--terracotta);
+  font-weight: 500;
+  font-style: normal;
 }
 
 .dove-cta {
@@ -2103,6 +2247,7 @@ footer {
 @media (max-width: 1024px) {
   .hero { min-height: 100svh; }
   .hero-content { padding: 0 32px 60px; }
+  .hero-bg { background-position: 60% 40%; }
   .timeline-header,
   .timeline-grid,
   .pranzo-content,
@@ -2165,17 +2310,26 @@ footer {
   .form-block::before { font-size: 52px; top: 20px; right: 24px; }
   .form-block h3 { font-size: clamp(28px, 8vw, 40px); }
 
-  /* ── Recensioni (CRITICO: 3 colonne → 1) ── */
-  .recensioni-grid { grid-template-columns: 1fr; gap: 16px; }
-  .recensione-card { padding: 24px; }
+  /* ── Recensioni ── */
+  .recensioni-grid { padding: 0 20px; }
+  .recensione-card { flex: 0 0 260px; }
 
   /* ── Dove siamo ── */
-  .dove-map { height: 240px; }
-  .dove-map img { width: 100%; margin-left: 0; object-position: center 10%; }
+  .dove-grid {
+    grid-template-columns: 1fr;
+  }
+  .dove-map {
+    aspect-ratio: 3 / 4;
+    border-radius: 4px 4px 0 0;
+  }
+  .dove-map img { object-position: center 30%; }
   .dove-info {
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    padding: 28px 20px;
+    padding: 32px 24px;
+    border-radius: 0 0 4px 4px;
+    border-left: 1px solid var(--line);
+    border-top: none;
   }
   .dove-info h3 { font-size: 28px; }
 
@@ -2231,7 +2385,7 @@ footer {
 
   <div class="hero-content">
     <div class="hero-eyebrow">
-      <span class="eyebrow">Gallaratese · Milan · since 2024</span>
+      <span class="eyebrow">Gallaratese · Milan · since 2025</span>
     </div>
     <h1>
       Caffè
@@ -2246,6 +2400,7 @@ footer {
       <span class="hero-pill">📍 Via delle Ande 5</span>
       <span class="hero-pill">☀️ Outdoor tables</span>
       <span class="hero-pill">🕖 Mon – Sun · from 7am</span>
+      <span class="hero-pill hero-pill--accent">🌙 Fri & Sat · until 10pm</span>
     </div>
     <div class="hero-cta">
       <a href="#prenota" class="btn btn-primary">Book the room <span class="btn-arrow">→</span></a>
@@ -2267,14 +2422,14 @@ footer {
       <h2>From 7am<br>to evening.</h2>
     </div>
     <p>
-      Four moments, one home. The focaccia comes out of the oven at six in the morning and follows you through the day — at the counter, at the table, and in your evening glass.
+      Four moments, one home. It starts with coffee and freshly baked brioche, then home cooking at lunch, and an evening cocktail at the outdoor tables.
     </p>
   </div>
   <div class="timeline-grid">
     <a href="#colazione" class="timeline-slot">
       <span class="timeline-time">7:00 — 11:00</span>
       <span class="timeline-name">Breakfast</span>
-      <span class="timeline-desc">Coffee, brioche, focaccia fresh from Dad's oven.</span>
+      <span class="timeline-desc">Coffee, brioche, girelle and veneziane freshly baked.</span>
       <span class="timeline-arrow">Discover →</span>
     </a>
     <a href="#pranzo" class="timeline-slot">
@@ -2292,37 +2447,25 @@ footer {
     <a href="#sala" class="timeline-slot">
       <span class="timeline-time">By reservation</span>
       <span class="timeline-name">Private room</span>
-      <span class="timeline-desc">Up to 22 at the table. Birthdays, graduations, christenings, private parties.</span>
+      <span class="timeline-desc">Up to 30 at the table. Birthdays, graduations, christenings, private parties.</span>
       <span class="timeline-arrow">Write to us →</span>
     </a>
   </div>
 </section>
 
-<!-- ========== FOCACCIA DI PAPÀ ========== -->
+<!-- ========== OWNER — VIRGINIA ========== -->
 <section class="focaccia-story">
   <div class="focaccia-grid">
     <div class="focaccia-image">
-      <img src="images/focaccia.jpg" alt="Mani che lavorano l'impasto della focaccia con la farina">
+      <img src="images/brioche.jpg" alt="Golden brioche fresh from the oven on the counter at Caffè Vintage">
     </div>
     <div class="focaccia-text">
-      <span class="eyebrow">Our morning</span>
-      <h3>Dad's<br>focaccia.</h3>
+      <span class="eyebrow">Meet the owner</span>
+      <h3>My name is<br><em>Virginia</em>.</h3>
       <p>
-        Every morning at five thirty, Virginia's father lights the oven and starts kneading. <strong>Sourdough, good olive oil, coarse salt</strong> — the same recipe he's always made.
+        Caffè Vintage is my <strong>home with the doors open</strong>: I'll see you at the counter in the morning, at the table at lunchtime, and in the evening for a glass together.
       </p>
-      <p>
-        Out of the oven at seven sharp. Warm at the counter for breakfast, on the table beside the pasta at lunch, still warm on the aperitivo board. <em>It's the thread that holds the day together.</em>
-      </p>
-      <div class="focaccia-fact">
-        <div class="focaccia-fact-item">
-          <div class="num">5:30</div>
-          <div class="label">Dough starts</div>
-        </div>
-        <div class="focaccia-fact-item">
-          <div class="num">7:00</div>
-          <div class="label">Out of the oven</div>
-        </div>
-      </div>
+      <p class="owner-sign">— Virginia</p>
     </div>
   </div>
 </section>
@@ -2334,16 +2477,18 @@ footer {
       <span class="eyebrow">№ 01 — Breakfast</span>
       <h2>Morning,<br>done right.</h2>
       <p>
-        Warm cappuccino, freshly baked brioche, and <em>Dad's focaccia</em> still warm. The queue at the counter is our favourite alarm clock.
+        Warm cappuccino, freshly baked brioche, girelle and veneziane on the tray. The queue at the counter is our favourite alarm clock.
       </p>
 
       <ul class="colazione-list">
         <li><span class="item">Espresso</span> <span class="desc">our daily blend</span></li>
-        <li><span class="item">Cappuccino with brioche</span> <span class="desc">plain, cream-filled, chocolate</span></li>
+        <li><span class="item">Cappuccino with brioche</span> <span class="desc">plain, cream, nutella, apple & cinnamon, mixed berries, pistachio</span></li>
+        <li><span class="item">Brioche, girelle, veneziane, fagottini</span> <span class="desc">freshly baked, changes daily</span></li>
+        <li><span class="item">Vegan brioche · 3 flavours</span> <span class="desc">carrot & citrus, mango & papaya, blackberry</span></li>
+        <li><span class="item">Gluten-free biscuits</span> <span class="desc">always on display</span></li>
         <li><span class="item">Signature coffees</span> <span class="desc">our recipes, change often · 3€</span></li>
         <li><span class="item">Dad's focaccia</span> <span class="desc">plain, tomato, rosemary</span></li>
         <li><span class="item">Fresh orange juice</span> <span class="desc">squeezed to order</span></li>
-        <li><span class="item">Croissants, pastries, veneziane</span> <span class="desc">changes daily</span></li>
       </ul>
 
       <div class="colazione-meta">
@@ -2448,13 +2593,6 @@ footer {
         </div>
       </div>
 
-      <div class="buoni-pasto-tag">
-        <span class="icon">€</span>
-        <div class="txt">
-          <strong>Meal vouchers accepted</strong>
-          Edenred, Pellegrini, Ticket — ask at the counter.
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -2469,7 +2607,7 @@ footer {
       <span class="eyebrow">№ 03 — Aperitivo</span>
       <h2>The way it used<br>to be done.</h2>
       <p>
-        A proper cocktail, made the right way. <em>Dad's focaccia</em> still warm — plain, tomato, rosemary — and the house board that changes every evening: seasonal vegetables, charcuterie, cheese. In summer, outdoor tables.
+        A proper cocktail, made the right way. With your drink, something warm to nibble on — focaccia and pizza plus snacks: it changes every day. In summer, outdoor tables.
       </p>
 
       <div class="aperitivo-features">
@@ -2477,33 +2615,37 @@ footer {
           <span class="price-cell">12€</span>
           <div class="desc-cell">
             Per person, all inclusive
-            <span>Cocktail + house board with Dad's focaccia</span>
+            <span>Cocktail + warm house snacks</span>
           </div>
         </div>
         <div class="feature-row">
           <span class="price-cell">18:00</span>
           <div class="desc-cell">
             Until closing
-            <span>Mon–Thu until 9pm · Fri–Sat until 10pm · Sunday closed</span>
+            <span>Mon–Thu until 9pm · Fri–Sat until 10pm · Sun open morning only (7:30–13:00, no aperitivo)</span>
           </div>
         </div>
         <div class="feature-row">
           <span class="price-cell">★</span>
           <div class="desc-cell">
             Indoor room, outdoor tables
-            <span>In summer, under the trees, until late</span>
+            <span>In summer, outdoors until late</span>
           </div>
         </div>
       </div>
 
-      <div class="aperitivo-cocktails">
-        <div class="label-key">Our cocktails</div>
-        <div class="list">
-          Negroni · Americano · Spritz · Hugo · Mimosa · Mojito · Caipirinha · Caipiroska · Paloma · Screwdriver · Manhattan · Cosmopolitan · Margarita · Glass of wine
-        </div>
-      </div>
     </div>
   </div>
+</section>
+
+<!-- ========== CARTA COCKTAIL ========== -->
+<section class="carta-cocktail">
+  <span class="eyebrow" style="color: var(--cream); opacity: 0.6;">№ 03 — Aperitivo</span>
+  <h3 class="carta-cocktail-title">Our cocktail menu</h3>
+  <a href="#" onclick="openCocktailMenu(); return false;" class="carta-cocktail-link">
+    <img src="images/IMG_8521.jpg" alt="Caffé Vintage cocktail menu — full list with prices" class="carta-cocktail-img">
+    <span class="carta-cocktail-hint">Tap to enlarge →</span>
+  </a>
 </section>
 
 <!-- ========== RECENSIONI ========== -->
@@ -2566,6 +2708,7 @@ footer {
     </div>
 
   </div>
+  <p class="filmstrip-hint" style="margin-top:24px;">Drag to scroll</p>
 </section>
 
 <!-- ========== SALA PRIVATA ========== -->
@@ -2583,7 +2726,7 @@ footer {
         Birthdays, graduations, christenings, private parties. A room separate from the main bar, a menu we decide together, a per-person price set upfront. No inflated minimums, no surprises on the bill.
       </p>
       <div class="sala-meta">
-        <div class="row"><span>Capacity</span><strong>up to 22</strong></div>
+        <div class="row"><span>Capacity</span><strong>up to 30</strong></div>
         <div class="row"><span>Privacy</span><strong>private room</strong></div>
         <div class="row"><span>Response</span><strong>within 4 hours</strong></div>
         <div class="row"><span>Menu</span><strong>we decide together</strong></div>
@@ -2593,8 +2736,8 @@ footer {
 
   <div class="sala-gallery">
     <div class="gal gal-1">
-      <img src="images/sala_main.jpg" alt="Sala privata di Caffé Vintage — fino a 22 persone">
-      <div class="gal-label">Private room · seats 22</div>
+      <img src="images/sala_main.jpg" alt="Sala privata di Caffé Vintage — fino a 30 persone">
+      <div class="gal-label">Private room · seats 30</div>
     </div>
     <div class="gal gal-2">
       <img src="images/sala_wine.jpg" alt="Stellage di vini con tavoli">
@@ -2607,10 +2750,6 @@ footer {
     <div class="gal gal-4">
       <img src="images/sala_diabolik.jpg" alt="Poster Diabolik e lampadario">
       <div class="gal-label">Diabolik · dettaglio vintage</div>
-    </div>
-    <div class="gal gal-5">
-      <img src="images/sala_counter.jpg" alt="Bancone della pasticceria" style="object-position: left 60%;">
-      <div class="gal-label">Il bancone della casa</div>
     </div>
   </div>
 
@@ -2625,7 +2764,6 @@ footer {
         <div class="inclusione"><span>Table setup and fresh flowers</span></div>
         <div class="inclusione"><span>Sound system with Bluetooth</span></div>
         <div class="inclusione"><span>Your playlist if you prefer</span></div>
-        <div class="inclusione"><span>Bring your own cake, no surcharge</span></div>
         <div class="inclusione"><span>No corkage fee</span></div>
         <div class="inclusione"><span>Personalised menu for allergies</span></div>
         <div class="inclusione"><span>Vegan, gluten free on request</span></div>
@@ -2637,58 +2775,40 @@ footer {
     <span class="eyebrow">Booking · private room</span>
     <h3>Tell us about<br>your evening.</h3>
     <p class="subtitle">
-      Fill in the form below. By the same evening we'll call back (or message, as you prefer) with availability, menu ideas and a clear price.
+      Fill in the details and we'll open WhatsApp with your message ready to send.
     </p>
-
-    <form class="form-grid" onsubmit="event.preventDefault(); alert('Thank you! We\'ll reply within 4 hours. (Demo)');">
+    <form class="form-grid" id="formSala" onsubmit="inviaWhatsApp(event)">
       <div class="form-field">
-        <label for="name">Your name</label>
-        <input type="text" id="name" placeholder="John Smith" required>
+        <label for="nome">Your name</label>
+        <input type="text" id="nome" placeholder="John Smith" required>
       </div>
       <div class="form-field">
-        <label for="contact">Email or phone</label>
-        <input type="text" id="contact" placeholder="john@email.com · +39 ..." required>
+        <label for="ospiti">Number of guests</label>
+        <input type="number" id="ospiti" min="1" max="30" placeholder="e.g. 15" required>
       </div>
       <div class="form-field">
         <label for="evento">Type of event</label>
-        <select id="evento">
+        <select id="evento" required>
+          <option value="">— choose —</option>
           <option>Birthday</option>
           <option>Graduation</option>
           <option>Christening</option>
           <option>Hen / Stag do</option>
           <option>Corporate / Team</option>
-          <option>Presentation</option>
           <option>Other</option>
         </select>
       </div>
       <div class="form-field">
-        <label for="ospiti">Number of guests</label>
-        <input type="number" id="ospiti" min="8" max="22" value="18">
+        <label for="data">Event date</label>
+        <input type="date" id="data" required>
       </div>
-      <div class="form-field">
-        <label for="data">Preferred date</label>
-        <input type="date" id="data">
-      </div>
-      <div class="form-field full">
-        <label for="note">Notes (allergies, occasion, special requests)</label>
-        <textarea id="note" placeholder="It's my mother's birthday, we'd love a surprise cake..."></textarea>
-      </div>
-      <div class="form-submit-row" style="grid-column: span 2;">
-        <button type="submit" class="form-submit">Send the request <span>→</span></button>
-        <div class="form-promise">
-          <span class="dot"></span>
-          Reply within 4 hours during opening hours
-        </div>
-        <p class="form-caparra-note">To confirm the date, a 30% deposit is required. We tell you upfront — no surprises.</p>
+      <div class="form-submit-row">
+        <button type="submit" class="btn-whatsapp">
+          <svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor"><path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.7 5.5 2.1 7.9L0 32l8.3-2.2c2.3 1.3 5 1.9 7.7 1.9 8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-5.1 1.3 1.4-4.9-.3-.5C3.2 20.9 2.7 18.5 2.7 16 2.7 8.7 8.7 2.7 16 2.7S29.3 8.7 29.3 16 23.3 29.3 16 29.3zm7.4-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.3-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.7-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.3 0 1.9 1.4 3.8 1.6 4.1.2.3 2.8 4.2 6.7 5.9.9.4 1.7.6 2.2.8 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg>
+          Send on WhatsApp
+        </button>
       </div>
     </form>
-    <div class="form-whatsapp">
-      <p>Prefer to write directly?</p>
-      <a href="https://wa.me/393429062935?text=Ciao%2C%20vorrei%20informazioni%20per%20la%20sala%20privata" class="btn-whatsapp">
-        <svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor"><path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.7 5.5 2.1 7.9L0 32l8.3-2.2c2.3 1.3 5 1.9 7.7 1.9 8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-5.1 1.3 1.4-4.9-.3-.5C3.2 20.9 2.7 18.5 2.7 16 2.7 8.7 8.7 2.7 16 2.7S29.3 8.7 29.3 16 23.3 29.3 16 29.3zm7.4-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.3-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.7-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.3 0 1.9 1.4 3.8 1.6 4.1.2.3 2.8 4.2 6.7 5.9.9.4 1.7.6 2.2.8 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg>
-        Message us on WhatsApp
-      </a>
-    </div>
   </div>
 </section>
 
@@ -2733,9 +2853,12 @@ footer {
         <div class="dove-block-label">Opening hours</div>
         <div class="orari-grid">
           <span class="day">Mon – Thu</span><span class="time">7:00 – 21:00</span>
-          <span class="day">Friday</span><span class="time">7:00 – 22:00</span>
-          <span class="day">Saturday</span><span class="time">7:30 – 22:00</span>
+          <span class="day late">Friday 🌙</span><span class="time late">7:00 – 22:00</span>
+          <span class="day late">Saturday 🌙</span><span class="time late">7:30 – 22:00</span>
           <span class="day">Sunday</span><span class="time">7:30 – 13:00</span>
+        </div>
+        <div class="orari-note">
+          <strong>Friday and Saturday</strong> we stay open until 10pm — the only place around.
         </div>
       </div>
 
@@ -2744,7 +2867,6 @@ footer {
         <div class="dove-tags">
           <span class="dove-tag">🐾 Pets welcome</span>
           <span class="dove-tag">☀️ Outdoor tables</span>
-          <span class="dove-tag">💳 Meal vouchers accepted</span>
           <span class="dove-tag">🌿 Vegan & gluten free options</span>
         </div>
       </div>
@@ -2789,7 +2911,7 @@ footer {
     </div>
   </div>
   <div class="footer-bottom">
-    <span>Caffé Vintage Bistrot · Via delle Ande 5, Milano · P.IVA 00000000000</span>
+    <span>Caffé Vintage Bistrot · Via delle Ande 5, Milano · VAT 08036260969</span>
     <div class="legal">
       <a href="#">Privacy</a>
       <a href="#">Cookie</a>
@@ -2833,6 +2955,42 @@ document.addEventListener('keydown', e => {
     mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
   }
+});
+</script>
+
+<script>
+function inviaWhatsApp(e) {
+  e.preventDefault();
+  var nome   = document.getElementById('nome').value;
+  var ospiti = document.getElementById('ospiti').value;
+  var evento = document.getElementById('evento').value;
+  var data   = document.getElementById('data').value;
+  var msg = 'Hi! I would like to book the private room.\n'
+    + 'Name: ' + nome + '\n'
+    + 'Guests: ' + ospiti + '\n'
+    + 'Event: ' + evento + '\n'
+    + 'Date: ' + data;
+  window.open('https://wa.me/393429062935?text=' + encodeURIComponent(msg), '_blank');
+}
+</script>
+
+<!-- ========== LIGHTBOX COCKTAIL ========== -->
+<div id="cocktailLightbox" class="lightbox-overlay" onclick="closeCocktailMenu()">
+  <button class="lightbox-close-btn" onclick="closeCocktailMenu()" aria-label="Close">✕</button>
+  <img src="images/IMG_8521.jpg" alt="Full cocktail menu" class="lightbox-full-img" onclick="event.stopPropagation()">
+</div>
+
+<script>
+function openCocktailMenu() {
+  document.getElementById('cocktailLightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeCocktailMenu() {
+  document.getElementById('cocktailLightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCocktailMenu();
 });
 </script>
 
