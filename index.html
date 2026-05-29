@@ -1950,13 +1950,13 @@ section {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: 1.4fr 1fr;
   gap: 0;
   align-items: stretch;
 }
 
 .dove-map {
-  border-radius: 4px 0 0 4px;
+  border-radius: 0 4px 4px 0;
   position: relative;
   aspect-ratio: 4 / 5;
   overflow: hidden;
@@ -2035,9 +2035,9 @@ section {
 .dove-info {
   background: var(--cream);
   padding: 48px 56px;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px 0 0 4px;
   border: 1px solid var(--line);
-  border-left: none;
+  border-right: none;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -3011,13 +3011,6 @@ footer {
   </div>
 
   <div class="dove-grid">
-    <div class="dove-map">
-      <img src="images/facade.jpg" alt="L'ingresso di Caffé Vintage a Milano">
-      <div class="map-pin">
-        <div class="map-pin-dot"></div>
-        <div class="map-pin-label">Caffé Vintage</div>
-      </div>
-    </div>
     <div class="dove-info">
 
       <div class="dove-block">
@@ -3057,6 +3050,9 @@ footer {
         <a href="https://maps.app.goo.gl/TUf24KHt6irMfwTq6?g_st=it" class="dove-cta" style="margin-top: 16px; display: inline-block;">Apri in Google Maps →</a>
       </div>
 
+    </div>
+    <div class="dove-map">
+      <img src="images/facade.jpg" alt="L'ingresso di Caffé Vintage a Milano">
     </div>
   </div>
 </section>
