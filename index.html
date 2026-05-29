@@ -1365,7 +1365,7 @@ section {
 }
 
 .film-item {
-  flex: 0 0 360px;
+  flex: 0 0 auto;
   height: 480px;
   border-radius: 4px;
   overflow: hidden;
@@ -1374,9 +1374,8 @@ section {
 }
 
 .film-item img {
-  width: 100%;
   height: 100%;
-  object-fit: cover;
+  width: auto;
   display: block;
   transition: transform 0.4s ease;
   pointer-events: none;
@@ -2375,7 +2374,7 @@ footer {
   .dove-info h3 { font-size: 28px; }
 
   /* ── Galleria filmstrip ── */
-  .film-item { height: 210px; flex: 0 0 200px; }
+  .film-item { height: 210px; }
   .filmstrip { padding: 0 16px; gap: 12px; }
 
   /* ── Footer ── */
