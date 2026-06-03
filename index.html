@@ -1394,6 +1394,33 @@ section {
   background: linear-gradient(to top, rgba(44,36,32,0.78), transparent);
 }
 
+.filmstrip-wrap {
+  position: relative;
+}
+.filmstrip-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 80px;
+  background: rgba(44, 36, 32, 0.62);
+  color: white;
+  font-size: 30px;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, opacity 0.25s;
+}
+.filmstrip-btn:hover { background: rgba(44, 36, 32, 0.88); }
+.filmstrip-btn--left  { left: 0; }
+.filmstrip-btn--right { right: 0; }
+.filmstrip-btn.fs-hidden { opacity: 0; pointer-events: none; }
+
 .filmstrip-hint {
   text-align: center;
   margin-top: 20px;
@@ -2863,6 +2890,8 @@ footer {
   </div>
 
   <div class="sala-gallery">
+    <div class="filmstrip-wrap">
+    <button class="filmstrip-btn filmstrip-btn--left fs-hidden" id="fsLeft" aria-label="Scorri a sinistra">&#8249;</button>
     <div class="filmstrip-outer" id="salaFilmstrip">
       <div class="filmstrip">
 
@@ -2919,6 +2948,8 @@ footer {
         </div>
 
       </div>
+    </div>
+    <button class="filmstrip-btn filmstrip-btn--right" id="fsRight" aria-label="Scorri a destra">&#8250;</button>
     </div>
     <p class="filmstrip-hint">Trascina per scorrere</p>
   </div>
@@ -3152,6 +3183,20 @@ if (filmstrip) {
     const x = e.pageX - filmstrip.offsetLeft;
     filmstrip.scrollLeft = scrollLeft - (x - startX) * 1.4;
   });
+
+  // Frecce di scorrimento
+  const fsLeft  = document.getElementById('fsLeft');
+  const fsRight = document.getElementById('fsRight');
+  function updateFsArrows() {
+    const atStart = filmstrip.scrollLeft <= 10;
+    const atEnd   = filmstrip.scrollLeft >= filmstrip.scrollWidth - filmstrip.clientWidth - 10;
+    fsLeft.classList.toggle('fs-hidden', atStart);
+    fsRight.classList.toggle('fs-hidden', atEnd);
+  }
+  fsLeft.addEventListener('click',  () => filmstrip.scrollBy({ left: -500, behavior: 'smooth' }));
+  fsRight.addEventListener('click', () => filmstrip.scrollBy({ left:  500, behavior: 'smooth' }));
+  filmstrip.addEventListener('scroll', updateFsArrows);
+  updateFsArrows();
 }
 
 // ── Lightbox ─────────────────────────────────────
