@@ -853,6 +853,13 @@ section {
   font-size: 16px;
 }
 
+.colazione-heading-row {
+  display: block;
+}
+.colazione-circle {
+  display: none;
+}
+
 .colazione-image {
   aspect-ratio: 4 / 5;
   border-radius: 4px;
@@ -2422,6 +2429,26 @@ footer {
   }
   .dove-info h3 { font-size: 28px; }
 
+  /* ── Colazione: foto circolare accanto al titolo ── */
+  .colazione-heading-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 4px;
+  }
+  .colazione-heading-row > div { flex: 1; min-width: 0; }
+  .colazione-circle {
+    display: block;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--line);
+    box-shadow: 0 4px 16px rgba(44,36,32,0.12);
+  }
+  .colazione-image { display: none; }
+
   /* ── Galleria filmstrip ── */
   .film-item { height: 210px; }
   .filmstrip { padding: 0 16px; gap: 12px; }
@@ -2653,8 +2680,13 @@ footer {
 <section class="colazione" id="colazione">
   <div class="colazione-grid">
     <div class="colazione-text">
-      <span class="eyebrow">№ 01 — Colazione</span>
-      <h2>La mattina,<br>come si deve.</h2>
+      <div class="colazione-heading-row">
+        <div>
+          <span class="eyebrow">№ 01 — Colazione</span>
+          <h2>La mattina,<br>come si deve.</h2>
+        </div>
+        <img src="images/brioche.jpg" alt="Brioche fresche del Caffé Vintage" class="colazione-circle">
+      </div>
       <p>
         Cappuccino caldo, brioche appena sfornata, girelle e veneziane sul vassoio. La fila al banco è la nostra sveglia preferita.
       </p>
