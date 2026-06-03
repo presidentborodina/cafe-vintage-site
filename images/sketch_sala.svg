@@ -1,52 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" fill="none" stroke="#2C2420" stroke-linecap="round" stroke-linejoin="round">
-  <!-- TAVOLO ROTONDO al centro -->
-  <!-- Piano del tavolo (ellisse vista dall'alto leggermente inclinata) -->
-  <ellipse cx="80" cy="52" rx="28" ry="14" stroke-width="1.8"/>
-  <!-- Bordo piano del tavolo (spessore) -->
-  <path stroke-width="1.2" d="M52,52 Q52,58 80,60 Q108,58 108,52"/>
-  <!-- Gamba centrale del tavolo -->
-  <path stroke-width="1.8" d="M80,64 L80,90"/>
-  <!-- Disco base -->
-  <path stroke-width="1.8" d="M62,90 Q80,94 98,90"/>
-  <path stroke-width="1.4" d="M60,93 Q80,97 100,93"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" fill="none" stroke="#2C2420" stroke-linecap="round" stroke-linejoin="round">
+  <!-- TAVOLO ROTONDO al centro (vista frontale leggermente inclinata) -->
+  <!-- Piano del tavolo -->
+  <ellipse cx="100" cy="58" rx="34" ry="12" stroke-width="2"/>
+  <!-- Bordo spessore piano -->
+  <path stroke-width="1.4" d="M66,58 Q66,64 100,66 Q134,64 134,58"/>
+  <!-- Gamba centrale -->
+  <path stroke-width="2" d="M100,66 L100,108"/>
+  <!-- Allargamento alla base della gamba -->
+  <path stroke-width="1.6" d="M94,100 Q100,103 106,100"/>
+  <!-- Base disco -->
+  <ellipse cx="100" cy="112" rx="18" ry="6" stroke-width="2"/>
 
-  <!-- SEDIA SINISTRA -->
-  <!-- schienale: 2 montanti verticali -->
-  <path stroke-width="1.8" d="M16,22 L16,55"/>
-  <path stroke-width="1.8" d="M38,22 L38,55"/>
-  <!-- corrimano schienale -->
-  <path stroke-width="1.8" d="M16,22 Q27,18 38,22"/>
-  <!-- traversa schienale -->
-  <path stroke-width="1.4" d="M16,32 Q27,30 38,32"/>
-  <path stroke-width="1.4" d="M16,40 Q27,38 38,40"/>
-  <!-- seduta -->
-  <path stroke-width="1.8" d="M14,55 Q27,58 40,55"/>
-  <path stroke-width="1.2" d="M14,55 L14,60 Q27,63 40,60 L40,55"/>
-  <!-- 4 gambe sedia sinistra -->
-  <path stroke-width="1.6" d="M16,60 L14,95"/>
-  <path stroke-width="1.6" d="M38,60 L40,95"/>
-  <path stroke-width="1.4" d="M14,95 Q15,97 18,96"/>
-  <path stroke-width="1.4" d="M40,95 Q41,97 38,96"/>
-  <!-- traversa gambe -->
-  <path stroke-width="1.2" d="M15,80 Q27,82 39,80"/>
+  <!-- SEDIA SINISTRA (vista frontale) -->
+  <!-- Due montanti verticali schienale -->
+  <path stroke-width="1.8" d="M22,28 L22,74"/>
+  <path stroke-width="1.8" d="M52,28 L52,74"/>
+  <!-- Cima schienale curva -->
+  <path stroke-width="1.8" d="M22,28 Q37,22 52,28"/>
+  <!-- Traversa alta schienale -->
+  <path stroke-width="1.4" d="M22,40 Q37,36 52,40"/>
+  <!-- Traversa bassa schienale -->
+  <path stroke-width="1.4" d="M22,54 Q37,50 52,54"/>
+  <!-- Seduta -->
+  <path stroke-width="1.8" d="M18,74 Q37,80 56,74"/>
+  <!-- Spessore seduta -->
+  <path stroke-width="1.2" d="M18,74 L18,80 Q37,86 56,80 L56,74"/>
+  <!-- Gamba anteriore sinistra -->
+  <path stroke-width="1.8" d="M20,80 L18,128"/>
+  <!-- Gamba anteriore destra -->
+  <path stroke-width="1.8" d="M54,80 L56,128"/>
+  <!-- Gamba posteriore sinistra (accorciata per prospettiva) -->
+  <path stroke-width="1.4" d="M22,74 L20,118"/>
+  <!-- Gamba posteriore destra -->
+  <path stroke-width="1.4" d="M52,74 L54,118"/>
+  <!-- Traversa bassa tra gambe -->
+  <path stroke-width="1.2" d="M19,110 Q37,114 55,110"/>
+  <!-- Piedi -->
+  <path stroke-width="1.2" d="M16,128 Q17,131 20,130"/>
+  <path stroke-width="1.2" d="M56,128 Q57,131 54,130"/>
 
-  <!-- SEDIA DESTRA -->
-  <!-- schienale: 2 montanti verticali -->
-  <path stroke-width="1.8" d="M122,22 L122,55"/>
-  <path stroke-width="1.8" d="M144,22 L144,55"/>
-  <!-- corrimano schienale -->
-  <path stroke-width="1.8" d="M122,22 Q133,18 144,22"/>
-  <!-- traversa schienale -->
-  <path stroke-width="1.4" d="M122,32 Q133,30 144,32"/>
-  <path stroke-width="1.4" d="M122,40 Q133,38 144,40"/>
-  <!-- seduta -->
-  <path stroke-width="1.8" d="M120,55 Q133,58 146,55"/>
-  <path stroke-width="1.2" d="M120,55 L120,60 Q133,63 146,60 L146,55"/>
-  <!-- 4 gambe sedia destra -->
-  <path stroke-width="1.6" d="M122,60 L120,95"/>
-  <path stroke-width="1.6" d="M144,60 L146,95"/>
-  <path stroke-width="1.4" d="M120,95 Q121,97 124,96"/>
-  <path stroke-width="1.4" d="M146,95 Q145,97 142,96"/>
-  <!-- traversa gambe -->
-  <path stroke-width="1.2" d="M121,80 Q133,82 145,80"/>
+  <!-- SEDIA DESTRA (vista frontale, speculare) -->
+  <!-- Due montanti verticali schienale -->
+  <path stroke-width="1.8" d="M148,28 L148,74"/>
+  <path stroke-width="1.8" d="M178,28 L178,74"/>
+  <!-- Cima schienale curva -->
+  <path stroke-width="1.8" d="M148,28 Q163,22 178,28"/>
+  <!-- Traversa alta schienale -->
+  <path stroke-width="1.4" d="M148,40 Q163,36 178,40"/>
+  <!-- Traversa bassa schienale -->
+  <path stroke-width="1.4" d="M148,54 Q163,50 178,54"/>
+  <!-- Seduta -->
+  <path stroke-width="1.8" d="M144,74 Q163,80 182,74"/>
+  <!-- Spessore seduta -->
+  <path stroke-width="1.2" d="M144,74 L144,80 Q163,86 182,80 L182,74"/>
+  <!-- Gamba anteriore sinistra -->
+  <path stroke-width="1.8" d="M146,80 L144,128"/>
+  <!-- Gamba anteriore destra -->
+  <path stroke-width="1.8" d="M180,80 L182,128"/>
+  <!-- Gamba posteriore sinistra -->
+  <path stroke-width="1.4" d="M148,74 L146,118"/>
+  <!-- Gamba posteriore destra -->
+  <path stroke-width="1.4" d="M178,74 L180,118"/>
+  <!-- Traversa bassa tra gambe -->
+  <path stroke-width="1.2" d="M145,110 Q163,114 181,110"/>
+  <!-- Piedi -->
+  <path stroke-width="1.2" d="M142,128 Q143,131 146,130"/>
+  <path stroke-width="1.2" d="M182,128 Q183,131 180,130"/>
 </svg>

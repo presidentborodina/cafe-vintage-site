@@ -1,26 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none" stroke="#2C2420" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Calice: bordo sinistro del bicchiere -->
-  <path stroke-width="1.8" d="M10,8 C15,20 22,35 32,55 L50,55"/>
-  <!-- Calice: bordo destro del bicchiere -->
-  <path stroke-width="1.8" d="M90,8 C85,20 78,35 68,55 L50,55"/>
-  <!-- Bordo superiore del calice -->
-  <path stroke-width="1.8" d="M10,8 L90,8"/>
-  <!-- Stelo -->
-  <path stroke-width="1.8" d="M50,55 L50,95"/>
-  <!-- Base -->
-  <path stroke-width="1.8" d="M32,95 Q50,98 68,95"/>
-  <path stroke-width="1.4" d="M28,100 Q50,104 72,100"/>
-  <!-- Livello liquido dentro il calice -->
-  <path stroke-width="1.2" d="M15,24 C30,28 70,28 85,24"/>
-  <!-- Riflessi/texture sul vetro -->
-  <path stroke-width="0.9" d="M20,14 C22,20 24,28 26,38"/>
-  <path stroke-width="0.9" d="M25,12 C27,18 29,26 32,36"/>
-  <!-- Stecchino con olive -->
-  <line stroke-width="1.4" x1="58" y1="8" x2="76" y2="32"/>
-  <!-- Olive -->
-  <circle cx="72" cy="27" r="4.5" stroke-width="1.4"/>
-  <circle cx="78" cy="35" r="4.5" stroke-width="1.4"/>
-  <!-- Puntino nell'oliva -->
-  <circle cx="72" cy="27" r="1.5" stroke-width="1"/>
-  <circle cx="78" cy="35" r="1.5" stroke-width="1"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 140" fill="none" stroke="#2C2420" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Bordo superiore del calice (aperto) -->
+  <path stroke-width="2" d="M8,10 L102,10"/>
+  <!-- Lato sinistro del calice che converge verso il basso -->
+  <path stroke-width="2" d="M8,10 C14,28 22,48 34,68 L55,82"/>
+  <!-- Lato destro del calice che converge verso il basso -->
+  <path stroke-width="2" d="M102,10 C96,28 88,48 76,68 L55,82"/>
+  <!-- Livello del liquido dentro il calice -->
+  <path stroke-width="1.3" d="M16,30 C34,36 76,36 94,30"/>
+  <!-- Riflesso/linea vetro lato sinistro -->
+  <path stroke-width="1" d="M14,15 C16,25 18,36 22,48"/>
+  <path stroke-width="0.9" d="M20,12 C22,22 24,33 28,44"/>
+  <!-- Riflesso lato destro -->
+  <path stroke-width="1" d="M96,15 C94,25 92,36 88,48"/>
+  <!-- Stelo sottile -->
+  <path stroke-width="1.8" d="M55,82 L55,116"/>
+  <!-- Base: ellisse piatta -->
+  <path stroke-width="2" d="M30,116 Q55,122 80,116"/>
+  <path stroke-width="1.5" d="M26,120 Q55,127 84,120"/>
+  <!-- Stecchino con 2 olive -->
+  <line stroke-width="1.5" x1="62" y1="10" x2="88" y2="46"/>
+  <!-- Prima oliva -->
+  <circle cx="78" cy="34" r="6" stroke-width="1.5"/>
+  <circle cx="78" cy="34" r="2" stroke-width="1"/>
+  <!-- Seconda oliva -->
+  <circle cx="88" cy="46" r="6" stroke-width="1.5"/>
+  <circle cx="88" cy="46" r="2" stroke-width="1"/>
+  <!-- Bordo superiore dello stecchino -->
+  <circle cx="62" cy="10" r="2" stroke-width="1.2"/>
 </svg>
