@@ -596,6 +596,22 @@ nav.scrolled .hamburger span { background: var(--ink); }
   gap: 12px;
   transition: background 0.25s;
   min-height: 220px;
+  position: relative;
+}
+
+.tl-sketch {
+  display: none;
+  position: absolute;
+  top: 24px;
+  right: 20px;
+  width: 64px;
+  height: 64px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .tl-sketch { display: block; }
 }
 
 .timeline-slot:last-child { border-right: none; }
@@ -2647,24 +2663,83 @@ footer {
   </div>
   <div class="timeline-grid">
     <a href="#colazione" class="timeline-slot">
+      <svg class="tl-sketch" viewBox="0 0 64 64" fill="none" stroke="#5a3e35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- brioche: corpo rotondo -->
+        <path d="M14,42 C12,34 15,24 22,19 C27,15 32,14 38,18 C45,23 50,33 48,42 C46,50 38,54 32,54 C22,53 15,50 14,42"/>
+        <!-- due sfere superiori -->
+        <path d="M22,20 C20,14 26,10 30,13 C32,8 38,10 38,18"/>
+        <!-- righe texture -->
+        <path d="M20,32 C25,30 32,30 40,32"/>
+        <path d="M18,39 C24,37 32,36 44,39"/>
+        <!-- piccolo ricciolo in cima -->
+        <path d="M28,14 C28,11 32,10 33,13"/>
+      </svg>
       <span class="timeline-time">7:00 — 11:00</span>
       <span class="timeline-name">Colazione</span>
       <span class="timeline-desc">Caffè, brioche, girelle e veneziane appena sfornate.</span>
       <span class="timeline-arrow">Scopri →</span>
     </a>
     <a href="#pranzo" class="timeline-slot">
+      <svg class="tl-sketch" viewBox="0 0 64 64" fill="none" stroke="#5a3e35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- piatto ovale -->
+        <ellipse cx="32" cy="38" rx="22" ry="16"/>
+        <ellipse cx="32" cy="38" rx="14" ry="10"/>
+        <!-- forchetta a sinistra -->
+        <line x1="16" y1="10" x2="16" y2="23"/>
+        <line x1="14" y1="10" x2="14" y2="16"/>
+        <line x1="16" y1="10" x2="16" y2="16"/>
+        <line x1="18" y1="10" x2="18" y2="16"/>
+        <path d="M14,16 Q16,19 18,16"/>
+        <line x1="16" y1="23" x2="16" y2="30"/>
+        <!-- coltello a destra -->
+        <line x1="48" y1="10" x2="48" y2="30"/>
+        <path d="M48,10 C50,12 51,17 48,20"/>
+      </svg>
       <span class="timeline-time">12:00 — 14:00</span>
       <span class="timeline-name">Pranzo</span>
       <span class="timeline-desc">Due primi, un secondo, contorni e insalate. Cucina di casa.</span>
       <span class="timeline-arrow">Vedi il menù →</span>
     </a>
     <a href="#aperitivo" class="timeline-slot">
+      <svg class="tl-sketch" viewBox="0 0 64 64" fill="none" stroke="#5a3e35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- calice cocktail -->
+        <path d="M12,10 L32,42 L52,10 Z"/>
+        <!-- stelo -->
+        <line x1="32" y1="42" x2="32" y2="54"/>
+        <!-- base -->
+        <path d="M22,54 Q32,52 42,54"/>
+        <!-- oliva su stecchino -->
+        <line x1="38" y1="18" x2="44" y2="28"/>
+        <circle cx="45" cy="29" r="3.5"/>
+        <!-- liquido dentro il calice -->
+        <path d="M18,22 Q32,26 46,22"/>
+      </svg>
       <span class="timeline-time">18:00 — 22:00</span>
       <span class="timeline-name">Aperitivo</span>
       <span class="timeline-desc">Un cocktail, la focaccia di Papà calda, le sere d'estate ai tavoli all'aperto.</span>
       <span class="timeline-arrow">Stasera →</span>
     </a>
     <a href="#sala" class="timeline-slot">
+      <svg class="tl-sketch" viewBox="0 0 64 64" fill="none" stroke="#5a3e35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- tavolo -->
+        <line x1="10" y1="32" x2="54" y2="32"/>
+        <line x1="16" y1="32" x2="16" y2="46"/>
+        <line x1="48" y1="32" x2="48" y2="46"/>
+        <!-- sedia sinistra: schienale + seduta + gambe -->
+        <path d="M4,28 L18,28"/>
+        <path d="M4,20 L4,28"/>
+        <path d="M18,20 L18,28"/>
+        <path d="M4,18 Q11,14 18,18"/>
+        <line x1="6" y1="28" x2="6" y2="38"/>
+        <line x1="16" y1="28" x2="16" y2="38"/>
+        <!-- sedia destra: schienale + seduta + gambe -->
+        <path d="M46,28 L60,28"/>
+        <path d="M46,20 L46,28"/>
+        <path d="M60,20 L60,28"/>
+        <path d="M46,18 Q53,14 60,18"/>
+        <line x1="48" y1="28" x2="48" y2="38"/>
+        <line x1="58" y1="28" x2="58" y2="38"/>
+      </svg>
       <span class="timeline-time">Su prenotazione</span>
       <span class="timeline-name">Sala privata</span>
       <span class="timeline-desc">Fino a 30 a tavola. Compleanni, lauree, battesimi, feste private. Vi raccontiamo come funziona.</span>
