@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 110" fill="none" stroke="#2C2420" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Piatto: cerchio esterno -->
+  <circle cx="65" cy="60" r="38" stroke-width="1.8"/>
+  <!-- Piatto: bordo interno -->
+  <circle cx="65" cy="60" r="30" stroke-width="1.2"/>
+  <!-- Piatto: centro -->
+  <circle cx="65" cy="60" r="18" stroke-width="1"/>
+
+  <!-- FORCHETTA a sinistra -->
+  <!-- manico -->
+  <path stroke-width="1.8" d="M20,95 C20,93 21,90 22,85 L24,30"/>
+  <!-- collo -->
+  <path stroke-width="1.8" d="M22,85 C22,82 23,80 25,78 L26,68"/>
+  <!-- 4 denti della forchetta -->
+  <path stroke-width="1.4" d="M22,68 L20,15"/>
+  <path stroke-width="1.4" d="M25,68 L23,15"/>
+  <path stroke-width="1.4" d="M28,68 L27,15"/>
+  <path stroke-width="1.4" d="M31,68 L30,15"/>
+  <!-- archetto tra denti e collo -->
+  <path stroke-width="1.4" d="M20,35 Q21,38 22,40"/>
+  <path stroke-width="1.4" d="M23,35 Q24,38 25,40"/>
+  <path stroke-width="1.4" d="M27,35 Q27,38 28,40"/>
+  <path stroke-width="1.4" d="M30,35 Q30,38 31,40"/>
+  <!-- linea decorativa manico -->
+  <path stroke-width="1" d="M20,78 L24,78"/>
+  <path stroke-width="1" d="M20,82 L24,82"/>
+
+  <!-- COLTELLO a destra -->
+  <!-- manico -->
+  <path stroke-width="1.8" d="M106,95 C106,93 105,90 104,85 L103,65"/>
+  <!-- lama -->
+  <path stroke-width="1.8" d="M103,65 C103,50 104,30 106,15"/>
+  <!-- dorso della lama (bordo curvo) -->
+  <path stroke-width="1.4" d="M106,65 C107,50 108,30 106,15"/>
+  <!-- bolster tra manico e lama -->
+  <path stroke-width="1.4" d="M102,65 L108,65"/>
+  <!-- linee decorative manico -->
+  <path stroke-width="1" d="M102,78 L108,78"/>
+  <path stroke-width="1" d="M102,82 L108,82"/>
+  <path stroke-width="1" d="M102,86 L108,86"/>
+</svg>

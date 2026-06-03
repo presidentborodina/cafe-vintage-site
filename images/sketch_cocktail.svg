@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none" stroke="#2C2420" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Calice: bordo sinistro del bicchiere -->
+  <path stroke-width="1.8" d="M10,8 C15,20 22,35 32,55 L50,55"/>
+  <!-- Calice: bordo destro del bicchiere -->
+  <path stroke-width="1.8" d="M90,8 C85,20 78,35 68,55 L50,55"/>
+  <!-- Bordo superiore del calice -->
+  <path stroke-width="1.8" d="M10,8 L90,8"/>
+  <!-- Stelo -->
+  <path stroke-width="1.8" d="M50,55 L50,95"/>
+  <!-- Base -->
+  <path stroke-width="1.8" d="M32,95 Q50,98 68,95"/>
+  <path stroke-width="1.4" d="M28,100 Q50,104 72,100"/>
+  <!-- Livello liquido dentro il calice -->
+  <path stroke-width="1.2" d="M15,24 C30,28 70,28 85,24"/>
+  <!-- Riflessi/texture sul vetro -->
+  <path stroke-width="0.9" d="M20,14 C22,20 24,28 26,38"/>
+  <path stroke-width="0.9" d="M25,12 C27,18 29,26 32,36"/>
+  <!-- Stecchino con olive -->
+  <line stroke-width="1.4" x1="58" y1="8" x2="76" y2="32"/>
+  <!-- Olive -->
+  <circle cx="72" cy="27" r="4.5" stroke-width="1.4"/>
+  <circle cx="78" cy="35" r="4.5" stroke-width="1.4"/>
+  <!-- Puntino nell'oliva -->
+  <circle cx="72" cy="27" r="1.5" stroke-width="1"/>
+  <circle cx="78" cy="35" r="1.5" stroke-width="1"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" fill="none" stroke="#2C2420" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Corpo esterno del croissant -->
+  <path stroke-width="1.8" d="M18,68 C8,55 10,35 25,22 C35,13 50,10 65,15 C80,20 92,32 95,48 C97,58 92,68 85,70 C78,72 72,66 68,58 C63,48 62,38 55,32 C48,26 38,27 33,35 C27,43 28,58 18,68 Z"/>
+  <!-- Strati interni del croissant (texture sfoglia) -->
+  <path stroke-width="1.2" d="M24,62 C22,52 26,38 36,28"/>
+  <path stroke-width="1.2" d="M30,60 C29,50 34,37 44,27"/>
+  <path stroke-width="1.2" d="M37,57 C37,48 43,36 54,28"/>
+  <path stroke-width="1.2" d="M44,55 C45,46 52,36 64,30"/>
+  <path stroke-width="1.2" d="M52,54 C54,46 62,37 75,33"/>
+  <!-- Curva inferiore che chiude -->
+  <path stroke-width="1.5" d="M30,60 C42,55 55,53 66,57 C75,60 82,66 85,70"/>
+  <!-- Linee di volume sul dorso -->
+  <path stroke-width="1" d="M28,40 C35,32 46,26 58,24"/>
+  <path stroke-width="1" d="M22,50 C26,42 33,34 42,28"/>
+  <!-- Punte laterali -->
+  <path stroke-width="1.8" d="M18,68 C14,72 10,74 8,70"/>
+  <path stroke-width="1.8" d="M85,70 C90,72 96,70 98,65"/>
+</svg>
