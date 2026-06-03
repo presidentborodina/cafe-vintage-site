@@ -2134,6 +2134,27 @@ section {
   border-radius: 100px;
 }
 
+/* ========== DIVISORE ORNAMENTALE (solo mobile) ========== */
+.section-divider {
+  display: none;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 28px;
+}
+.section-divider .sd-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.section-divider .sd-star {
+  font-size: 13px;
+  color: var(--terracotta);
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .section-divider { display: flex; }
+}
+
 /* ========== FOOTER ========== */
 footer {
   background: var(--ink);
@@ -2454,6 +2475,8 @@ footer {
   </div>
 </section>
 
+<div class="section-divider"><span class="sd-line"></span><span class="sd-star">✦</span><span class="sd-line"></span></div>
+
 <!-- ========== COLAZIONE ========== -->
 <section class="colazione" id="colazione">
   <div class="colazione-grid">
@@ -2483,6 +2506,8 @@ footer {
     <div class="colazione-image"><img src="images/colazione.jpg" alt="Cappuccino con dolci della casa"></div>
   </div>
 </section>
+
+<div class="section-divider"><span class="sd-line"></span><span class="sd-star">✦</span><span class="sd-line"></span></div>
 
 <!-- ========== PRANZO ========== -->
 <section class="pranzo" id="pranzo">
@@ -2581,6 +2606,8 @@ footer {
   </div>
 </section>
 
+<div class="section-divider"><span class="sd-line"></span><span class="sd-star">✦</span><span class="sd-line"></span></div>
+
 <!-- ========== APERITIVO ========== -->
 <section class="aperitivo" id="aperitivo">
   <div class="aperitivo-grid">
@@ -2631,6 +2658,8 @@ footer {
     <span class="carta-cocktail-hint">Tap to enlarge →</span>
   </a>
 </section>
+
+<div class="section-divider"><span class="sd-line"></span><span class="sd-star">✦</span><span class="sd-line"></span></div>
 
 <!-- ========== RECENSIONI ========== -->
 <section class="recensioni">
@@ -2694,6 +2723,8 @@ footer {
   </div>
   <p class="filmstrip-hint" style="margin-top:24px;">Drag to scroll</p>
 </section>
+
+<div class="section-divider"><span class="sd-line"></span><span class="sd-star">✦</span><span class="sd-line"></span></div>
 
 <!-- ========== SALA PRIVATA ========== -->
 <section class="sala" id="sala">
@@ -2799,6 +2830,8 @@ footer {
     </form>
   </div>
 </section>
+
+<div class="section-divider"><span class="sd-line"></span><span class="sd-star">✦</span><span class="sd-line"></span></div>
 
 <!-- ========== DOVE SIAMO ========== -->
 <section class="dove" id="dove">
