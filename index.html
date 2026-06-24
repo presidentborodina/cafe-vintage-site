@@ -1391,60 +1391,45 @@ section {
 
 /* ====== FILMSTRIP GALLERIA ====== */
 .sala-gallery {
-  margin: 0 0 80px;
+  max-width: 1400px;
+  margin: 0 auto 80px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 16px;
 }
 
-.filmstrip-outer {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  cursor: grab;
-  user-select: none;
-}
-.filmstrip-outer:active { cursor: grabbing; }
-.filmstrip-outer::-webkit-scrollbar { display: none; }
-
-.filmstrip {
-  display: flex;
-  gap: 12px;
-  padding: 0 48px;
-  width: max-content;
-}
-
-.film-item {
-  flex: 0 0 auto;
-  height: 480px;
+.gal {
   border-radius: 4px;
-  overflow: hidden;
   position: relative;
-  scroll-snap-align: start;
+  overflow: hidden;
+  cursor: zoom-in;
 }
 
-.film-item img {
+.gal img {
+  width: 100%;
   height: 100%;
-  width: auto;
+  object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
-  pointer-events: none;
 }
 
-.film-item:hover img { transform: scale(1.03); }
+.gal:hover img { transform: scale(1.04); }
+
+.gal-1 { grid-row: span 2; }
 
 .gal-label {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  padding: 48px 16px 14px;
+  padding: 40px 16px 14px;
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(245, 239, 230, 0.95);
-  background: linear-gradient(to top, rgba(44,36,32,0.78), transparent);
+  background: linear-gradient(to top, rgba(44,36,32,0.75), transparent);
 }
 
-.filmstrip-wrap {
-  position: relative;
-}
+/* Filmstrip recensioni (carousel) */
 .filmstrip-btn {
   position: absolute;
   top: 50%;
@@ -2401,8 +2386,6 @@ footer {
   .form-grid { grid-template-columns: 1fr; }
   .form-field.full { grid-column: span 1; }
   .form-submit-row { grid-column: span 1; }
-  .filmstrip { padding: 0 24px; }
-  .film-item { height: 320px; }
   section, .colazione, .pranzo, .aperitivo, .sala, .dove, .focaccia-story, .timeline { padding: 80px 32px; }
   nav { padding: 16px 24px; }
   .nav-links { display: none; }
@@ -2494,9 +2477,8 @@ footer {
   .colazione-grid { gap: 16px; }
   .colazione { padding-bottom: 32px; }
 
-  /* ── Galleria filmstrip ── */
-  .film-item { height: 210px; }
-  .filmstrip { padding: 0 16px; gap: 12px; }
+  /* ── Galleria (griglia) ── */
+  .sala-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 180px 180px; gap: 10px; }
 
   /* ── Footer ── */
   .footer-grid { gap: 24px; }
@@ -2600,8 +2582,7 @@ footer {
   letter-spacing: 0.1em;
 }
 
-/* film-item → cursore zoom */
-.film-item { cursor: zoom-in; }
+.gal { cursor: zoom-in; }
 
 @media (max-width: 640px) {
   .lb-prev { left: 8px; width: 40px; height: 40px; font-size: 22px; }
@@ -3055,68 +3036,26 @@ footer {
   </div>
 
   <div class="sala-gallery">
-    <div class="filmstrip-wrap">
-    <button class="filmstrip-btn filmstrip-btn--left fs-hidden" id="fsLeft" aria-label="Scorri a sinistra">&#8249;</button>
-    <div class="filmstrip-outer" id="salaFilmstrip">
-      <div class="filmstrip">
-
-        <div class="film-item">
-          <img src="images/sala_main.jpg" alt="Sala privata — fino a 30 persone">
-          <div class="gal-label">Sala privata · capienza 30</div>
-        </div>
-
-
-
-        <div class="film-item">
-          <img src="images/sala_wine.jpg" alt="Sala interna con cantina">
-          <div class="gal-label">Sala interna</div>
-        </div>
-
-        <div class="film-item">
-          <img src="images/sala_glasses.jpg" alt="Bicchieri appesi al soffitto">
-          <div class="gal-label">Bicchieri pronti per l'aperitivo</div>
-        </div>
-
-        <div class="film-item">
-          <img src="images/hero_interior.jpg" alt="Il bancone del Caffé Vintage">
-          <div class="gal-label">Il bancone della casa</div>
-        </div>
-
-        <div class="film-item">
-          <img src="images/sala_diabolik.jpg" alt="Poster Diabolik e lampadario">
-          <div class="gal-label">Diabolik · dettaglio vintage</div>
-        </div>
-
-        <div class="film-item">
-          <img src="images/detail_comics.jpg" alt="Dettagli vintage — fumetti">
-          <div class="gal-label">Dettagli vintage</div>
-        </div>
-
-        <div class="film-item">
-          <img src="images/aperitivo_martini.jpg" alt="Aperitivo — cocktail">
-          <div class="gal-label">Caffè shakerato con i dolcetti</div>
-        </div>
-
-        <div class="film-item">
-          <img src="images/img_7478.jpg" alt="Cannoncini alla vetrina del Caffé Vintage">
-          <div class="gal-label">Cannoncini</div>
-        </div>
-
-        <div class="film-item">
-          <img src="images/img_8397.jpg" alt="Caffé Vintage — interno">
-          <div class="gal-label">Il locale</div>
-        </div>
-
-        <div class="film-item">
-          <img src="images/img_8401.jpg" alt="Il banco del Caffé Vintage">
-          <div class="gal-label">Il banco</div>
-        </div>
-
-      </div>
+    <div class="gal gal-1">
+      <img src="images/sala_main.jpg" alt="Sala privata — fino a 30 persone">
+      <div class="gal-label">Sala privata · capienza 30</div>
     </div>
-    <button class="filmstrip-btn filmstrip-btn--right" id="fsRight" aria-label="Scorri a destra">&#8250;</button>
+    <div class="gal gal-2">
+      <img src="images/sala_wine.jpg" alt="Sala interna con cantina">
+      <div class="gal-label">Sala interna</div>
     </div>
-    <p class="filmstrip-hint">Trascina per scorrere</p>
+    <div class="gal gal-3">
+      <img src="images/sala_glasses.jpg" alt="Bicchieri appesi al soffitto">
+      <div class="gal-label">Bicchieri pronti per l'aperitivo</div>
+    </div>
+    <div class="gal gal-4">
+      <img src="images/sala_diabolik.jpg" alt="Poster Diabolik e lampadario">
+      <div class="gal-label">Diabolik · dettaglio vintage</div>
+    </div>
+    <div class="gal gal-5">
+      <img src="images/img_8397.jpg" alt="Il locale del Caffé Vintage">
+      <div class="gal-label">Il locale</div>
+    </div>
   </div>
 
   <div class="inclusioni">
@@ -3339,40 +3278,6 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// Filmstrip drag-to-scroll
-const filmstrip = document.getElementById('salaFilmstrip');
-if (filmstrip) {
-  let isDown = false, startX, scrollLeft;
-
-  filmstrip.addEventListener('mousedown', e => {
-    isDown = true;
-    startX = e.pageX - filmstrip.offsetLeft;
-    scrollLeft = filmstrip.scrollLeft;
-  });
-  filmstrip.addEventListener('mouseleave', () => { isDown = false; });
-  filmstrip.addEventListener('mouseup',    () => { isDown = false; });
-  filmstrip.addEventListener('mousemove',  e => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - filmstrip.offsetLeft;
-    filmstrip.scrollLeft = scrollLeft - (x - startX) * 1.4;
-  });
-
-  // Frecce di scorrimento
-  const fsLeft  = document.getElementById('fsLeft');
-  const fsRight = document.getElementById('fsRight');
-  function updateFsArrows() {
-    const atStart = filmstrip.scrollLeft <= 10;
-    const atEnd   = filmstrip.scrollLeft >= filmstrip.scrollWidth - filmstrip.clientWidth - 10;
-    fsLeft.classList.toggle('fs-hidden', atStart);
-    fsRight.classList.toggle('fs-hidden', atEnd);
-  }
-  fsLeft.addEventListener('click',  () => filmstrip.scrollBy({ left: -500, behavior: 'smooth' }));
-  fsRight.addEventListener('click', () => filmstrip.scrollBy({ left:  500, behavior: 'smooth' }));
-  filmstrip.addEventListener('scroll', updateFsArrows);
-  updateFsArrows();
-}
-
 // Frecce carousel recensioni
 const recGrid = document.getElementById('recGrid');
 const rcLeft  = document.getElementById('rcLeft');
@@ -3391,7 +3296,7 @@ if (recGrid && rcLeft && rcRight) {
 }
 
 // ── Lightbox ─────────────────────────────────────
-const lbItems = [...document.querySelectorAll('.film-item')].map(item => ({
+const lbItems = [...document.querySelectorAll('.gal')].map(item => ({
   src:     item.querySelector('img').getAttribute('src'),
   alt:     item.querySelector('img').getAttribute('alt') || '',
   caption: item.querySelector('.gal-label') ? item.querySelector('.gal-label').textContent : ''
@@ -3428,7 +3333,7 @@ function lbPrev() { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; lbRen
 function lbNext() { lbIdx = (lbIdx + 1) % lbItems.length; lbRender(); }
 
 // Apri lightbox al click sulle foto (distingue click da drag)
-document.querySelectorAll('.film-item').forEach((item, i) => {
+document.querySelectorAll('.gal').forEach((item, i) => {
   let mouseDownX = 0;
   item.addEventListener('mousedown', e => { mouseDownX = e.pageX; });
   item.addEventListener('click', e => {
