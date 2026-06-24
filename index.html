@@ -222,6 +222,25 @@ nav.scrolled .hamburger span { background: var(--ink); }
   padding: 48px;
 }
 .mobile-menu.open { display: flex; }
+.mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.mobile-close:hover { background: var(--terracotta); color: var(--cream); border-color: var(--terracotta); }
 .mobile-menu a {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
@@ -604,15 +623,20 @@ nav.scrolled .hamburger span { background: var(--ink); }
   position: absolute;
   top: 18px;
   right: 14px;
-  width: 80px;
-  height: 80px;
-  opacity: 0.65;
+  width: 68px;
+  height: 68px;
+  opacity: 0.80;
   pointer-events: none;
   object-fit: contain;
 }
 
 @media (max-width: 768px) {
   .tl-sketch { display: block; }
+  .timeline-slot:nth-child(3) .tl-sketch {
+    width: 76px;
+    height: 76px;
+    top: 32px;
+  }
 }
 
 .timeline-slot:last-child { border-right: none; }
@@ -1926,6 +1950,8 @@ section {
   padding: 0 48px;
 }
 
+.recensioni-wrap { position: relative; }
+
 .recensioni-grid {
   display: flex;
   gap: 20px;
@@ -2464,7 +2490,9 @@ footer {
     border: 2px solid var(--line);
     box-shadow: 0 4px 16px rgba(44,36,32,0.12);
   }
-  .colazione-image { display: none; }
+  .colazione-image { display: block; margin-top: 0; }
+  .colazione-grid { gap: 16px; }
+  .colazione { padding-bottom: 32px; }
 
   /* ── Galleria filmstrip ── */
   .film-item { height: 210px; }
@@ -2606,6 +2634,7 @@ footer {
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Chiudi menu">✕</button>
   <a href="#colazione">Colazione</a>
   <a href="#pranzo">Pranzo</a>
   <a href="#aperitivo">Aperitivo</a>
@@ -2664,28 +2693,28 @@ footer {
   </div>
   <div class="timeline-grid">
     <a href="#colazione" class="timeline-slot">
-      <img class="tl-sketch" src="images/sketch_brioche.svg" alt="" aria-hidden="true">
+      <img class="tl-sketch" src="images/sketch_brioche_new.png" alt="" aria-hidden="true">
       <span class="timeline-time">7:00 — 11:00</span>
       <span class="timeline-name">Colazione</span>
       <span class="timeline-desc">Caffè, brioche, girelle e veneziane appena sfornate.</span>
       <span class="timeline-arrow">Scopri →</span>
     </a>
     <a href="#pranzo" class="timeline-slot">
-      <img class="tl-sketch" src="images/sketch_pranzo.svg" alt="" aria-hidden="true">
+      <img class="tl-sketch" src="images/sketch_pranzo_new.png" alt="" aria-hidden="true">
       <span class="timeline-time">12:00 — 14:00</span>
       <span class="timeline-name">Pranzo</span>
       <span class="timeline-desc">Due primi, un secondo, contorni e insalate. Cucina di casa.</span>
       <span class="timeline-arrow">Vedi il menù →</span>
     </a>
     <a href="#aperitivo" class="timeline-slot">
-      <img class="tl-sketch" src="images/sketch_cocktail.svg" alt="" aria-hidden="true">
+      <img class="tl-sketch" src="images/magnific_9R5fHpONYZ.png" alt="" aria-hidden="true">
       <span class="timeline-time">18:00 — 22:00</span>
       <span class="timeline-name">Aperitivo</span>
       <span class="timeline-desc">Un cocktail, la focaccia di Papà calda, le sere d'estate ai tavoli all'aperto.</span>
       <span class="timeline-arrow">Stasera →</span>
     </a>
     <a href="#sala" class="timeline-slot">
-      <img class="tl-sketch" src="images/sketch_sala.svg" alt="" aria-hidden="true">
+      <img class="tl-sketch" src="images/sketch_sala_new.png" alt="" aria-hidden="true">
       <span class="timeline-time">Su prenotazione</span>
       <span class="timeline-name">Sala privata</span>
       <span class="timeline-desc">Fino a 30 a tavola. Compleanni, lauree, battesimi, feste private. Vi raccontiamo come funziona.</span>
@@ -2801,6 +2830,22 @@ footer {
           <div class="menu-price">8€</div>
         </div>
       </div>
+
+      <div class="menu-category">
+        <div class="menu-category-title">Pizza & Focaccia</div>
+        <div class="menu-item">
+          <div class="menu-name">Focaccia a trancio</div>
+          <div class="menu-price">4€</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-name">Margherita a trancio</div>
+          <div class="menu-price">4,50€</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-name">Pizza farcita a trancio</div>
+          <div class="menu-price">5€</div>
+        </div>
+      </div>
     </div>
 
     <div class="pranzo-side">
@@ -2889,7 +2934,9 @@ footer {
 <!-- ========== RECENSIONI ========== -->
 <section class="recensioni">
   <span class="eyebrow" style="display:block; text-align:center; margin-bottom: 48px;">Su Google</span>
-  <div class="recensioni-grid">
+  <div class="recensioni-wrap">
+  <button class="filmstrip-btn filmstrip-btn--left fs-hidden" id="rcLeft" aria-label="Scorri a sinistra">&#8249;</button>
+  <div class="recensioni-grid" id="recGrid">
 
     <div class="recensione-card">
       <div class="rec-stars">★★★★★</div>
@@ -2945,6 +2992,8 @@ footer {
       </div>
     </div>
 
+  </div>
+  <button class="filmstrip-btn filmstrip-btn--right" id="rcRight" aria-label="Scorri a destra">&#8250;</button>
   </div>
   <p class="filmstrip-hint" style="margin-top:24px;">Trascina per scorrere</p>
 </section>
@@ -3236,6 +3285,13 @@ hamburger.addEventListener('click', () => {
   document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
 });
 
+// Crocetta chiusura menu
+document.getElementById('mobileClose').addEventListener('click', () => {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+});
+
 mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('open');
@@ -3284,6 +3340,23 @@ if (filmstrip) {
   fsRight.addEventListener('click', () => filmstrip.scrollBy({ left:  500, behavior: 'smooth' }));
   filmstrip.addEventListener('scroll', updateFsArrows);
   updateFsArrows();
+}
+
+// Frecce carousel recensioni
+const recGrid = document.getElementById('recGrid');
+const rcLeft  = document.getElementById('rcLeft');
+const rcRight = document.getElementById('rcRight');
+if (recGrid && rcLeft && rcRight) {
+  function updateRcArrows() {
+    const atStart = recGrid.scrollLeft <= 10;
+    const atEnd   = recGrid.scrollLeft >= recGrid.scrollWidth - recGrid.clientWidth - 10;
+    rcLeft.classList.toggle('fs-hidden', atStart);
+    rcRight.classList.toggle('fs-hidden', atEnd);
+  }
+  rcLeft.addEventListener('click',  () => recGrid.scrollBy({ left: -340, behavior: 'smooth' }));
+  rcRight.addEventListener('click', () => recGrid.scrollBy({ left:  340, behavior: 'smooth' }));
+  recGrid.addEventListener('scroll', updateRcArrows);
+  updateRcArrows();
 }
 
 // ── Lightbox ─────────────────────────────────────

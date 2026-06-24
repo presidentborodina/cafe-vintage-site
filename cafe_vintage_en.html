@@ -222,6 +222,25 @@ nav.scrolled .hamburger span { background: var(--ink); }
   padding: 48px;
 }
 .mobile-menu.open { display: flex; }
+.mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.mobile-close:hover { background: var(--terracotta); color: var(--cream); border-color: var(--terracotta); }
 .mobile-menu a {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
@@ -596,9 +615,31 @@ nav.scrolled .hamburger span { background: var(--ink); }
   gap: 12px;
   transition: background 0.25s;
   min-height: 220px;
+  position: relative;
 }
 
 .timeline-slot:last-child { border-right: none; }
+
+.tl-sketch {
+  display: none;
+  position: absolute;
+  top: 18px;
+  right: 14px;
+  width: 68px;
+  height: 68px;
+  opacity: 0.80;
+  pointer-events: none;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .tl-sketch { display: block; }
+  .timeline-slot:nth-child(3) .tl-sketch {
+    width: 76px;
+    height: 76px;
+    top: 32px;
+  }
+}
 
 .timeline-slot:hover {
   background: rgba(184, 80, 66, 0.04);
@@ -1840,6 +1881,8 @@ section {
   padding: 0 48px;
 }
 
+.recensioni-wrap { position: relative; }
+
 .recensioni-grid {
   display: flex;
   gap: 20px;
@@ -1851,6 +1894,18 @@ section {
   user-select: none;
   justify-content: safe center;
 }
+
+.filmstrip-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 10; width: 48px; height: 80px;
+  background: rgba(44,36,32,0.62); color: white;
+  font-size: 30px; border: none; cursor: pointer; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, opacity 0.25s;
+}
+.filmstrip-btn--left  { left: 0; }
+.filmstrip-btn--right { right: 0; }
+.fs-hidden { opacity: 0; pointer-events: none; }
 .recensioni-grid:active { cursor: grabbing; }
 .recensioni-grid::-webkit-scrollbar { display: none; }
 
@@ -2391,6 +2446,7 @@ footer {
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
   <a href="#colazione">Breakfast</a>
   <a href="#pranzo">Lunch</a>
   <a href="#aperitivo">Aperitivo</a>
@@ -2449,24 +2505,28 @@ footer {
   </div>
   <div class="timeline-grid">
     <a href="#colazione" class="timeline-slot">
+      <img class="tl-sketch" src="images/sketch_brioche_new.png" alt="" aria-hidden="true">
       <span class="timeline-time">7:00 — 11:00</span>
       <span class="timeline-name">Breakfast</span>
       <span class="timeline-desc">Coffee, brioche, girelle and veneziane freshly baked.</span>
       <span class="timeline-arrow">Discover →</span>
     </a>
     <a href="#pranzo" class="timeline-slot">
+      <img class="tl-sketch" src="images/sketch_pranzo_new.png" alt="" aria-hidden="true">
       <span class="timeline-time">12:00 — 14:00</span>
       <span class="timeline-name">Lunch</span>
       <span class="timeline-desc">Two pasta dishes, a main course, sides and salads. Home cooking.</span>
       <span class="timeline-arrow">See the menu →</span>
     </a>
     <a href="#aperitivo" class="timeline-slot">
+      <img class="tl-sketch" src="images/magnific_9R5fHpONYZ.png" alt="" aria-hidden="true">
       <span class="timeline-time">18:00 — 22:00</span>
       <span class="timeline-name">Aperitivo</span>
       <span class="timeline-desc">A cocktail, warm focaccia from Dad, summer evenings at the outdoor tables.</span>
       <span class="timeline-arrow">Tonight →</span>
     </a>
     <a href="#sala" class="timeline-slot">
+      <img class="tl-sketch" src="images/sketch_sala_new.png" alt="" aria-hidden="true">
       <span class="timeline-time">By reservation</span>
       <span class="timeline-name">Private room</span>
       <span class="timeline-desc">Up to 30 at the table. Birthdays, graduations, christenings, private parties.</span>
@@ -2576,6 +2636,22 @@ footer {
           <div class="menu-price">8€</div>
         </div>
       </div>
+
+      <div class="menu-category">
+        <div class="menu-category-title">Pizza & Focaccia</div>
+        <div class="menu-item">
+          <div class="menu-name">Focaccia al trancio</div>
+          <div class="menu-price">4€</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-name">Margherita al trancio</div>
+          <div class="menu-price">4,50€</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-name">Stuffed pizza slice</div>
+          <div class="menu-price">5€</div>
+        </div>
+      </div>
     </div>
 
     <div class="pranzo-side">
@@ -2664,7 +2740,9 @@ footer {
 <!-- ========== RECENSIONI ========== -->
 <section class="recensioni">
   <span class="eyebrow" style="display:block; text-align:center; margin-bottom: 48px;">On Google</span>
-  <div class="recensioni-grid">
+  <div class="recensioni-wrap">
+  <button class="filmstrip-btn filmstrip-btn--left fs-hidden" id="rcLeft" aria-label="Scroll left">&#8249;</button>
+  <div class="recensioni-grid" id="recGrid">
 
     <div class="recensione-card">
       <div class="rec-stars">★★★★★</div>
@@ -2720,6 +2798,8 @@ footer {
       </div>
     </div>
 
+  </div>
+  <button class="filmstrip-btn filmstrip-btn--right" id="rcRight" aria-label="Scroll right">&#8250;</button>
   </div>
   <p class="filmstrip-hint" style="margin-top:24px;">Drag to scroll</p>
 </section>
@@ -2958,6 +3038,13 @@ hamburger.addEventListener('click', () => {
   document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
 });
 
+// Close button
+document.getElementById('mobileClose').addEventListener('click', () => {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+});
+
 mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('open');
@@ -3009,6 +3096,23 @@ function closeCocktailMenu() {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeCocktailMenu();
 });
+
+// Review carousel arrows
+const recGrid = document.getElementById('recGrid');
+const rcLeft  = document.getElementById('rcLeft');
+const rcRight = document.getElementById('rcRight');
+if (recGrid && rcLeft && rcRight) {
+  function updateRcArrows() {
+    const atStart = recGrid.scrollLeft <= 10;
+    const atEnd   = recGrid.scrollLeft >= recGrid.scrollWidth - recGrid.clientWidth - 10;
+    rcLeft.classList.toggle('fs-hidden', atStart);
+    rcRight.classList.toggle('fs-hidden', atEnd);
+  }
+  rcLeft.addEventListener('click',  () => recGrid.scrollBy({ left: -340, behavior: 'smooth' }));
+  rcRight.addEventListener('click', () => recGrid.scrollBy({ left:  340, behavior: 'smooth' }));
+  recGrid.addEventListener('scroll', updateRcArrows);
+  updateRcArrows();
+}
 </script>
 
 </body>
