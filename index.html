@@ -3058,6 +3058,30 @@ footer {
     </div>
   </div>
 
+  <!-- Foto extra: solo per il lightbox, non visibili nella griglia -->
+  <div class="gallery-extra" hidden>
+    <div class="gal-x">
+      <img src="images/hero_interior.jpg" alt="Il bancone del Caffé Vintage">
+      <div class="gal-label">Il bancone della casa</div>
+    </div>
+    <div class="gal-x">
+      <img src="images/detail_comics.jpg" alt="Dettagli vintage — fumetti">
+      <div class="gal-label">Dettagli vintage</div>
+    </div>
+    <div class="gal-x">
+      <img src="images/aperitivo_martini.jpg" alt="Aperitivo — caffè shakerato">
+      <div class="gal-label">Caffè shakerato con i dolcetti</div>
+    </div>
+    <div class="gal-x">
+      <img src="images/img_7478.jpg" alt="Cannoncini alla vetrina del Caffé Vintage">
+      <div class="gal-label">Cannoncini</div>
+    </div>
+    <div class="gal-x">
+      <img src="images/img_8401.jpg" alt="Il banco del Caffé Vintage">
+      <div class="gal-label">Il banco</div>
+    </div>
+  </div>
+
   <div class="inclusioni">
     <div class="inclusioni-grid">
       <div>
@@ -3296,7 +3320,7 @@ if (recGrid && rcLeft && rcRight) {
 }
 
 // ── Lightbox ─────────────────────────────────────
-const lbItems = [...document.querySelectorAll('.gal')].map(item => ({
+const lbItems = [...document.querySelectorAll('.gal, .gal-x')].map(item => ({
   src:     item.querySelector('img').getAttribute('src'),
   alt:     item.querySelector('img').getAttribute('alt') || '',
   caption: item.querySelector('.gal-label') ? item.querySelector('.gal-label').textContent : ''

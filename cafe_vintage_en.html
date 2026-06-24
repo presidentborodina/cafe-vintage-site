@@ -2979,7 +2979,31 @@ footer {
     </div>
     <div class="gal gal-5">
       <img src="images/img_8397.jpg" alt="Tavolino con sedie nel locale">
-      <div class="gal-label">Il locale</div>
+      <div class="gal-label">The venue</div>
+    </div>
+  </div>
+
+  <!-- Extra photos: lightbox only, not shown in the grid -->
+  <div class="gallery-extra" hidden>
+    <div class="gal-x">
+      <img src="images/hero_interior.jpg" alt="The Caffé Vintage counter">
+      <div class="gal-label">The house counter</div>
+    </div>
+    <div class="gal-x">
+      <img src="images/detail_comics.jpg" alt="Vintage details — comics">
+      <div class="gal-label">Vintage details</div>
+    </div>
+    <div class="gal-x">
+      <img src="images/aperitivo_martini.jpg" alt="Aperitivo — shakerato coffee">
+      <div class="gal-label">Shakerato coffee with sweets</div>
+    </div>
+    <div class="gal-x">
+      <img src="images/img_7478.jpg" alt="Cannoncini in the Caffé Vintage display">
+      <div class="gal-label">Cannoncini</div>
+    </div>
+    <div class="gal-x">
+      <img src="images/img_8401.jpg" alt="The Caffé Vintage counter">
+      <div class="gal-label">The counter</div>
     </div>
   </div>
 
@@ -3207,7 +3231,7 @@ document.addEventListener('keydown', e => {
 
 <script>
 // ── Lightbox ─────────────────────────────────────
-const lbItems = [...document.querySelectorAll('.gal')].map(item => ({
+const lbItems = [...document.querySelectorAll('.gal, .gal-x')].map(item => ({
   src:     item.querySelector('img').getAttribute('src'),
   alt:     item.querySelector('img').getAttribute('alt') || '',
   caption: item.querySelector('.gal-label') ? item.querySelector('.gal-label').textContent : ''
