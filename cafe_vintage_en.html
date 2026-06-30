@@ -1765,6 +1765,16 @@ section {
   background: var(--cream);
 }
 
+/* Date field calendar icon: made light on dark background */
+.form-field input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.65;
+  cursor: pointer;
+}
+.form-field input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
 .form-field textarea {
   resize: vertical;
   min-height: 80px;

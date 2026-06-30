@@ -1818,6 +1818,16 @@ section {
   background: var(--cream);
 }
 
+/* Icona calendario del campo data: resa chiara su sfondo scuro */
+.form-field input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.65;
+  cursor: pointer;
+}
+.form-field input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
 .form-field textarea {
   resize: vertical;
   min-height: 80px;
