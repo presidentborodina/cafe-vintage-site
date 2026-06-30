@@ -1775,6 +1775,13 @@ section {
   opacity: 1;
 }
 
+/* Form fallback text: desktop vs phone/tablet version */
+.fb-mobile { display: none; }
+@media (max-width: 1024px) {
+  .fb-desktop { display: none; }
+  .fb-mobile { display: inline; }
+}
+
 .form-field textarea {
   resize: vertical;
   min-height: 80px;
@@ -3080,7 +3087,7 @@ footer {
         </button>
       </div>
       <p style="margin-top:18px; font-size:14px; color:rgba(245,239,230,0.6); line-height:1.6;">
-        On a computer and prefer not to use WhatsApp Web? Email us at
+        <span class="fb-desktop">On a computer and prefer not to use WhatsApp Web?</span><span class="fb-mobile">Prefer not to message us on WhatsApp?</span> Email us at
         <a href="mailto:info@cafevintage.it" style="color:#E8A097; text-decoration:none;">info@cafevintage.it</a>
         or call <a href="tel:+393429062935" style="color:#E8A097; text-decoration:none;">+39 342 906 2935</a>.
       </p>
