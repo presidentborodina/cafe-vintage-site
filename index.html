@@ -1441,7 +1441,7 @@ section {
   margin: 0 auto 80px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 200px 200px;
+  grid-auto-rows: 200px;
   gap: 16px;
 }
 
@@ -1474,34 +1474,6 @@ section {
   color: rgba(245, 239, 230, 0.95);
   background: linear-gradient(to top, rgba(44,36,32,0.75), transparent);
 }
-
-/* Miniature (le altre 5 foto): nascoste su mobile, riga di thumbnail su desktop */
-.gallery-extra { display: none; }
-@media (min-width: 1025px) {
-  .gallery-extra {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
-    max-width: 1400px;
-    margin: 14px auto 0;
-  }
-}
-.gal-x {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border-radius: 4px;
-  overflow: hidden;
-  cursor: zoom-in;
-}
-.gal-x img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-.gal-x:hover img { transform: scale(1.05); }
-.gal-x .gal-label { display: none; }
 
 /* Filmstrip recensioni (carousel) */
 .filmstrip-btn {
@@ -2577,7 +2549,7 @@ footer {
   .colazione { padding-bottom: 32px; }
 
   /* ── Galleria (griglia) ── */
-  .sala-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 180px 180px; gap: 10px; }
+  .sala-gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; gap: 10px; }
 
   /* ── Footer ── */
   .footer-grid { gap: 24px; }
@@ -3108,27 +3080,23 @@ html body .iubenda-tp-btn[data-tp-icon] {
       <img src="images/img_8397.jpg" alt="Il locale del Caffé Vintage">
       <div class="gal-label">Il locale</div>
     </div>
-  </div>
-
-  <!-- Foto extra: solo per il lightbox, non visibili nella griglia -->
-  <div class="gallery-extra">
-    <div class="gal-x">
+    <div class="gal">
       <img src="images/hero_interior.jpg" alt="Il bancone del Caffé Vintage">
       <div class="gal-label">Il bancone della casa</div>
     </div>
-    <div class="gal-x">
+    <div class="gal">
       <img src="images/detail_comics.jpg" alt="Dettagli vintage — fumetti">
       <div class="gal-label">Dettagli vintage</div>
     </div>
-    <div class="gal-x">
+    <div class="gal">
       <img src="images/aperitivo_martini.jpg" alt="Aperitivo — caffè shakerato">
       <div class="gal-label">Caffè shakerato con i dolcetti</div>
     </div>
-    <div class="gal-x">
+    <div class="gal">
       <img src="images/img_7478.jpg" alt="Cannoncini alla vetrina del Caffé Vintage">
       <div class="gal-label">Cannoncini</div>
     </div>
-    <div class="gal-x">
+    <div class="gal">
       <img src="images/img_8401.jpg" alt="Il banco del Caffé Vintage">
       <div class="gal-label">Il banco</div>
     </div>
@@ -3377,7 +3345,7 @@ if (recGrid && rcLeft && rcRight) {
 }
 
 // ── Lightbox ─────────────────────────────────────
-const lbItems = [...document.querySelectorAll('.gal, .gal-x')].map(item => ({
+const lbItems = [...document.querySelectorAll('.gal')].map(item => ({
   src:     item.querySelector('img').getAttribute('src'),
   alt:     item.querySelector('img').getAttribute('alt') || '',
   caption: item.querySelector('.gal-label') ? item.querySelector('.gal-label').textContent : ''
@@ -3414,7 +3382,7 @@ function lbPrev() { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; lbRen
 function lbNext() { lbIdx = (lbIdx + 1) % lbItems.length; lbRender(); }
 
 // Apri lightbox al click sulle foto (distingue click da drag)
-document.querySelectorAll('.gal, .gal-x').forEach((item, i) => {
+document.querySelectorAll('.gal').forEach((item, i) => {
   let mouseDownX = 0;
   item.addEventListener('mousedown', e => { mouseDownX = e.pageX; });
   item.addEventListener('click', e => {

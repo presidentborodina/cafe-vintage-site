@@ -1433,7 +1433,7 @@ section {
   margin: 0 auto 100px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 200px 200px;
+  grid-auto-rows: 200px;
   gap: 16px;
 }
 
@@ -1465,34 +1465,6 @@ section {
   font-style: normal;
   background: linear-gradient(to top, rgba(44, 36, 32, 0.75), transparent);
 }
-
-/* Thumbnails (other 5 photos): hidden on mobile, row on desktop */
-.gallery-extra { display: none; }
-@media (min-width: 1025px) {
-  .gallery-extra {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
-    max-width: 1400px;
-    margin: 14px auto 0;
-  }
-}
-.gal-x {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border-radius: 4px;
-  overflow: hidden;
-  cursor: zoom-in;
-}
-.gal-x img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-.gal-x:hover img { transform: scale(1.05); }
-.gal-x .gal-label { display: none; }
 
 .pacchetti {
   max-width: 1400px;
@@ -2438,7 +2410,7 @@ footer {
   .pacchetti-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .form-field.full { grid-column: span 1; }
-  .sala-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 180px 180px; gap: 10px; }
+  .sala-gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; gap: 10px; }
   .gal-1 { grid-row: span 2; }
   section, .colazione, .pranzo, .aperitivo, .sala, .dove, .focaccia-story, .timeline { padding: 80px 32px; }
   nav { padding: 16px 24px; }
@@ -3033,27 +3005,23 @@ html body .iubenda-tp-btn[data-tp-icon] {
       <img src="images/img_8397.jpg" alt="Tavolino con sedie nel locale">
       <div class="gal-label">The venue</div>
     </div>
-  </div>
-
-  <!-- Extra photos: lightbox only, not shown in the grid -->
-  <div class="gallery-extra">
-    <div class="gal-x">
+    <div class="gal">
       <img src="images/hero_interior.jpg" alt="The Caffé Vintage counter">
       <div class="gal-label">The house counter</div>
     </div>
-    <div class="gal-x">
+    <div class="gal">
       <img src="images/detail_comics.jpg" alt="Vintage details — comics">
       <div class="gal-label">Vintage details</div>
     </div>
-    <div class="gal-x">
+    <div class="gal">
       <img src="images/aperitivo_martini.jpg" alt="Aperitivo — shakerato coffee">
       <div class="gal-label">Shakerato coffee with sweets</div>
     </div>
-    <div class="gal-x">
+    <div class="gal">
       <img src="images/img_7478.jpg" alt="Cannoncini in the Caffé Vintage display">
       <div class="gal-label">Cannoncini</div>
     </div>
-    <div class="gal-x">
+    <div class="gal">
       <img src="images/img_8401.jpg" alt="The Caffé Vintage counter">
       <div class="gal-label">The counter</div>
     </div>
@@ -3288,7 +3256,7 @@ document.addEventListener('keydown', e => {
 
 <script>
 // ── Lightbox ─────────────────────────────────────
-const lbItems = [...document.querySelectorAll('.gal, .gal-x')].map(item => ({
+const lbItems = [...document.querySelectorAll('.gal')].map(item => ({
   src:     item.querySelector('img').getAttribute('src'),
   alt:     item.querySelector('img').getAttribute('alt') || '',
   caption: item.querySelector('.gal-label') ? item.querySelector('.gal-label').textContent : ''
@@ -3324,7 +3292,7 @@ function lbRender() {
 function lbPrev() { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; lbRender(); }
 function lbNext() { lbIdx = (lbIdx + 1) % lbItems.length; lbRender(); }
 
-document.querySelectorAll('.gal, .gal-x').forEach((item, i) => {
+document.querySelectorAll('.gal').forEach((item, i) => {
   item.addEventListener('click', () => lbOpen(i));
 });
 
