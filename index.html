@@ -2615,23 +2615,28 @@ footer {
 }
 
 /* ── Widget cookie flottante Iubenda: ricolora nei toni del sito ── */
-.iubenda-tp-btn,
-.iubenda-tp-btn--cs,
-.iub-widget-btn,
-[class*="iubenda-tp-btn"] {
+button.iubenda-tp-btn,
+.iubenda-tp-btn[data-tp-float],
+.iubenda-tp-btn[data-tp-float][data-tp-float="bottom-left"],
+.iubenda-tp-btn.iubenda-cs-preferences-link {
   background-color: #B85042 !important;
   color: #FAF6EC !important;
   box-shadow: 0 6px 18px -6px rgba(44,36,32,.5) !important;
 }
+/* icona: sia SVG (fill/stroke) sia immagine di sfondo (filter -> crema) */
 .iubenda-tp-btn svg,
 .iubenda-tp-btn svg *,
-.iubenda-tp-btn path,
-[class*="iubenda-tp-btn"] svg,
-[class*="iubenda-tp-btn"] svg *,
-[class*="iubenda-tp-btn"] path {
+.iubenda-tp-btn path {
   fill: #FAF6EC !important;
-  color: #FAF6EC !important;
   stroke: #FAF6EC !important;
+  color: #FAF6EC !important;
+}
+.iubenda-tp-btn [data-tp-icon],
+.iubenda-tp-btn::before,
+.iubenda-tp-btn > span,
+.iubenda-tp-btn > i,
+.iubenda-tp-btn > img {
+  filter: brightness(0) invert(1) !important;
 }
 </style>
 </head>
