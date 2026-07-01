@@ -1466,6 +1466,34 @@ section {
   background: linear-gradient(to top, rgba(44, 36, 32, 0.75), transparent);
 }
 
+/* Thumbnails (other 5 photos): hidden on mobile, row on desktop */
+.gallery-extra { display: none; }
+@media (min-width: 1025px) {
+  .gallery-extra {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    max-width: 1400px;
+    margin: 14px auto 0;
+  }
+}
+.gal-x {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.gal-x img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.gal-x:hover img { transform: scale(1.05); }
+.gal-x .gal-label { display: none; }
+
 .pacchetti {
   max-width: 1400px;
   margin: 0 auto 100px;
@@ -3008,7 +3036,7 @@ html body .iubenda-tp-btn[data-tp-icon] {
   </div>
 
   <!-- Extra photos: lightbox only, not shown in the grid -->
-  <div class="gallery-extra" hidden>
+  <div class="gallery-extra">
     <div class="gal-x">
       <img src="images/hero_interior.jpg" alt="The Caffé Vintage counter">
       <div class="gal-label">The house counter</div>
@@ -3296,7 +3324,7 @@ function lbRender() {
 function lbPrev() { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; lbRender(); }
 function lbNext() { lbIdx = (lbIdx + 1) % lbItems.length; lbRender(); }
 
-document.querySelectorAll('.gal').forEach((item, i) => {
+document.querySelectorAll('.gal, .gal-x').forEach((item, i) => {
   item.addEventListener('click', () => lbOpen(i));
 });
 
