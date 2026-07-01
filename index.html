@@ -1025,6 +1025,29 @@ section {
   gap: 32px;
 }
 
+.pranzo-photo {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px -20px rgba(0,0,0,0.6);
+}
+.pranzo-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pranzo-photo figcaption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 44px 18px 16px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245, 239, 230, 0.95);
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+}
+
 .pranzo-info {
   display: flex;
   flex-direction: column;
@@ -2920,6 +2943,11 @@ html body .iubenda-tp-btn[data-tp-icon] {
           <span class="info-value">prenotare</span>
         </div>
       </div>
+
+      <figure class="pranzo-photo">
+        <img src="images/pranzo_hamburger.jpg" alt="Hamburger della casa — piatto del mercoledì">
+        <figcaption>Hamburger della casa · il mercoledì</figcaption>
+      </figure>
 
     </div>
   </div>
