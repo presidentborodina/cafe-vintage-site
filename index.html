@@ -935,20 +935,25 @@ section {
   color: rgba(245, 239, 230, 0.8);
   font-size: 19px;
   line-height: 1.5;
-  max-width: 520px;
-  margin-bottom: 44px;
+  max-width: 640px;
+  margin-bottom: 0;
 }
 .pranzo .menu-category { margin-bottom: 34px; }
+.pranzo .menu-category:last-child { margin-bottom: 0; }
 
-.pranzo-wrap {
+.pranzo-head {
+  max-width: 1400px;
+  margin: 0 auto 52px;
+}
+.pranzo-body {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 72px;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: stretch;
 }
-.pranzo-text { min-width: 0; }
+.pranzo-menu { min-width: 0; }
 
 .menu-block {
   border-left: 1px solid rgba(245, 239, 230, 0.15);
@@ -1040,11 +1045,10 @@ section {
 }
 
 .pranzo-photo {
-  position: sticky;
-  top: 40px;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 24px 70px -20px rgba(0,0,0,0.7);
+  min-height: 320px;
 }
 .pranzo-photo img {
   width: 100%;
@@ -1064,11 +1068,12 @@ section {
 }
 
 .pranzo-info {
-  margin-top: 44px;
+  max-width: 1400px;
+  margin: 52px auto 0;
   padding-top: 28px;
   border-top: 1px solid rgba(245, 239, 230, 0.15);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 22px 14px;
 }
 
@@ -2433,7 +2438,7 @@ footer {
   .hero-bg { background-position: 60% 40%; }
   .timeline-header,
   .timeline-grid,
-  .pranzo-wrap,
+  .pranzo-body,
   .aperitivo-grid,
   .dove-grid,
   .colazione-grid,
@@ -2441,7 +2446,7 @@ footer {
   .sala-header-grid,
   .inclusioni-grid,
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-  .pranzo-photo { position: static; max-height: 440px; }
+  .pranzo-photo { max-height: 440px; }
   .pranzo-info { grid-template-columns: 1fr 1fr; }
   .timeline-slot { border-right: none; border-bottom: 1px solid var(--line); }
   .pacchetti-grid { grid-template-columns: 1fr; }
@@ -2852,20 +2857,21 @@ html body .iubenda-tp-btn[data-tp-icon] {
 
 <!-- ========== PRANZO ========== -->
 <section class="pranzo" id="pranzo">
-  <div class="pranzo-wrap">
+  <div class="pranzo-head">
+    <span class="eyebrow">№ 02 — Pranzo</span>
+    <h2>Cucina di casa.</h2>
+    <p class="section-intro">
+      Due primi cambiati ogni giorno, un secondo, contorni e insalate. Ricette semplici fatte come a casa, servite a tavola.
+    </p>
+  </div>
 
+  <div class="pranzo-body">
     <figure class="pranzo-photo">
       <img src="images/pranzo_hamburger.jpg" alt="Hamburger della casa — piatto del mercoledì">
       <figcaption>Hamburger della casa · il mercoledì</figcaption>
     </figure>
 
-    <div class="pranzo-text">
-      <span class="eyebrow">№ 02 — Pranzo</span>
-      <h2>Cucina di casa.</h2>
-      <p class="section-intro">
-        Due primi cambiati ogni giorno, un secondo, contorni e insalate. Ricette semplici fatte come a casa, servite a tavola.
-      </p>
-
+    <div class="pranzo-menu">
       <div class="menu-category">
         <div class="menu-category-title">Primi</div>
         <div class="menu-item"><div class="menu-name">Pasta del giorno · 1<span>tipo di pasta a rotazione, sugo casalingo</span></div><div class="menu-price">8€</div></div>
@@ -2890,16 +2896,15 @@ html body .iubenda-tp-btn[data-tp-icon] {
         <div class="menu-item"><div class="menu-name">Margherita a trancio</div><div class="menu-price">4,50€</div></div>
         <div class="menu-item"><div class="menu-name">Pizza farcita a trancio</div><div class="menu-price">5€</div></div>
       </div>
-
-      <div class="pranzo-info">
-        <div class="info-row"><span class="info-label">Orari</span><span class="info-value">12:00 — 14:00</span></div>
-        <div class="info-row"><span class="info-label">Giorni</span><span class="info-value">lun — ven</span></div>
-        <div class="info-row"><span class="info-label">Servizio</span><span class="info-value">al tavolo</span></div>
-        <div class="info-row"><span class="info-label">Menù</span><span class="info-value">cambia ogni giorno</span></div>
-        <div class="info-row"><span class="info-label">Gruppi 4+</span><span class="info-value">prenotare</span></div>
-      </div>
     </div>
+  </div>
 
+  <div class="pranzo-info">
+    <div class="info-row"><span class="info-label">Orari</span><span class="info-value">12:00 — 14:00</span></div>
+    <div class="info-row"><span class="info-label">Giorni</span><span class="info-value">lun — ven</span></div>
+    <div class="info-row"><span class="info-label">Servizio</span><span class="info-value">al tavolo</span></div>
+    <div class="info-row"><span class="info-label">Menù</span><span class="info-value">cambia ogni giorno</span></div>
+    <div class="info-row"><span class="info-label">Gruppi 4+</span><span class="info-value">prenotare</span></div>
   </div>
 </section>
 
