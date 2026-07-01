@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offerta commerciale · Sito web Caffé Vintage Bistrot</title>
+<style>
+  :root {
+    --terracotta: #B85042;
+    --ink: #2C2420;
+    --muted: #8B7E72;
+    --line: #D8CFBE;
+    --paper: #FCFAF5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--ink);
+    background: #E8E2D5;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  .page {
+    max-width: 800px;
+    margin: 24px auto;
+    background: var(--paper);
+    padding: 56px 64px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  }
+
+  /* Intestazione */
+  .head {
+    border-bottom: 3px solid var(--terracotta);
+    padding-bottom: 22px;
+    margin-bottom: 32px;
+  }
+  .eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: bold;
+  }
+  .head h1 {
+    font-size: 30px;
+    margin: 8px 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .head .sub { color: var(--muted); font-size: 15px; }
+  .head .meta {
+    margin-top: 16px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  h2 {
+    font-size: 18px;
+    color: var(--terracotta);
+    margin: 34px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  h3 {
+    font-size: 15px;
+    margin: 18px 0 6px;
+    color: var(--ink);
+  }
+  h3 .tick { color: var(--terracotta); margin-right: 6px; }
+  p { margin-bottom: 12px; }
+
+  ul { margin: 8px 0 14px 4px; list-style: none; }
+  li { padding-left: 22px; position: relative; margin-bottom: 6px; }
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--terracotta);
+    font-weight: bold;
+  }
+  ul.plain li::before { content: '·'; font-size: 20px; line-height: 1; top: -2px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  td.amount { text-align: right; white-space: nowrap; font-weight: bold; }
+  tr.total td {
+    border-top: 2px solid var(--ink);
+    border-bottom: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 14px;
+  }
+  tr.total td.amount { color: var(--terracotta); }
+
+  .price-box {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .price-box .label { font-size: 15px; }
+  .price-box .value { font-size: 34px; font-weight: bold; color: #E8A097; }
+
+  blockquote {
+    border-left: 3px solid var(--terracotta);
+    background: #F4EDE0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .highlight-box {
+    background: #F4EDE0;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--terracotta);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .highlight-box .highlight-title {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--terracotta);
+    margin-bottom: 10px;
+  }
+  .highlight-box p { font-size: 14.5px; }
+
+  .note { font-size: 13px; color: var(--muted); }
+  .not-included {
+    font-size: 13px;
+    color: var(--muted);
+    background: #F4EDE0;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+
+  .footer-sign {
+    margin-top: 44px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .footer-sign strong { font-size: 16px; }
+
+  .print-hint {
+    max-width: 800px;
+    margin: 12px auto;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #6b5;
+    background: #fff8e6;
+    border: 1px solid #e8d9a0;
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; padding: 0 12mm; }
+    .print-hint { display: none; }
+    h2 { break-after: avoid; }
+    table, .price-box, blockquote { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-hint">
+  💡 Per salvare in PDF: premi <strong>Ctrl + P</strong> → Destinazione <strong>“Salva come PDF”</strong> → Salva.
+</div>
+
+<div class="page">
+
+  <div class="head">
+    <div class="eyebrow">Offerta commerciale</div>
+    <h1>Sito web Caffé Vintage Bistrot</h1>
+    <div class="sub">Sito vetrina su misura · hosting · caselle email · manutenzione</div>
+    <div class="meta">
+      <span>Per: Caffé Vintage Bistrot · Via delle Ande 5, Milano</span>
+      <span>Giugno 2026</span>
+    </div>
+  </div>
+
+  <h2>1. Oggetto</h2>
+  <p>
+    Cessione del sito web realizzato su misura per <strong>Caffé Vintage Bistrot</strong> — Via delle Ande 5, Milano — completo di hosting professionale, caselle email personalizzate e proposta di manutenzione annuale.
+  </p>
+
+  <h2>2. Il lavoro realizzato</h2>
+  <p>
+    Il sito non è un modello preconfezionato: è stato <strong>studiato e disegnato da zero</strong> sulle esigenze del locale. Il valore è in quattro aree di lavoro.
+  </p>
+
+  <h3><span class="tick">▸</span>Studio dell'impaginazione e del design</h3>
+  <ul>
+    <li>Layout costruito su misura, coerente con l'identità del Caffé Vintage</li>
+    <li>Gerarchia visiva pensata per guidare il cliente dal menu alla prenotazione della sala</li>
+    <li>Scelta tipografica, palette colori e fotografia curate nel dettaglio</li>
+    <li>Galleria fotografica con visualizzazione a tutto schermo</li>
+  </ul>
+
+  <h3><span class="tick">▸</span>Compatibilità con tutti i dispositivi</h3>
+  <ul>
+    <li>Sito completamente responsive: si adatta a smartphone, tablet e computer</li>
+    <li>Testato e ottimizzato sulle dimensioni reali degli schermi mobili</li>
+    <li>Velocità di caricamento elevata anche da connessione dati</li>
+  </ul>
+
+  <h3><span class="tick">▸</span>SEO — visibilità su Google</h3>
+  <ul>
+    <li>Struttura ottimizzata per i motori di ricerca</li>
+    <li>Titoli, descrizioni e testi pensati per le ricerche locali ("bar Milano", "sala privata eventi")</li>
+    <li>Tag tecnici corretti per l'indicizzazione</li>
+  </ul>
+
+  <h3><span class="tick">▸</span>Collegamenti con Google Maps e social</h3>
+  <ul>
+    <li>Indirizzo cliccabile in più punti che apre direttamente Google Maps</li>
+    <li>Mappa integrata nella sezione "Dove siamo"</li>
+    <li>Collegamento al profilo Instagram del locale</li>
+    <li>Bottone WhatsApp diretto per contatto immediato</li>
+  </ul>
+
+  <h2>3. Sezioni del sito</h2>
+  <table>
+    <tr><th>Sezione</th><th>Contenuto</th></tr>
+    <tr><td>Hero</td><td>Foto d'ambiente, accesso rapido a sala e menu</td></tr>
+    <tr><td>Timeline</td><td>Colazione → pranzo → aperitivo → sala privata</td></tr>
+    <tr><td>Colazione / Pranzo / Aperitivo</td><td>Menu completi con descrizioni e prezzi</td></tr>
+    <tr><td>Sala privata</td><td>Scheda capacità, inclusioni, form di richiesta</td></tr>
+    <tr><td>Dove siamo</td><td>Mappa, orari, contatti</td></tr>
+    <tr><td>Galleria</td><td>Foto del locale a tutto schermo</td></tr>
+  </table>
+  <div class="highlight-box">
+    <div class="highlight-title">🌍 Sito bilingue — Italiano e Inglese</div>
+    <p>
+      Il sito è realizzato in <strong>due versioni complete e indipendenti</strong>: una in italiano e una interamente tradotta in inglese. Non una traduzione automatica, ma <strong>ogni testo riscritto e adattato</strong> per i clienti internazionali e i turisti — un valore concreto in una città come Milano.
+    </p>
+    <p style="margin-bottom:0;">
+      Significa <strong>il doppio del lavoro di copy e impaginazione</strong>, e per il locale un sito pronto ad accogliere chiunque, da qualsiasi parte arrivi.
+    </p>
+  </div>
+
+  <h2>4. Hosting e caselle email</h2>
+  <table>
+    <tr><th>Servizio</th><th>Dettaglio</th></tr>
+    <tr><td><strong>Hosting Aruba</strong></td><td>Spazio web professionale su server italiani, certificato SSL (https) incluso</td></tr>
+    <tr><td><strong>Dominio personalizzato</strong></td><td>es. caffevintage.it</td></tr>
+    <tr><td><strong>Caselle email personalizzate</strong></td><td>es. info@caffevintage.it, prenotazioni@caffevintage.it — create e configurate per il locale</td></tr>
+  </table>
+
+  <h2>5. Prezzo di cessione</h2>
+  <div class="price-box">
+    <span class="label">Sito web completo — cessione definitiva</span>
+    <span class="value">€ 1.200</span>
+  </div>
+
+  <h2>6. Manutenzione e aggiornamenti — canone annuale</h2>
+  <div class="price-box">
+    <span class="label">Manutenzione + hosting Aruba + caselle email</span>
+    <span class="value">€ 250 <span style="font-size:16px;">/ anno</span></span>
+  </div>
+  <p>
+    Il sito non viene consegnato e poi abbandonato: il canone garantisce che resti <strong>sempre aggiornato, online e funzionante</strong> per tutto l'anno. È il servizio che mantiene il sito vivo e curato nel tempo.
+  </p>
+
+  <h3>Aggiornamenti dei contenuti — quando serve, durante l'anno</h3>
+  <ul>
+    <li><strong>Modifica dei testi</strong> — descrizioni, orari, novità del locale</li>
+    <li><strong>Aggiornamento dei listini e dei prezzi</strong> — menu colazione, pranzo, aperitivo, sala</li>
+    <li><strong>Aggiornamento delle foto</strong> — sostituzione o aggiunta di nuove immagini del locale e dei piatti</li>
+    <li><strong>Interventi su richiesta in caso di necessità</strong> — cambio recapiti, orari festivi, comunicazioni speciali</li>
+  </ul>
+  <p class="note">Fino a 4 interventi di aggiornamento l'anno, senza costi aggiuntivi.</p>
+
+  <h3>Gestione tecnica continuativa</h3>
+  <ul>
+    <li>Hosting Aruba e rinnovo del dominio</li>
+    <li>Caselle email personalizzate — gestione e assistenza</li>
+    <li>Certificato SSL (https) sempre attivo e rinnovato</li>
+    <li>Backup del sito prima di ogni modifica</li>
+    <li>Verifica del corretto funzionamento dopo ogni aggiornamento</li>
+    <li>Supporto via WhatsApp o email entro 48 ore lavorative</li>
+  </ul>
+
+  <blockquote>
+    In pratica: basta una telefonata o un messaggio quando cambia un prezzo, arriva una foto nuova o serve aggiornare qualcosa — ci pensiamo noi, senza che il locale debba toccare nulla.
+  </blockquote>
+
+  <div class="not-included">
+    <strong>Non incluso</strong> (preventivabile a parte): redesign grafico o nuove sezioni · collegamento form a email reale (~€80 una tantum) · implementazione analytics GA4 (~€120 una tantum).
+  </div>
+
+  <h2>7. Riepilogo economico</h2>
+  <table>
+    <tr><th>Voce</th><th style="text-align:right;">Importo</th></tr>
+    <tr><td>Sito web — cessione</td><td class="amount">€ 1.200</td></tr>
+    <tr><td>Manutenzione + hosting Aruba + email — anno 1</td><td class="amount">€ 250</td></tr>
+    <tr class="total"><td>Totale primo anno</td><td class="amount">€ 1.450</td></tr>
+    <tr><td>Anni successivi</td><td class="amount">€ 250 / anno</td></tr>
+  </table>
+
+  <div class="footer-sign">
+    <div><strong>Nellia Borodina</strong></div>
+  </div>
+
+</div>
+
+</body>
+</html>
