@@ -1438,7 +1438,7 @@ section {
 /* ====== FILMSTRIP GALLERIA ====== */
 .sala-gallery {
   max-width: 1400px;
-  margin: 0 auto 80px;
+  margin: 0 auto 16px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   grid-auto-rows: 200px;
@@ -1463,6 +1463,16 @@ section {
 .gal:hover img { transform: scale(1.04); }
 
 .gal-1 { grid-row: span 2; }
+
+/* Riga inferiore: 5 foto verticali in celle ritratto (non ritagliate a quadrato) */
+.sala-gallery-row {
+  max-width: 1400px;
+  margin: 0 auto 80px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.sala-gallery-row .gal { aspect-ratio: 3 / 4; }
 
 .gal-label {
   position: absolute;
@@ -2550,6 +2560,7 @@ footer {
 
   /* ── Galleria (griglia) ── */
   .sala-gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; gap: 10px; }
+  .sala-gallery-row { grid-template-columns: 1fr 1fr; gap: 10px; }
 
   /* ── Footer ── */
   .footer-grid { gap: 24px; }
@@ -3064,22 +3075,6 @@ html body .iubenda-tp-btn[data-tp-icon] {
       <img src="images/sala_main.jpg" alt="Sala privata — fino a 30 persone">
       <div class="gal-label">Sala privata · capienza 30</div>
     </div>
-    <div class="gal gal-2">
-      <img src="images/sala_wine.jpg" alt="Sala interna con cantina">
-      <div class="gal-label">Sala interna</div>
-    </div>
-    <div class="gal gal-3">
-      <img src="images/sala_glasses.jpg" alt="Bicchieri appesi al soffitto">
-      <div class="gal-label">Bicchieri pronti per l'aperitivo</div>
-    </div>
-    <div class="gal gal-4">
-      <img src="images/sala_diabolik.jpg" alt="Poster Diabolik e lampadario">
-      <div class="gal-label">Diabolik · dettaglio vintage</div>
-    </div>
-    <div class="gal gal-5">
-      <img src="images/img_8397.jpg" alt="Il locale del Caffé Vintage">
-      <div class="gal-label">Il locale</div>
-    </div>
     <div class="gal">
       <img src="images/hero_interior.jpg" alt="Il bancone del Caffé Vintage">
       <div class="gal-label">Il bancone della casa</div>
@@ -3089,8 +3084,27 @@ html body .iubenda-tp-btn[data-tp-icon] {
       <div class="gal-label">Dettagli vintage</div>
     </div>
     <div class="gal">
+      <img src="images/sala_wine.jpg" alt="Sala interna con cantina">
+      <div class="gal-label">Sala interna</div>
+    </div>
+    <div class="gal">
+      <img src="images/sala_glasses.jpg" alt="Bicchieri appesi al soffitto">
+      <div class="gal-label">Bicchieri pronti per l'aperitivo</div>
+    </div>
+  </div>
+
+  <div class="sala-gallery-row">
+    <div class="gal">
+      <img src="images/img_8397.jpg" alt="Il locale del Caffé Vintage">
+      <div class="gal-label">Il locale</div>
+    </div>
+    <div class="gal">
       <img src="images/aperitivo_martini.jpg" alt="Aperitivo — caffè shakerato">
       <div class="gal-label">Caffè shakerato con i dolcetti</div>
+    </div>
+    <div class="gal">
+      <img src="images/sala_diabolik.jpg" alt="Poster Diabolik e lampadario">
+      <div class="gal-label">Diabolik · dettaglio vintage</div>
     </div>
     <div class="gal">
       <img src="images/img_7478.jpg" alt="Cannoncini alla vetrina del Caffé Vintage">

@@ -1430,7 +1430,7 @@ section {
 
 .sala-gallery {
   max-width: 1400px;
-  margin: 0 auto 100px;
+  margin: 0 auto 16px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   grid-auto-rows: 200px;
@@ -1451,6 +1451,16 @@ section {
 }
 
 .gal-1 { grid-row: span 2; }
+
+/* Bottom row: 5 vertical photos in portrait cells (not cropped to square) */
+.sala-gallery-row {
+  max-width: 1400px;
+  margin: 0 auto 100px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.sala-gallery-row .gal { aspect-ratio: 3 / 4; }
 
 .gal-label {
   position: absolute;
@@ -2411,6 +2421,7 @@ footer {
   .form-grid { grid-template-columns: 1fr; }
   .form-field.full { grid-column: span 1; }
   .sala-gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; gap: 10px; }
+  .sala-gallery-row { grid-template-columns: 1fr 1fr; gap: 10px; }
   .gal-1 { grid-row: span 2; }
   section, .colazione, .pranzo, .aperitivo, .sala, .dove, .focaccia-story, .timeline { padding: 80px 32px; }
   nav { padding: 16px 24px; }
@@ -2986,24 +2997,8 @@ html body .iubenda-tp-btn[data-tp-icon] {
 
   <div class="sala-gallery">
     <div class="gal gal-1">
-      <img src="images/sala_main.jpg" alt="Sala privata di Caffé Vintage — fino a 30 persone">
+      <img src="images/sala_main.jpg" alt="Private room — up to 30 people">
       <div class="gal-label">Private room · seats 30</div>
-    </div>
-    <div class="gal gal-2">
-      <img src="images/sala_wine.jpg" alt="Stellage di vini con tavoli">
-      <div class="gal-label">Sala interna</div>
-    </div>
-    <div class="gal gal-3">
-      <img src="images/sala_glasses.jpg" alt="Bicchieri appesi al soffitto">
-      <div class="gal-label">Glasses ready for aperitivo</div>
-    </div>
-    <div class="gal gal-4">
-      <img src="images/sala_diabolik.jpg" alt="Poster Diabolik e lampadario">
-      <div class="gal-label">Diabolik · dettaglio vintage</div>
-    </div>
-    <div class="gal gal-5">
-      <img src="images/img_8397.jpg" alt="Tavolino con sedie nel locale">
-      <div class="gal-label">The venue</div>
     </div>
     <div class="gal">
       <img src="images/hero_interior.jpg" alt="The Caffé Vintage counter">
@@ -3014,8 +3009,27 @@ html body .iubenda-tp-btn[data-tp-icon] {
       <div class="gal-label">Vintage details</div>
     </div>
     <div class="gal">
+      <img src="images/sala_wine.jpg" alt="Wine rack with tables">
+      <div class="gal-label">Sala interna</div>
+    </div>
+    <div class="gal">
+      <img src="images/sala_glasses.jpg" alt="Glasses hanging from the ceiling">
+      <div class="gal-label">Glasses ready for aperitivo</div>
+    </div>
+  </div>
+
+  <div class="sala-gallery-row">
+    <div class="gal">
+      <img src="images/img_8397.jpg" alt="Table with chairs in the venue">
+      <div class="gal-label">The venue</div>
+    </div>
+    <div class="gal">
       <img src="images/aperitivo_martini.jpg" alt="Aperitivo — shakerato coffee">
       <div class="gal-label">Shakerato coffee with sweets</div>
+    </div>
+    <div class="gal">
+      <img src="images/sala_diabolik.jpg" alt="Diabolik poster and chandelier">
+      <div class="gal-label">Diabolik · dettaglio vintage</div>
     </div>
     <div class="gal">
       <img src="images/img_7478.jpg" alt="Cannoncini in the Caffé Vintage display">
