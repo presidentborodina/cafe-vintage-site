@@ -921,13 +921,15 @@ section {
 .pranzo h2 { color: var(--cream); }
 .pranzo .section-intro { color: rgba(245, 239, 230, 0.8); }
 
-.pranzo-content {
+.pranzo-wrap {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 80px;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 72px;
+  align-items: start;
 }
+.pranzo-text { min-width: 0; }
 
 .menu-block {
   border-left: 1px solid rgba(245, 239, 230, 0.15);
@@ -1019,10 +1021,11 @@ section {
 }
 
 .pranzo-photo {
-  position: relative;
+  position: sticky;
+  top: 40px;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 24px 60px -20px rgba(0,0,0,0.6);
+  box-shadow: 0 24px 70px -20px rgba(0,0,0,0.7);
 }
 .pranzo-photo img {
   width: 100%;
@@ -1042,27 +1045,25 @@ section {
 }
 
 .pranzo-info {
-  display: flex;
-  flex-direction: column;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(245, 239, 230, 0.15);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px 14px;
 }
 
 .info-row {
   display: flex;
-  gap: 16px;
-  align-items: baseline;
-  padding: 16px 0;
-  border-bottom: 1px dashed rgba(245, 239, 230, 0.15);
+  flex-direction: column;
+  gap: 4px;
 }
 
-.info-row:first-child { padding-top: 0; }
-.info-row:last-child { border-bottom: none; }
-
 .info-label {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(245, 239, 230, 0.5);
-  min-width: 100px;
 }
 
 .info-value {
@@ -2374,7 +2375,7 @@ footer {
   .hero-bg { background-position: 60% 40%; }
   .timeline-header,
   .timeline-grid,
-  .pranzo-content,
+  .pranzo-wrap,
   .aperitivo-grid,
   .dove-grid,
   .colazione-grid,
@@ -2382,6 +2383,8 @@ footer {
   .sala-header-grid,
   .inclusioni-grid,
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .pranzo-photo { position: static; max-height: 440px; }
+  .pranzo-info { grid-template-columns: 1fr 1fr; }
   .timeline-slot { border-right: none; border-bottom: 1px solid var(--line); }
   .pacchetti-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
@@ -2762,119 +2765,54 @@ html body .iubenda-tp-btn[data-tp-icon] {
 
 <!-- ========== PRANZO ========== -->
 <section class="pranzo" id="pranzo">
-  <div class="section-header">
-    <div>
-      <span class="eyebrow">№ 02 — Lunch</span>
-      <h2>Home<br>cooking.</h2>
-    </div>
-    <p class="section-intro">
-      Two pasta dishes changed daily, a main course, sides and salads. Simple recipes made like at home, served at the table.
-    </p>
-  </div>
+  <div class="pranzo-wrap">
 
-  <div class="pranzo-content">
-    <div class="menu-block">
+    <figure class="pranzo-photo">
+      <img src="images/pranzo_hamburger.jpg" alt="House hamburger — Wednesday special">
+      <figcaption>House hamburger · on Wednesdays</figcaption>
+    </figure>
+
+    <div class="pranzo-text">
+      <span class="eyebrow">№ 02 — Lunch</span>
+      <h2>Home cooking.</h2>
+      <p class="section-intro">
+        Two pasta dishes changed daily, a main course, sides and salads. Simple recipes made like at home, served at the table.
+      </p>
+
       <div class="menu-category">
         <div class="menu-category-title">Pasta</div>
-        <div class="menu-item">
-          <div class="menu-name">
-            Pasta of the day · 1
-            <span>rotating pasta type, homemade sauce</span>
-          </div>
-          <div class="menu-price">8€</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-name">
-            Pasta of the day · 2
-            <span>a second option, vegetarian or traditional</span>
-          </div>
-          <div class="menu-price">8€</div>
-        </div>
+        <div class="menu-item"><div class="menu-name">Pasta of the day · 1<span>rotating pasta type, homemade sauce</span></div><div class="menu-price">8€</div></div>
+        <div class="menu-item"><div class="menu-name">Pasta of the day · 2<span>a second option, vegetarian or traditional</span></div><div class="menu-price">8€</div></div>
       </div>
 
       <div class="menu-category">
         <div class="menu-category-title">Main course</div>
-        <div class="menu-item">
-          <div class="menu-name">
-            Main of the day
-            <span>meat or fish, changes daily</span>
-          </div>
-          <div class="menu-price">10–12€</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-name">
-            House burger<span class="day-tag">Wednesday</span>
-            <span>beef, homemade bread, potato side</span>
-          </div>
-          <div class="menu-price">12€</div>
-        </div>
+        <div class="menu-item"><div class="menu-name">Main of the day<span>meat or fish, changes daily</span></div><div class="menu-price">10–12€</div></div>
+        <div class="menu-item"><div class="menu-name">House burger<span class="day-tag">Wednesday</span><span>beef, homemade bread, potato side</span></div><div class="menu-price">12€</div></div>
       </div>
 
       <div class="menu-category">
         <div class="menu-category-title">Sides & Salads</div>
-        <div class="menu-item">
-          <div class="menu-name">
-            Side dishes · 2
-            <span>seasonal market vegetables</span>
-          </div>
-          <div class="menu-price">4€</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-name">
-            House salad
-            <span>vegetables, cheese, nuts, house dressing</span>
-          </div>
-          <div class="menu-price">8€</div>
-        </div>
+        <div class="menu-item"><div class="menu-name">Side dishes · 2<span>seasonal market vegetables</span></div><div class="menu-price">4€</div></div>
+        <div class="menu-item"><div class="menu-name">House salad<span>vegetables, cheese, nuts, house dressing</span></div><div class="menu-price">8€</div></div>
       </div>
 
       <div class="menu-category">
         <div class="menu-category-title">Pizza & Focaccia</div>
-        <div class="menu-item">
-          <div class="menu-name">Focaccia al trancio</div>
-          <div class="menu-price">4€</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-name">Margherita al trancio</div>
-          <div class="menu-price">4,50€</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-name">Stuffed pizza slice</div>
-          <div class="menu-price">5€</div>
-        </div>
+        <div class="menu-item"><div class="menu-name">Focaccia al trancio</div><div class="menu-price">4€</div></div>
+        <div class="menu-item"><div class="menu-name">Margherita al trancio</div><div class="menu-price">4,50€</div></div>
+        <div class="menu-item"><div class="menu-name">Stuffed pizza slice</div><div class="menu-price">5€</div></div>
       </div>
-    </div>
 
-    <div class="pranzo-side">
       <div class="pranzo-info">
-        <div class="info-row">
-          <span class="info-label">Hours</span>
-          <span class="info-value">12:00 — 14:00</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Days</span>
-          <span class="info-value">mon — fri</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Service</span>
-          <span class="info-value">table service</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Menu</span>
-          <span class="info-value">changes daily</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Groups 4+</span>
-          <span class="info-value">book ahead</span>
-        </div>
+        <div class="info-row"><span class="info-label">Hours</span><span class="info-value">12:00 — 14:00</span></div>
+        <div class="info-row"><span class="info-label">Days</span><span class="info-value">mon — fri</span></div>
+        <div class="info-row"><span class="info-label">Service</span><span class="info-value">table service</span></div>
+        <div class="info-row"><span class="info-label">Menu</span><span class="info-value">changes daily</span></div>
+        <div class="info-row"><span class="info-label">Groups 4+</span><span class="info-value">book ahead</span></div>
       </div>
-
-      <figure class="pranzo-photo">
-        <img src="images/pranzo_hamburger.jpg" alt="House hamburger — Wednesday special">
-        <figcaption>House hamburger · on Wednesdays</figcaption>
-      </figure>
-
     </div>
+
   </div>
 </section>
 

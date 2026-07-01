@@ -928,13 +928,15 @@ section {
 .pranzo h2 { color: var(--cream); }
 .pranzo .section-intro { color: rgba(245, 239, 230, 0.8); }
 
-.pranzo-content {
+.pranzo-wrap {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 80px;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 72px;
+  align-items: start;
 }
+.pranzo-text { min-width: 0; }
 
 .menu-block {
   border-left: 1px solid rgba(245, 239, 230, 0.15);
@@ -1026,10 +1028,11 @@ section {
 }
 
 .pranzo-photo {
-  position: relative;
+  position: sticky;
+  top: 40px;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 24px 60px -20px rgba(0,0,0,0.6);
+  box-shadow: 0 24px 70px -20px rgba(0,0,0,0.7);
 }
 .pranzo-photo img {
   width: 100%;
@@ -1049,27 +1052,25 @@ section {
 }
 
 .pranzo-info {
-  display: flex;
-  flex-direction: column;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(245, 239, 230, 0.15);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px 14px;
 }
 
 .info-row {
   display: flex;
-  gap: 16px;
-  align-items: baseline;
-  padding: 16px 0;
-  border-bottom: 1px dashed rgba(245, 239, 230, 0.15);
+  flex-direction: column;
+  gap: 4px;
 }
 
-.info-row:first-child { padding-top: 0; }
-.info-row:last-child { border-bottom: none; }
-
 .info-label {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(245, 239, 230, 0.5);
-  min-width: 100px;
 }
 
 .info-value {
@@ -2420,7 +2421,7 @@ footer {
   .hero-bg { background-position: 60% 40%; }
   .timeline-header,
   .timeline-grid,
-  .pranzo-content,
+  .pranzo-wrap,
   .aperitivo-grid,
   .dove-grid,
   .colazione-grid,
@@ -2428,6 +2429,8 @@ footer {
   .sala-header-grid,
   .inclusioni-grid,
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .pranzo-photo { position: static; max-height: 440px; }
+  .pranzo-info { grid-template-columns: 1fr 1fr; }
   .timeline-slot { border-right: none; border-bottom: 1px solid var(--line); }
   .pacchetti-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
@@ -2837,119 +2840,54 @@ html body .iubenda-tp-btn[data-tp-icon] {
 
 <!-- ========== PRANZO ========== -->
 <section class="pranzo" id="pranzo">
-  <div class="section-header">
-    <div>
-      <span class="eyebrow">№ 02 — Pranzo</span>
-      <h2>Cucina<br>di casa.</h2>
-    </div>
-    <p class="section-intro">
-      Due primi cambiati ogni giorno, un secondo, contorni e insalate. Ricette semplici fatte come a casa, servite a tavola.
-    </p>
-  </div>
+  <div class="pranzo-wrap">
 
-  <div class="pranzo-content">
-    <div class="menu-block">
+    <figure class="pranzo-photo">
+      <img src="images/pranzo_hamburger.jpg" alt="Hamburger della casa — piatto del mercoledì">
+      <figcaption>Hamburger della casa · il mercoledì</figcaption>
+    </figure>
+
+    <div class="pranzo-text">
+      <span class="eyebrow">№ 02 — Pranzo</span>
+      <h2>Cucina di casa.</h2>
+      <p class="section-intro">
+        Due primi cambiati ogni giorno, un secondo, contorni e insalate. Ricette semplici fatte come a casa, servite a tavola.
+      </p>
+
       <div class="menu-category">
         <div class="menu-category-title">Primi</div>
-        <div class="menu-item">
-          <div class="menu-name">
-            Pasta del giorno · 1
-            <span>tipo di pasta a rotazione, sugo casalingo</span>
-          </div>
-          <div class="menu-price">8€</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-name">
-            Pasta del giorno · 2
-            <span>una seconda proposta, vegetariana o tradizionale</span>
-          </div>
-          <div class="menu-price">8€</div>
-        </div>
+        <div class="menu-item"><div class="menu-name">Pasta del giorno · 1<span>tipo di pasta a rotazione, sugo casalingo</span></div><div class="menu-price">8€</div></div>
+        <div class="menu-item"><div class="menu-name">Pasta del giorno · 2<span>una seconda proposta, vegetariana o tradizionale</span></div><div class="menu-price">8€</div></div>
       </div>
 
       <div class="menu-category">
         <div class="menu-category-title">Secondo</div>
-        <div class="menu-item">
-          <div class="menu-name">
-            Secondo del giorno
-            <span>carne o pesce, cambia ogni giorno</span>
-          </div>
-          <div class="menu-price">10–12€</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-name">
-            Hamburger della casa<span class="day-tag">Mercoledì</span>
-            <span>manzo, pane fatto in casa, contorno di patate</span>
-          </div>
-          <div class="menu-price">12€</div>
-        </div>
+        <div class="menu-item"><div class="menu-name">Secondo del giorno<span>carne o pesce, cambia ogni giorno</span></div><div class="menu-price">10–12€</div></div>
+        <div class="menu-item"><div class="menu-name">Hamburger della casa<span class="day-tag">Mercoledì</span><span>manzo, pane fatto in casa, contorno di patate</span></div><div class="menu-price">12€</div></div>
       </div>
 
       <div class="menu-category">
         <div class="menu-category-title">Contorni & Insalate</div>
-        <div class="menu-item">
-          <div class="menu-name">
-            Contorni a scelta · 2
-            <span>verdure di stagione, di mercato</span>
-          </div>
-          <div class="menu-price">4€</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-name">
-            Insalatona della casa
-            <span>verdure, formaggi, frutta secca, condimento di casa</span>
-          </div>
-          <div class="menu-price">8€</div>
-        </div>
+        <div class="menu-item"><div class="menu-name">Contorni a scelta · 2<span>verdure di stagione, di mercato</span></div><div class="menu-price">4€</div></div>
+        <div class="menu-item"><div class="menu-name">Insalatona della casa<span>verdure, formaggi, frutta secca, condimento di casa</span></div><div class="menu-price">8€</div></div>
       </div>
 
       <div class="menu-category">
         <div class="menu-category-title">Pizza & Focaccia</div>
-        <div class="menu-item">
-          <div class="menu-name">Focaccia a trancio</div>
-          <div class="menu-price">4€</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-name">Margherita a trancio</div>
-          <div class="menu-price">4,50€</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-name">Pizza farcita a trancio</div>
-          <div class="menu-price">5€</div>
-        </div>
+        <div class="menu-item"><div class="menu-name">Focaccia a trancio</div><div class="menu-price">4€</div></div>
+        <div class="menu-item"><div class="menu-name">Margherita a trancio</div><div class="menu-price">4,50€</div></div>
+        <div class="menu-item"><div class="menu-name">Pizza farcita a trancio</div><div class="menu-price">5€</div></div>
       </div>
-    </div>
 
-    <div class="pranzo-side">
       <div class="pranzo-info">
-        <div class="info-row">
-          <span class="info-label">Orari</span>
-          <span class="info-value">12:00 — 14:00</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Giorni</span>
-          <span class="info-value">lun — ven</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Servizio</span>
-          <span class="info-value">al tavolo</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Menù</span>
-          <span class="info-value">cambia ogni giorno</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Gruppi 4+</span>
-          <span class="info-value">prenotare</span>
-        </div>
+        <div class="info-row"><span class="info-label">Orari</span><span class="info-value">12:00 — 14:00</span></div>
+        <div class="info-row"><span class="info-label">Giorni</span><span class="info-value">lun — ven</span></div>
+        <div class="info-row"><span class="info-label">Servizio</span><span class="info-value">al tavolo</span></div>
+        <div class="info-row"><span class="info-label">Menù</span><span class="info-value">cambia ogni giorno</span></div>
+        <div class="info-row"><span class="info-label">Gruppi 4+</span><span class="info-value">prenotare</span></div>
       </div>
-
-      <figure class="pranzo-photo">
-        <img src="images/pranzo_hamburger.jpg" alt="Hamburger della casa — piatto del mercoledì">
-        <figcaption>Hamburger della casa · il mercoledì</figcaption>
-      </figure>
-
     </div>
+
   </div>
 </section>
 
