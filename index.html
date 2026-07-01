@@ -925,8 +925,20 @@ section {
 }
 
 .pranzo .eyebrow { color: #E8A097; }
-.pranzo h2 { color: var(--cream); }
-.pranzo .section-intro { color: rgba(245, 239, 230, 0.8); }
+.pranzo h2 {
+  color: var(--cream);
+  font-size: clamp(44px, 5vw, 80px);
+  line-height: 0.98;
+  margin: 12px 0 20px;
+}
+.pranzo .section-intro {
+  color: rgba(245, 239, 230, 0.8);
+  font-size: 19px;
+  line-height: 1.5;
+  max-width: 520px;
+  margin-bottom: 44px;
+}
+.pranzo .menu-category { margin-bottom: 34px; }
 
 .pranzo-wrap {
   max-width: 1400px;
